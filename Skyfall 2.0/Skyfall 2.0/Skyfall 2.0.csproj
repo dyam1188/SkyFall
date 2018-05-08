@@ -285,9 +285,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Main Menu\BackgroundScroll.cs" />
-    <Compile Include="Assets\Scripts\Main Menu\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\Main Menu\SunRotation.cs" />
+    <Compile Include="Assets\Scripts\Menus\BackgroundScroll.cs" />
+    <Compile Include="Assets\Scripts\Menus\CharacterSelect.cs" />
+    <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\SunRotation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
