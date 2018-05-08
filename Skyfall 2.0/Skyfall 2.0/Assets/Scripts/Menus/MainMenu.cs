@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//main controller for the main menu
-//attached to Scenes -> Main Menu -> Script Holder - Main Menu
+//main controller for Main Menu
+//attached to Main Menu -> Script Holder - Main Menu
 public class MainMenu : MonoBehaviour
 {
-    int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
+    private int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
+    private bool isMenuVisible = true;
 
     [SerializeField]
     private GameObject[] t_menu = new GameObject[5];
@@ -75,13 +76,15 @@ public class MainMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X))
         {
-            MakeSelection();
+            if (isMenuVisible)
+            {
+                MakeSelection();
+                isMenuVisible = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log(t_howtoplay[0].GetComponent<SpriteRenderer>().material.color.a);
-
             if (t_howtoplay[0].GetComponent<SpriteRenderer>().material.color.a > 0.5f)
             {
                 for (int i = 0; i < t_howtoplay.Length; i++)
@@ -107,6 +110,8 @@ public class MainMenu : MonoBehaviour
                     StartCoroutine(FadeIn(t_menu[i].GetComponent<SpriteRenderer>()));
                 }
             }
+
+            isMenuVisible = true;
         }
     }
 

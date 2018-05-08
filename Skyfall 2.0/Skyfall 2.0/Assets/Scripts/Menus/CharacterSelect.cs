@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//main controller for Character Select
+//attached to Character Select -> Script Holder - Character Select
 public class CharacterSelect : MonoBehaviour
 {
     private int playerChoice = 0;

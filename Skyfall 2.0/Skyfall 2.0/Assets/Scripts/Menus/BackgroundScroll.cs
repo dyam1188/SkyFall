@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//controls background image movement
+//attached to Main Menu -> Background 0, 1
 public class BackgroundScroll : MonoBehaviour
 {
     [SerializeField]
