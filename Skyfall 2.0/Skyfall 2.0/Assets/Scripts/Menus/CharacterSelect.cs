@@ -18,7 +18,7 @@ public class CharacterSelect : MonoBehaviour
     private GameObject selection;
     private SpriteRenderer srSelection;
 
-    private const float minFade = 0.25f;
+    private const float minFade = 0.50f;
     private const float maxFade = 1.00f;
     private float fadeSpeed = 0.01f;
 
@@ -39,12 +39,16 @@ public class CharacterSelect : MonoBehaviour
         {
             playerChoice--;
             selection.transform.position = s_players[playerChoice].transform.position;
+            StopAllCoroutines();
+            StartCoroutine(FadeOut(srSelection));
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && playerChoice != s_players.Length)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && playerChoice != s_players.Length - 1)
         {
             playerChoice++;
             selection.transform.position = s_players[playerChoice].transform.position;
+            StopAllCoroutines();
+            StartCoroutine(FadeOut(srSelection));
         }
     }
 
