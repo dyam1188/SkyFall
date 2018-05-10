@@ -20,21 +20,20 @@ public class MainMenu : MonoBehaviour
     private GameObject[] t_options = new GameObject[1];
 
 	[SerializeField]
-	private Transform t_options_Canvas;
+	private Canvas c_options;
 
     private const float fadeSpeed = 0.05f;  //the rate at which objects fade in or out per frame
 
     //text stuff
     private Vector3 textSmall = new Vector3(1f, 1f, 1f);
     private Vector3 textLarge = new Vector3(1.25f, 1.25f, 1f);
-    //private Vector3 textScale = new Vector3(0.25f, 0.25f, 0f);
 
     void Start()
     {
         //show menu text objects
         for (int i = 0; i < t_menu.Length; i++)
         {
-            StartCoroutine("FadeIn", t_menu[i].GetComponent<SpriteRenderer>());
+            StartCoroutine(TextFadeIn(t_menu[i].GetComponent<SpriteRenderer>()));
         }
 
         //hide how to play text objects
@@ -56,9 +55,8 @@ public class MainMenu : MonoBehaviour
         //set default menu choice
         t_menu[menuChoice].transform.localScale = textLarge;
 
-		//set default canvas alpha to 0
-		t_options_Canvas.GetComponent<CanvasGroup> ().alpha = 0;
-
+        //set default canvas alpha to 0
+        c_options.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     void Update()
@@ -96,12 +94,12 @@ public class MainMenu : MonoBehaviour
             {
                 for (int i = 0; i < t_howtoplay.Length; i++)
                 {
-                    StartCoroutine(FadeOut(t_howtoplay[i].GetComponent<SpriteRenderer>()));
+                    StartCoroutine(TextFadeOut(t_howtoplay[i].GetComponent<SpriteRenderer>()));
                 }
 
                 for (int i = 0; i < t_menu.Length; i++)
                 {
-                    StartCoroutine(FadeIn(t_menu[i].GetComponent<SpriteRenderer>()));
+                    StartCoroutine(TextFadeIn(t_menu[i].GetComponent<SpriteRenderer>()));
                 }
             }
 
@@ -109,13 +107,13 @@ public class MainMenu : MonoBehaviour
             {
                 for (int i = 0; i < t_options.Length; i++)
                 {
-                    StartCoroutine(FadeOut(t_options[i].GetComponent<SpriteRenderer>()));
-					StartCoroutine(CanvasFadeOut(t_options_Canvas));
+                    StartCoroutine(TextFadeOut(t_options[i].GetComponent<SpriteRenderer>()));
+					StartCoroutine(CanvasFadeOut(c_options));
 				}
 
                 for (int i = 0; i < t_menu.Length; i++)
                 {
-                    StartCoroutine(FadeIn(t_menu[i].GetComponent<SpriteRenderer>()));
+                    StartCoroutine(TextFadeIn(t_menu[i].GetComponent<SpriteRenderer>()));
                 }
             }
 
@@ -157,24 +155,24 @@ public class MainMenu : MonoBehaviour
             case 2:
                 for (int i = 0; i < t_menu.Length; i++)
                 {
-                    StartCoroutine(FadeOut(t_menu[i].GetComponent<SpriteRenderer>()));
+                    StartCoroutine(TextFadeOut(t_menu[i].GetComponent<SpriteRenderer>()));
                 }
                 for (int i = 0; i < t_howtoplay.Length; i++)
                 {
-                    StartCoroutine(FadeIn(t_howtoplay[i].GetComponent<SpriteRenderer>()));
+                    StartCoroutine(TextFadeIn(t_howtoplay[i].GetComponent<SpriteRenderer>()));
                 }
                 break;
 
             case 3:
                 for (int i = 0; i < t_menu.Length; i++)
                 {
-                    StartCoroutine(FadeOut(t_menu[i].GetComponent<SpriteRenderer>()));
+                    StartCoroutine(TextFadeOut(t_menu[i].GetComponent<SpriteRenderer>()));
                 }
                 for (int i = 0; i < t_options.Length; i++)
                 {
-                    StartCoroutine(FadeIn(t_options[i].GetComponent<SpriteRenderer>()));
-					StartCoroutine(CanvasFadeIn(t_options_Canvas));
+                    StartCoroutine(TextFadeIn(t_options[i].GetComponent<SpriteRenderer>()));
                 }
+                StartCoroutine(CanvasFadeIn(c_options));
                 break;
 
             case 4:
@@ -183,13 +181,14 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    //asynchronously loads the selected scene
     void LoadScene(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);
     }
 
     //fades in the selected SpriteRenderer(s)
-    IEnumerator FadeIn(SpriteRenderer sr)
+    IEnumerator TextFadeIn(SpriteRenderer sr)
     {
         for (float alpha = 0f; alpha < 1f; alpha += fadeSpeed)
         {
@@ -202,7 +201,7 @@ public class MainMenu : MonoBehaviour
     }
 
     //fades out the selected SpriteRenderer(s)
-    IEnumerator FadeOut(SpriteRenderer sr)
+    IEnumerator TextFadeOut(SpriteRenderer sr)
     {
         for (float alpha = 1f; alpha > 0f; alpha -= fadeSpeed)
         {
@@ -214,7 +213,7 @@ public class MainMenu : MonoBehaviour
     }
 
 	//fades in the selected Canvas
-	IEnumerator CanvasFadeIn(Transform c)
+	IEnumerator CanvasFadeIn(Canvas c)
 	{
 		CanvasGroup cg = c.GetComponent<CanvasGroup> ();
 		while (cg.alpha < 1) {
@@ -227,7 +226,7 @@ public class MainMenu : MonoBehaviour
 	}
 
 	//fades out the selected Canvas
-	IEnumerator CanvasFadeOut(Transform c)
+	IEnumerator CanvasFadeOut(Canvas c)
 	{
 		CanvasGroup cg = c.GetComponent<CanvasGroup> ();
 		while (cg.alpha > 0) {
@@ -239,8 +238,7 @@ public class MainMenu : MonoBehaviour
 		yield return null;
 	}
 
-
-
+    //quits the app
     void Quit()
     {
 #if UNITY_EDITOR
