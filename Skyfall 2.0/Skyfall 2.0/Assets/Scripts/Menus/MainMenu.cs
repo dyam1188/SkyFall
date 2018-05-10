@@ -19,6 +19,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject[] t_options = new GameObject[1];
 
+	[SerializeField]
+	private Transform t_options_Canvas;
+
     private const float fadeSpeed = 0.05f;  //the rate at which objects fade in or out per frame
 
     //text stuff
@@ -52,6 +55,10 @@ public class MainMenu : MonoBehaviour
 
         //set default menu choice
         t_menu[menuChoice].transform.localScale = textLarge;
+
+		//set default canvas alpha to 0
+		t_options_Canvas.GetComponent<CanvasGroup> ().alpha = 0;
+
     }
 
     void Update()
@@ -103,7 +110,8 @@ public class MainMenu : MonoBehaviour
                 for (int i = 0; i < t_options.Length; i++)
                 {
                     StartCoroutine(FadeOut(t_options[i].GetComponent<SpriteRenderer>()));
-                }
+					StartCoroutine(CanvasFadeOut(t_options_Canvas));
+				}
 
                 for (int i = 0; i < t_menu.Length; i++)
                 {
@@ -165,6 +173,7 @@ public class MainMenu : MonoBehaviour
                 for (int i = 0; i < t_options.Length; i++)
                 {
                     StartCoroutine(FadeIn(t_options[i].GetComponent<SpriteRenderer>()));
+					StartCoroutine(CanvasFadeIn(t_options_Canvas));
                 }
                 break;
 
@@ -203,6 +212,34 @@ public class MainMenu : MonoBehaviour
             yield return null;
         }
     }
+
+	//fades in the selected Canvas
+	IEnumerator CanvasFadeIn(Transform c)
+	{
+		CanvasGroup cg = c.GetComponent<CanvasGroup> ();
+		while (cg.alpha < 1) {
+			cg.alpha += fadeSpeed;
+			yield return null;
+		}
+
+		cg.interactable = true;
+		yield return null;
+	}
+
+	//fades out the selected Canvas
+	IEnumerator CanvasFadeOut(Transform c)
+	{
+		CanvasGroup cg = c.GetComponent<CanvasGroup> ();
+		while (cg.alpha > 0) {
+			cg.alpha -= fadeSpeed;
+			yield return null;
+		}
+
+		cg.interactable = false;
+		yield return null;
+	}
+
+
 
     void Quit()
     {
