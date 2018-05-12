@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 //attached to Main Menu -> Script Holder - Main Menu
 public class MainMenu : MonoBehaviour
 {
+    public OptionsMenu optionsMenu;
+
     private int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
     private bool isMenuVisible = true;
 
@@ -24,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
     private const float fadeSpeed = 0.05f;  //the rate at which objects fade in or out per frame
 
-    //text stuff
+    //text sizes
     private Vector3 textSmall = new Vector3(1f, 1f, 1f);
     private Vector3 textLarge = new Vector3(1.25f, 1.25f, 1f);
 
@@ -67,21 +69,21 @@ public class MainMenu : MonoBehaviour
     //controls main menu selection
     void GetKeyInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && menuChoice != 1)
+        if (isMenuVisible)
         {
-            menuChoice--;
-            ResizeText();
-        }
+            if (Input.GetKeyDown(KeyCode.UpArrow) && menuChoice != 1)
+            {
+                menuChoice--;
+                ResizeText();
+            }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != t_menu.Length - 1)
-        {
-            menuChoice++;
-            ResizeText();
-        }
+            if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != t_menu.Length - 1)
+            {
+                menuChoice++;
+                ResizeText();
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X))
-        {
-            if (isMenuVisible)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X))
             {
                 MakeSelection();
                 isMenuVisible = false;
@@ -90,6 +92,7 @@ public class MainMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape))
         {
+            //change below line after making the howtoplay menu
             if (t_howtoplay[0].GetComponent<SpriteRenderer>().material.color.a > 0.5f)
             {
                 for (int i = 0; i < t_howtoplay.Length; i++)
@@ -103,7 +106,7 @@ public class MainMenu : MonoBehaviour
                 }
             }
 
-            if (t_options[0].GetComponent<SpriteRenderer>().material.color.a > 0.5f)
+            if (optionsMenu.isVisible)
             {
                 for (int i = 0; i < t_options.Length; i++)
                 {
@@ -121,7 +124,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    //scale the selected menu option larger
+    //scales the selected menu option larger
     void ResizeText()
     {
         for (int i = 1; i < t_menu.Length; i++)
@@ -137,7 +140,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    //scale the selected text
+    //scales the selected text
     GameObject SetText(GameObject go, Vector3 textSize)
     {
         go.transform.localScale = textSize;
@@ -173,6 +176,7 @@ public class MainMenu : MonoBehaviour
                     StartCoroutine(TextFadeIn(t_options[i].GetComponent<SpriteRenderer>()));
                 }
                 StartCoroutine(CanvasFadeIn(c_options));
+                optionsMenu.isVisible = true;
                 break;
 
             case 4:
