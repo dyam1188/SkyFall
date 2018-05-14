@@ -151,6 +151,7 @@ MonoBehaviour:
   howtoplayMenu: {fileID: 513500109}
   optionsCanvas: {fileID: 723860363}
   optionsMenu: {fileID: 566254056}
+  optionsExitButton: {fileID: 1260503907}
 --- !u!4 &59240102
 Transform:
   m_ObjectHideFlags: 0
@@ -804,6 +805,7 @@ MonoBehaviour:
   - {fileID: 2128449127}
   - {fileID: 478620339}
   - {fileID: 1260503909}
+  optionsExitSelected: 0
 --- !u!1 &608222551
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
 	private Canvas optionsCanvas;
     public OptionsMenu optionsMenu;
+    public GameObject optionsExitButton;
 
     private const float fadeSpeed = 0.05f;  //the rate at which objects fade in or out per frame
 
@@ -76,6 +77,7 @@ public class MainMenu : MonoBehaviour
                 MakeSelection();
             }
         }
+
         if (!isMainVisible)
         {
             if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape))
@@ -84,15 +86,17 @@ public class MainMenu : MonoBehaviour
                 {
                     StartCoroutine(CanvasFadeOut(howtoplayCanvas));
                     StartCoroutine(CanvasFadeIn(mainCanvas));
+                    howtoplayMenu.isVisible = false;
+                    isMainVisible = true;
                 }
 
-                if (optionsMenu.isVisible)
+                if (optionsMenu.isVisible && optionsMenu.optionsExitSelected == true)
                 {
                     StartCoroutine(CanvasFadeOut(optionsCanvas));
                     StartCoroutine(CanvasFadeIn(mainCanvas));
+                    optionsMenu.isVisible = false;
+                    isMainVisible = true;
                 }
-
-                isMainVisible = true;
             }
         }
     }

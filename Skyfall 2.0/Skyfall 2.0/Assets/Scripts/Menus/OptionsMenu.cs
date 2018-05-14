@@ -19,6 +19,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField]
     private Text[] t_options = new Text[2];
     private int menuChoice = 0;
+    public bool optionsExitSelected = false;
 
     //text sizes
     private const int fontLarge = 28;
@@ -34,6 +35,15 @@ public class OptionsMenu : MonoBehaviour
         if (isVisible)
         {
             GetKeyInput();
+
+            if (menuChoice == 2)
+            {
+                optionsExitSelected = true;
+            }
+            else
+            {
+                optionsExitSelected = false;
+            }
         }
     }
 
