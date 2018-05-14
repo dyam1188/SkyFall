@@ -17,8 +17,8 @@ public class OptionsMenu : MonoBehaviour
 
     //options
     [SerializeField]
-    private Text[] t_options = new Text[2];
-    private int menuChoice = 0;
+    private Text[] t_options = new Text[3];
+    public int menuChoice = 0;
     public bool optionsExitSelected = false;
 
     //text sizes
@@ -36,7 +36,7 @@ public class OptionsMenu : MonoBehaviour
         {
             GetKeyInput();
 
-            if (menuChoice == 2)
+            if (menuChoice == t_options.Length - 1)
             {
                 optionsExitSelected = true;
             }

@@ -26,9 +26,8 @@ public class MainMenu : MonoBehaviour
     [Space]
 
     [SerializeField]
-	private Canvas optionsCanvas;
+    private Canvas optionsCanvas;
     public OptionsMenu optionsMenu;
-    public GameObject optionsExitButton;
 
     private const float fadeSpeed = 0.05f;  //the rate at which objects fade in or out per frame
 
@@ -71,32 +70,42 @@ public class MainMenu : MonoBehaviour
                 menuChoice++;
                 ResizeText();
             }
+        }
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X))
+        {
+            if (isMainVisible)
             {
                 MakeSelection();
             }
+
+            /*else if (howtoplayMenu.isVisible)
+            {
+
+            }*/
+
+            else if (optionsMenu.isVisible && optionsMenu.optionsExitSelected == true)
+            {
+                SetCanvas(mainCanvas, optionsCanvas);
+                isMainVisible = true;
+                optionsMenu.isVisible = false;
+            }
         }
 
-        if (!isMainVisible)
+        if (!isMainVisible && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape)))
         {
-            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape))
+            if (howtoplayMenu.isVisible)
             {
-                if (howtoplayMenu.isVisible)
-                {
-                    StartCoroutine(CanvasFadeOut(howtoplayCanvas));
-                    StartCoroutine(CanvasFadeIn(mainCanvas));
-                    howtoplayMenu.isVisible = false;
-                    isMainVisible = true;
-                }
+                SetCanvas(mainCanvas, howtoplayCanvas);
+                isMainVisible = true;
+                howtoplayMenu.isVisible = false;
+            }
 
-                if (optionsMenu.isVisible && optionsMenu.optionsExitSelected == true)
-                {
-                    StartCoroutine(CanvasFadeOut(optionsCanvas));
-                    StartCoroutine(CanvasFadeIn(mainCanvas));
-                    optionsMenu.isVisible = false;
-                    isMainVisible = true;
-                }
+            if (optionsMenu.isVisible)
+            {
+                SetCanvas(mainCanvas, optionsCanvas);
+                isMainVisible = true;
+                optionsMenu.isVisible = false;
             }
         }
     }
@@ -160,25 +169,33 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneName);
     }
 
-	//fades in the selected Canvas
-	IEnumerator CanvasFadeIn(Canvas c)
-	{
-		CanvasGroup cg = c.GetComponent<CanvasGroup> ();
-		while (cg.alpha < 1) {
-			cg.alpha += fadeSpeed;
-			yield return null;
-		}
-	}
+    void SetCanvas(Canvas canvasToFadeIn, Canvas canvasToFadeOut)
+    {
+        StartCoroutine(CanvasFadeIn(canvasToFadeIn));
+        StartCoroutine(CanvasFadeOut(canvasToFadeOut));
+    }
 
-	//fades out the selected Canvas
-	IEnumerator CanvasFadeOut(Canvas c)
-	{
-		CanvasGroup cg = c.GetComponent<CanvasGroup> ();
-		while (cg.alpha > 0) {
-			cg.alpha -= fadeSpeed;
-			yield return null;
-		}
-	}
+    //fades in the selected Canvas
+    IEnumerator CanvasFadeIn(Canvas c)
+    {
+        CanvasGroup cg = c.GetComponent<CanvasGroup>();
+        while (cg.alpha < 1)
+        {
+            cg.alpha += fadeSpeed;
+            yield return null;
+        }
+    }
+
+    //fades out the selected Canvas
+    IEnumerator CanvasFadeOut(Canvas c)
+    {
+        CanvasGroup cg = c.GetComponent<CanvasGroup>();
+        while (cg.alpha > 0)
+        {
+            cg.alpha -= fadeSpeed;
+            yield return null;
+        }
+    }
 
     //quits the game
     void Quit()
