@@ -19,6 +19,14 @@ public class OptionsMenu : MonoBehaviour
 
     [Space]
 
+    //sliders
+    [SerializeField]
+    Text slider_bgm_value;
+    [SerializeField]
+    Text slider_sfx_value;
+
+    [Space]
+
     //text array
     [SerializeField]
     public Text[] optionsText = new Text[3];
@@ -115,10 +123,12 @@ public class OptionsMenu : MonoBehaviour
     {
         slider_bgm.value += changeValue;
         BGM.volume = (slider_bgm.value / 100);
+        slider_bgm_value.text = slider_bgm.value.ToString();
     }
 
     public void ChangeSFXVolume(int changeValue)
     {
         slider_sfx.value += changeValue;
+        slider_sfx_value.text = slider_sfx.value.ToString();
     }
 }
