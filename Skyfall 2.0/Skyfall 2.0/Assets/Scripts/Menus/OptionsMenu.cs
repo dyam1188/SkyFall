@@ -9,11 +9,15 @@ public class OptionsMenu : MonoBehaviour
 {
     public bool isVisible = false;
 
+    [Space]
+    
     //sliders
     [SerializeField]
     Slider slider_bgm;
     [SerializeField]
     Slider slider_sfx;
+
+    [Space]
 
     //text array
     [SerializeField]
@@ -24,8 +28,14 @@ public class OptionsMenu : MonoBehaviour
     private const int fontLarge = 28;
     private const int fontSmall = 22;
 
+    [Space]
+
+    [SerializeField]
+    AudioSource BGM;
+
     void Start()
     {
+        BGM = BGM.GetComponent<AudioSource>();
         optionsText[menuChoice].fontSize = fontLarge;
     }
 
@@ -35,84 +45,80 @@ public class OptionsMenu : MonoBehaviour
         {
             GetKeyInput();
         }
-        else
+    }
+
+    void GetKeyInput()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && menuChoice != 0)
         {
-            menuChoice = 0;
+            menuChoice--;
             ResizeText();
         }
-    }
 
-void GetKeyInput()
-{
-    if (Input.GetKeyDown(KeyCode.UpArrow) && menuChoice != 0)
-    {
-        menuChoice--;
-        ResizeText();
-    }
-
-    if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != optionsText.Length - 1)
-    {
-        menuChoice++;
-        ResizeText();
-    }
-
-    if (Input.GetKey(KeyCode.LeftArrow))
-    {
-        switch (menuChoice)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != optionsText.Length - 1)
         {
-            case 0:
-                ChangeBGMVolume(-1);
-                break;
-            case 1:
-                ChangeSFXVolume(-1);
-                break;
+            menuChoice++;
+            ResizeText();
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            switch (menuChoice)
+            {
+                case 0:
+                    ChangeBGMVolume(-1);
+                    break;
+                case 1:
+                    ChangeSFXVolume(-1);
+                    break;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            switch (menuChoice)
+            {
+                case 0:
+                    ChangeBGMVolume(1);
+                    break;
+                case 1:
+                    ChangeSFXVolume(1);
+                    break;
+            }
         }
     }
 
-    if (Input.GetKey(KeyCode.RightArrow))
+    //scales the selected menu option larger
+    public void ResizeText()
     {
-        switch (menuChoice)
+        for (int i = 0; i < optionsText.Length; i++)
         {
-            case 0:
-                ChangeBGMVolume(1);
-                break;
-            case 1:
-                ChangeSFXVolume(1);
-                break;
+            if (i == menuChoice)
+            {
+                SetText(optionsText[i], fontLarge);
+            }
+            else
+            {
+                SetText(optionsText[i], fontSmall);
+            }
         }
     }
-}
 
-//scales the selected menu option larger
-void ResizeText()
-{
-    for (int i = 0; i < optionsText.Length; i++)
+    //scales the selected text
+    Text SetText(Text t, int size)
     {
-        if (i == menuChoice)
-        {
-            SetText(optionsText[i], fontLarge);
-        }
-        else
-        {
-            SetText(optionsText[i], fontSmall);
-        }
+        t.fontSize = size;
+        return t;
     }
-}
 
-//scales the selected text
-Text SetText(Text t, int size)
-{
-    t.fontSize = size;
-    return t;
-}
+    public void ChangeBGMVolume(int changeValue)
+    {
+        slider_bgm.value += changeValue;
+        BGM.volume = (slider_bgm.value / 100);
+    }
 
-public void ChangeBGMVolume(int changeValue)
-{
-    slider_bgm.value += changeValue;
-}
-
-public void ChangeSFXVolume(int changeValue)
-{
-    slider_sfx.value += changeValue;
-}
+    public void ChangeSFXVolume(int changeValue)
+    {
+        slider_sfx.value += changeValue;
+    }
 }

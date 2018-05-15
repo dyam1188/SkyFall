@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
     private CanvasGroup optionsCanvasGroup;
     public OptionsMenu optionsMenu;
 
-    private const float fadeSpeed = 0.05f;  //the rate at which objects fade in or out per frame
+    private const float fadeSpeed = 0.1f;  //the rate at which objects fade in or out per frame
 
     //text sizes
     private Vector3 textSmall = new Vector3(1f, 1f, 1f);
@@ -179,6 +179,8 @@ public class MainMenu : MonoBehaviour
                 StartCoroutine(SetCanvas(optionsCanvas, mainCanvas));
                 isMainVisible = false;
                 optionsMenu.isVisible = true;
+                optionsMenu.menuChoice = 0;
+                optionsMenu.ResizeText();
                 break;
 
             case 4:
