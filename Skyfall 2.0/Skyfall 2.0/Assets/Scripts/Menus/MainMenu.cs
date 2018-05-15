@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 //main controller for Main Menu
-//attached to Main Menu -> Script Holder - Main Menu
+//attached to Script Holder - Main Menu
 public class MainMenu : MonoBehaviour
 {
     private int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField]
     private Canvas mainCanvas;
+    private CanvasGroup mainCanvasGroup;
 
     [SerializeField]
     private Image[] menuText = new Image[5];
@@ -21,12 +22,14 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField]
     private Canvas howtoplayCanvas;
+    private CanvasGroup howtoplayCanvasGroup;
     public HowToPlayMenu howtoplayMenu;
 
     [Space]
 
     [SerializeField]
     private Canvas optionsCanvas;
+    private CanvasGroup optionsCanvasGroup;
     public OptionsMenu optionsMenu;
 
     private const float fadeSpeed = 0.05f;  //the rate at which objects fade in or out per frame
@@ -37,21 +40,28 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        mainCanvasGroup = mainCanvas.GetComponent<CanvasGroup>();
+        howtoplayCanvasGroup = howtoplayCanvas.GetComponent<CanvasGroup>();
+        optionsCanvasGroup = optionsCanvas.GetComponent<CanvasGroup>();
+
         StartCoroutine(CanvasFadeIn(mainCanvas));
 
         //set default menu choice
         menuText[menuChoice].rectTransform.localScale = textLarge;
 
-        //set how to play canvas alpha to 0
-        howtoplayCanvas.GetComponent<CanvasGroup>().alpha = 0;
+        //set howtoplay canvas alpha to 0
+        howtoplayCanvasGroup.alpha = 0;
 
         //set options canvas alpha to 0
-        optionsCanvas.GetComponent<CanvasGroup>().alpha = 0;
+        optionsCanvasGroup.alpha = 0;
     }
 
     void Update()
     {
         GetKeyInput();
+        CheckCanvasVisible(mainCanvasGroup);
+        CheckCanvasVisible(howtoplayCanvasGroup);
+        CheckCanvasVisible(optionsCanvasGroup);
     }
 
     //controls main menu selection
@@ -79,16 +89,16 @@ public class MainMenu : MonoBehaviour
                 MakeSelection();
             }
 
-            else if (howtoplayMenu.isVisible && howtoplayMenu.howToPlayExitSelected == true)
+            else if (howtoplayMenu.isVisible && howtoplayMenu.menuChoice == howtoplayMenu.howtoplayText.Length - 1)
             {
-                SetCanvas(mainCanvas, howtoplayCanvas);
+                StartCoroutine(SetCanvas(mainCanvas, howtoplayCanvas));
                 isMainVisible = true;
                 howtoplayMenu.isVisible = false;
             }
 
-            else if (optionsMenu.isVisible && optionsMenu.optionsExitSelected == true)
+            else if (optionsMenu.isVisible && optionsMenu.menuChoice == optionsMenu.optionsText.Length - 1)
             {
-                SetCanvas(mainCanvas, optionsCanvas);
+                StartCoroutine(SetCanvas(mainCanvas, optionsCanvas));
                 isMainVisible = true;
                 optionsMenu.isVisible = false;
             }
@@ -98,18 +108,34 @@ public class MainMenu : MonoBehaviour
         {
             if (howtoplayMenu.isVisible)
             {
-                SetCanvas(mainCanvas, howtoplayCanvas);
+                StartCoroutine(SetCanvas(mainCanvas, howtoplayCanvas));
                 isMainVisible = true;
                 howtoplayMenu.isVisible = false;
             }
 
             if (optionsMenu.isVisible)
             {
-                SetCanvas(mainCanvas, optionsCanvas);
+                StartCoroutine(SetCanvas(mainCanvas, optionsCanvas));
                 isMainVisible = true;
                 optionsMenu.isVisible = false;
             }
         }
+    }
+
+    bool CheckCanvasVisible(CanvasGroup cg)
+    {
+        bool isVisible;
+
+        if (cg.alpha == 0)
+        {
+            isVisible = false;
+        }
+        else
+        {
+            isVisible = true;
+        }
+
+        return isVisible;
     }
 
     //scales the selected menu option larger
@@ -144,18 +170,14 @@ public class MainMenu : MonoBehaviour
                 break;
 
             case 2:
-                StartCoroutine(CanvasFadeOut(mainCanvas));
+                StartCoroutine(SetCanvas(howtoplayCanvas, mainCanvas));
                 isMainVisible = false;
-
-                StartCoroutine(CanvasFadeIn(howtoplayCanvas));
                 howtoplayMenu.isVisible = true;
                 break;
 
             case 3:
-                StartCoroutine(CanvasFadeOut(mainCanvas));
+                StartCoroutine(SetCanvas(optionsCanvas, mainCanvas));
                 isMainVisible = false;
-
-                StartCoroutine(CanvasFadeIn(optionsCanvas));
                 optionsMenu.isVisible = true;
                 break;
 
@@ -171,10 +193,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneName);
     }
 
-    void SetCanvas(Canvas canvasToFadeIn, Canvas canvasToFadeOut)
+    //changes the canvas
+    IEnumerator SetCanvas(Canvas canvasToFadeIn, Canvas canvasToFadeOut)
     {
-        StartCoroutine(CanvasFadeIn(canvasToFadeIn));
         StartCoroutine(CanvasFadeOut(canvasToFadeOut));
+        yield return new WaitForSeconds((1 / fadeSpeed) * Time.deltaTime);
+        StartCoroutine(CanvasFadeIn(canvasToFadeIn));
     }
 
     //fades in the selected Canvas

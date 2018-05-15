@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //main controller for Options Menu
-//attached to Main Menu - Script Holder - Options
+//attached to Script Holder - Options
 public class OptionsMenu : MonoBehaviour
 {
     public bool isVisible = false;
@@ -15,11 +15,10 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField]
     Slider slider_sfx;
 
-    //options
+    //text array
     [SerializeField]
-    private Text[] optionsText = new Text[3];
+    public Text[] optionsText = new Text[3];
     public int menuChoice = 0;
-    public bool optionsExitSelected = false;
 
     //text sizes
     private const int fontLarge = 28;
@@ -35,89 +34,85 @@ public class OptionsMenu : MonoBehaviour
         if (isVisible)
         {
             GetKeyInput();
-
-            if (menuChoice == optionsText.Length - 1)
-            {
-                optionsExitSelected = true;
-            }
-            else
-            {
-                optionsExitSelected = false;
-            }
         }
-    }
-
-    void GetKeyInput()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && menuChoice != 0)
+        else
         {
-            menuChoice--;
+            menuChoice = 0;
             ResizeText();
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != optionsText.Length - 1)
-        {
-            menuChoice++;
-            ResizeText();
-        }
+void GetKeyInput()
+{
+    if (Input.GetKeyDown(KeyCode.UpArrow) && menuChoice != 0)
+    {
+        menuChoice--;
+        ResizeText();
+    }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            switch (menuChoice)
-            {
-                case 0:
-                    ChangeBGMVolume(-1);
-                    break;
-                case 1:
-                    ChangeSFXVolume(-1);
-                    break;
-            }
-        }
+    if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != optionsText.Length - 1)
+    {
+        menuChoice++;
+        ResizeText();
+    }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+    if (Input.GetKey(KeyCode.LeftArrow))
+    {
+        switch (menuChoice)
         {
-            switch (menuChoice)
-            {
-                case 0:
-                    ChangeBGMVolume(1);
-                    break;
-                case 1:
-                    ChangeSFXVolume(1);
-                    break;
-            }
+            case 0:
+                ChangeBGMVolume(-1);
+                break;
+            case 1:
+                ChangeSFXVolume(-1);
+                break;
         }
     }
 
-    //scales the selected menu option larger
-    void ResizeText()
+    if (Input.GetKey(KeyCode.RightArrow))
     {
-        for (int i = 0; i < optionsText.Length; i++)
+        switch (menuChoice)
         {
-            if (i == menuChoice)
-            {
-                SetText(optionsText[i], fontLarge);
-            }
-            else
-            {
-                SetText(optionsText[i], fontSmall);
-            }
+            case 0:
+                ChangeBGMVolume(1);
+                break;
+            case 1:
+                ChangeSFXVolume(1);
+                break;
         }
     }
+}
 
-    //scales the selected text
-    Text SetText(Text t, int size)
+//scales the selected menu option larger
+void ResizeText()
+{
+    for (int i = 0; i < optionsText.Length; i++)
     {
-        t.fontSize = size;
-        return t;
+        if (i == menuChoice)
+        {
+            SetText(optionsText[i], fontLarge);
+        }
+        else
+        {
+            SetText(optionsText[i], fontSmall);
+        }
     }
+}
 
-    public void ChangeBGMVolume(int changeValue)
-    {
-        slider_bgm.value += changeValue;
-    }
+//scales the selected text
+Text SetText(Text t, int size)
+{
+    t.fontSize = size;
+    return t;
+}
 
-    public void ChangeSFXVolume(int changeValue)
-    {
-        slider_sfx.value += changeValue;
-    }
+public void ChangeBGMVolume(int changeValue)
+{
+    slider_bgm.value += changeValue;
+}
+
+public void ChangeSFXVolume(int changeValue)
+{
+    slider_sfx.value += changeValue;
+}
 }

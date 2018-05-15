@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//main controller for HowToPlay Menu
+//attached to Script Holder - How To Play
 public class HowToPlayMenu : MonoBehaviour
 {
     public bool isVisible = false;
 
-    //options
+    //text array
     [SerializeField]
-    private Text[] howtoplayText = new Text[1];
+    public Text[] howtoplayText = new Text[1];
     public int menuChoice = 0;
-    public bool howToPlayExitSelected = false;
 
     //text sizes
     private const int fontLarge = 28;
@@ -23,17 +24,7 @@ public class HowToPlayMenu : MonoBehaviour
 
     void Update()
     {
-        if (isVisible)
-        {
-            if (menuChoice == howtoplayText.Length - 1)
-            {
-                howToPlayExitSelected = true;
-            }
-            else
-            {
-                howToPlayExitSelected = false;
-            }
-        }
+
     }
 
     //scales the selected menu option larger
