@@ -79,10 +79,12 @@ public class MainMenu : MonoBehaviour
                 MakeSelection();
             }
 
-            /*else if (howtoplayMenu.isVisible)
+            else if (howtoplayMenu.isVisible && howtoplayMenu.howToPlayExitSelected == true)
             {
-
-            }*/
+                SetCanvas(mainCanvas, howtoplayCanvas);
+                isMainVisible = true;
+                howtoplayMenu.isVisible = false;
+            }
 
             else if (optionsMenu.isVisible && optionsMenu.optionsExitSelected == true)
             {

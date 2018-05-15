@@ -17,7 +17,7 @@ public class OptionsMenu : MonoBehaviour
 
     //options
     [SerializeField]
-    private Text[] t_options = new Text[3];
+    private Text[] optionsText = new Text[3];
     public int menuChoice = 0;
     public bool optionsExitSelected = false;
 
@@ -27,7 +27,7 @@ public class OptionsMenu : MonoBehaviour
 
     void Start()
     {
-        t_options[menuChoice].fontSize = fontLarge;
+        optionsText[menuChoice].fontSize = fontLarge;
     }
 
     void Update()
@@ -36,7 +36,7 @@ public class OptionsMenu : MonoBehaviour
         {
             GetKeyInput();
 
-            if (menuChoice == t_options.Length - 1)
+            if (menuChoice == optionsText.Length - 1)
             {
                 optionsExitSelected = true;
             }
@@ -55,7 +55,7 @@ public class OptionsMenu : MonoBehaviour
             ResizeText();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != t_options.Length - 1)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && menuChoice != optionsText.Length - 1)
         {
             menuChoice++;
             ResizeText();
@@ -91,15 +91,15 @@ public class OptionsMenu : MonoBehaviour
     //scales the selected menu option larger
     void ResizeText()
     {
-        for (int i = 0; i < t_options.Length; i++)
+        for (int i = 0; i < optionsText.Length; i++)
         {
             if (i == menuChoice)
             {
-                SetText(t_options[i], fontLarge);
+                SetText(optionsText[i], fontLarge);
             }
             else
             {
-                SetText(t_options[i], fontSmall);
+                SetText(optionsText[i], fontSmall);
             }
         }
     }
