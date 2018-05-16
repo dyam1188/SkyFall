@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc6b3c2e1d1b1b43be71602ee832089, type: 3}
+  m_Name: Yellow
+  m_EditorClassIdentifier: 
+  playerSprite: {fileID: 21300000, guid: ed592ea1687c32944922db71b04e13d8, type: 3}
+  numLives: 3
+  numSpecials: 3
+  health: 10000
+  attack: 800
+  defense: 400
+  moveSpeed: 6
+  shotDensity: 8

@@ -300,6 +300,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Characters\Player.cs" />
+    <Compile Include="Assets\Scripts\Characters\Players\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Menus\BackgroundScroll.cs" />
     <Compile Include="Assets\Scripts\Menus\CharacterSelect.cs" />
     <Compile Include="Assets\Scripts\Menus\HowToPlayMenu.cs" />

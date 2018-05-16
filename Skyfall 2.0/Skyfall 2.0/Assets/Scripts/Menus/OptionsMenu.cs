@@ -19,7 +19,7 @@ public class OptionsMenu : MonoBehaviour
 
     [Space]
 
-    //sliders
+    //slider number value text
     [SerializeField]
     Text slider_bgm_value;
     [SerializeField]
@@ -39,7 +39,7 @@ public class OptionsMenu : MonoBehaviour
     [Space]
 
     [SerializeField]
-    AudioSource BGM;
+    private AudioSource BGM;
 
     void Start()
     {

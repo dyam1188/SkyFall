@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 //attached to Script Holder - Main Menu
 public class MainMenu : MonoBehaviour
 {
-    private int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
     private bool isMainVisible = true;
+    private int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
 
     [SerializeField]
     private Canvas mainCanvas;
