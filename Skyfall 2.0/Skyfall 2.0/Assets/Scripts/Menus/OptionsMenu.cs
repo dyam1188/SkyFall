@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //main controller for Options Menu
-//attached to Script Holder - Options
+//attached to Main Menu -> Script Holder - Options
 public class OptionsMenu : MonoBehaviour
 {
     public bool isVisible = false;
@@ -40,6 +40,11 @@ public class OptionsMenu : MonoBehaviour
 
     [SerializeField]
     private AudioSource BGM;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(BGM);
+    }
 
     void Start()
     {
@@ -119,14 +124,14 @@ public class OptionsMenu : MonoBehaviour
         return t;
     }
 
-    public void ChangeBGMVolume(int changeValue)
+    void ChangeBGMVolume(int changeValue)
     {
         slider_bgm.value += changeValue;
         BGM.volume = (slider_bgm.value / 100);
         slider_bgm_value.text = slider_bgm.value.ToString();
     }
 
-    public void ChangeSFXVolume(int changeValue)
+    void ChangeSFXVolume(int changeValue)
     {
         slider_sfx.value += changeValue;
         slider_sfx_value.text = slider_sfx.value.ToString();

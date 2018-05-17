@@ -14,7 +14,7 @@ MonoBehaviour:
   playerSprite: {fileID: 21300000, guid: 13660c7da9305fa4ea4632eca2dde1b3, type: 3}
   numLives: 3
   numSpecials: 3
-  health: 16000
+  health: 17000
   attack: 700
   defense: 500
   moveSpeed: 4

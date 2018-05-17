@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //main controller for HowToPlay Menu
-//attached to Script Holder - How To Play
+//attached to Main Menu -> Script Holder - How To Play
 public class HowToPlayMenu : MonoBehaviour
 {
     public bool isVisible = false;

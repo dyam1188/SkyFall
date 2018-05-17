@@ -7,19 +7,16 @@ using UnityEngine;
 public class BackgroundScroll : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 newLocation;
     private Vector3 scrollSpeed;
 
-    void Start()
-    {
-        scrollSpeed = new Vector3(1f, 0f, 0f);
-    }
-
+    [SerializeField]
+    private Vector3 newLocation;
+    
     void Update()
     {
         transform.Translate(scrollSpeed * Time.deltaTime);
 
-        if (transform.position.x > newLocation.x * -1)
+        if (transform.position.x > -newLocation.x || transform.position.y < -newLocation.y)
         {
             transform.position = newLocation;
         }

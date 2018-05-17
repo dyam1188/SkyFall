@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 //main controller for Main Menu
-//attached to Script Holder - Main Menu
+//attached to Main Menu -> Script Holder - Main Menu
 public class MainMenu : MonoBehaviour
 {
     private bool isMainVisible = true;

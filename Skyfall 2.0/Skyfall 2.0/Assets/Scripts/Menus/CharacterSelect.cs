@@ -7,72 +7,103 @@ using UnityEngine.SceneManagement;
 //attached to Character Select -> Script Holder - Character Select
 public class CharacterSelect : MonoBehaviour
 {
-    private int playerChoice = 0;
+    private int menuChoice = 0;
 
     [SerializeField]
-    private GameObject[] s_players = new GameObject[4];
+    private GameObject[] players = new GameObject[4];
+    private SpriteRenderer[] playersSprite = new SpriteRenderer[4];
 
-    [Space]
-
-    [SerializeField]
-    private GameObject selection;
-    private SpriteRenderer srSelection;
-
-    private const float minFade = 0.50f;
-    private const float maxFade = 1.00f;
-    private float fadeSpeed = 0.01f;
+    private float left, middle, right;
+    private const float fadeSpeed = 0.1f;
+    private const float moveSpeed = 0.1f;
 
     void Start()
     {
-        srSelection = selection.GetComponent<SpriteRenderer>();
+        middle = 0f;
+        left = -moveSpeed * 20;
+        right = moveSpeed * 20;
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            playersSprite[i] = players[i].GetComponent<SpriteRenderer>();
+            if (i != menuChoice)
+            {
+                playersSprite[i].material.color = new Color(1, 1, 1, 0);
+            }
+        }
     }
 
     void Update()
     {
         GetKeyInput();
-        StartCoroutine(FadeOut(srSelection));
     }
 
     void GetKeyInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && playerChoice != 0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && menuChoice != 0)
         {
-            playerChoice--;
-            selection.transform.position = s_players[playerChoice].transform.position;
-            StopAllCoroutines();
-            StartCoroutine(FadeOut(srSelection));
+            StartCoroutine(FadeOut(playersSprite[menuChoice]));
+            StartCoroutine(MoveRight(players[menuChoice].GetComponent<Transform>(), middle, right));
+
+            menuChoice--;
+
+            StartCoroutine(FadeIn(playersSprite[menuChoice]));
+            StartCoroutine(MoveRight(players[menuChoice].GetComponent<Transform>(), left, middle));
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && playerChoice != s_players.Length - 1)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && menuChoice != players.Length - 1)
         {
-            playerChoice++;
-            selection.transform.position = s_players[playerChoice].transform.position;
-            StopAllCoroutines();
-            StartCoroutine(FadeOut(srSelection));
+            StartCoroutine(FadeOut(playersSprite[menuChoice]));
+            StartCoroutine(MoveLeft(players[menuChoice].GetComponent<Transform>(), middle, left));
+
+            menuChoice++;
+
+            StartCoroutine(FadeIn(playersSprite[menuChoice]));
+            StartCoroutine(MoveLeft(players[menuChoice].GetComponent<Transform>(), right, middle));
+        }
+    }
+
+    IEnumerator MoveLeft(Transform t, float from, float to)
+    {
+        for (float x = from; x >= to; x -= moveSpeed)
+        {
+            x = Mathf.Round(x * 10) / 10;
+            t.position = new Vector3 (x, t.position.y, t.position.z);
+            yield return null;
+        }
+    }
+
+    IEnumerator MoveRight(Transform t, float from, float to)
+    {
+        for (float x = from; x <= to; x += moveSpeed)
+        {
+            x = Mathf.Round(x * 10) / 10;
+            t.position = new Vector3(x, t.position.y, t.position.z);
+            yield return null;
         }
     }
 
     IEnumerator FadeOut(SpriteRenderer sr)
     {
-        for (float alpha = maxFade; alpha > minFade; alpha -= fadeSpeed)
+        for (float alpha = 1f; alpha >= 0f; alpha -= fadeSpeed)
         {
             Color c = sr.material.color;
+            alpha = Mathf.Round(alpha * 10) / 10;       
             c.a = alpha;
             sr.material.color = c;
             yield return null;
         }
-        StartCoroutine(FadeIn(srSelection));
     }
 
     IEnumerator FadeIn(SpriteRenderer sr)
     {
-        for (float alpha = minFade; alpha < maxFade; alpha += fadeSpeed)
+        for (float alpha = 0f; alpha <= 1f; alpha += fadeSpeed)
         {
             Color c = sr.material.color;
+            alpha = Mathf.Round(alpha * 10) / 10;
             c.a = alpha;
             sr.material.color = c;
             yield return null;
         }
-        StartCoroutine(FadeOut(srSelection));
     }
 }

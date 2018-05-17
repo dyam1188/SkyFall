@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//controls the player
 public class PlayerController : MonoBehaviour
 {
     public Player player;
+    public GameObject bullet;
 
     private Sprite playerSprite;
 
@@ -16,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     private float moveSpeed;
     private float shotDensity;
+
+    [SerializeField]
+    private Transform bulletSpawn;
 
     void Start()
     {
@@ -67,14 +72,14 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
         {
-            ShootProjectile();
+            ShootBullet();
         }
     }
 
-    void ShootProjectile()
+    void ShootBullet()
     {
-
+        Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
 }

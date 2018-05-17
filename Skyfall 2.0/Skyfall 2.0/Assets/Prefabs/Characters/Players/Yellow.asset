@@ -17,5 +17,5 @@ MonoBehaviour:
   health: 10000
   attack: 800
   defense: 400
-  moveSpeed: 6
+  moveSpeed: 5
   shotDensity: 8
