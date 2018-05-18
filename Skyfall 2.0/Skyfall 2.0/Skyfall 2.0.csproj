@@ -305,11 +305,12 @@
     <Compile Include="Assets\Scripts\Characters\Players\Player.cs" />
     <Compile Include="Assets\Scripts\Characters\Players\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Menus\BackgroundScroll.cs" />
-    <Compile Include="Assets\Scripts\Menus\CharacterSelect.cs" />
-    <Compile Include="Assets\Scripts\Menus\HowToPlayMenu.cs" />
-    <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\Menus\OptionsMenu.cs" />
-    <Compile Include="Assets\Scripts\Menus\SunRotation.cs" />
+    <Compile Include="Assets\Scripts\Menus\Character Select\ArrowMovement.cs" />
+    <Compile Include="Assets\Scripts\Menus\Character Select\CharacterSelect.cs" />
+    <Compile Include="Assets\Scripts\Menus\Main Menu\HowToPlayMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\Main Menu\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\Main Menu\OptionsMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\Main Menu\SunRotation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
