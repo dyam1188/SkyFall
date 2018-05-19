@@ -304,8 +304,8 @@
     <Compile Include="Assets\Scripts\Bullets\BulletController.cs" />
     <Compile Include="Assets\Scripts\Characters\Players\Player.cs" />
     <Compile Include="Assets\Scripts\Characters\Players\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Menus\ArrowAnimation.cs" />
     <Compile Include="Assets\Scripts\Menus\BackgroundScroll.cs" />
-    <Compile Include="Assets\Scripts\Menus\Character Select\ArrowMovement.cs" />
     <Compile Include="Assets\Scripts\Menus\Character Select\CharacterSelect.cs" />
     <Compile Include="Assets\Scripts\Menus\Main Menu\HowToPlayMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\Main Menu\MainMenu.cs" />

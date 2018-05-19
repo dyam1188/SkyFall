@@ -7,27 +7,14 @@ using UnityEngine.SceneManagement;
 //attached to Character Select -> Script Holder - Character Select
 public class CharacterSelect : MonoBehaviour
 {
-    private int menuChoice = 0;
+    public int menuChoice = 0;
 
-    [SerializeField]
-    private GameObject leftArrow, rightArrow;
-
-    [Space]
-
-    [SerializeField]
-    private GameObject[] players = new GameObject[4];
+    public GameObject[] players = new GameObject[4];
     private SpriteRenderer[] playersSprite = new SpriteRenderer[4];
 
-    [SerializeField]
-    private Transform playerCenterpoint;
-
-    private float left, middle, right;
     private const float fadeSpeed = 0.1f;
     private const float moveSpeed = 0.1f;
-    private const float rotateSpeed = 3f;
-
-    private Color invisible = new Color(1, 1, 1, 0);
-    private Color visible = new Color(1, 1, 1, 1);
+    private float left, middle, right;
 
     private bool keyInputEnabled = true;
 
@@ -42,14 +29,13 @@ public class CharacterSelect : MonoBehaviour
             playersSprite[i] = players[i].GetComponent<SpriteRenderer>();
             if (i != menuChoice)
             {
-                playersSprite[i].material.color = invisible;
+                playersSprite[i].material.color = new Color (1, 1, 1, 0);
             }
         }
     }
 
     void Update()
     {
-        ShowArrows();
         if (keyInputEnabled)
         {
             GetKeyInput();
@@ -81,93 +67,61 @@ public class CharacterSelect : MonoBehaviour
         }
     }
 
-    void ShowArrows()
-    {
-        if (menuChoice == 0)
-        {
-            leftArrow.GetComponent<SpriteRenderer>().color = invisible;
-        }
-        else if (menuChoice == players.Length - 1)
-        {
-            rightArrow.GetComponent<SpriteRenderer>().color = invisible;
-        }
-        else
-        {
-            leftArrow.GetComponent<SpriteRenderer>().color = visible;
-            rightArrow.GetComponent<SpriteRenderer>().color = visible;
-        }
-    }
-
-    /*void UpdateSelection(SpriteRenderer sr, Transform t, int menuChangeAmount, )
-    {
-
-        StartCoroutine(FadeOut(sr));
-        StartCoroutine();
-        menuChoice += menuChangeAmount;
-        StartCoroutine(FadeIn(sr));
-        StartCoroutine();
-
-    }*/
-
-
+    //moves the selected gameobject left
     IEnumerator MoveLeft(Transform t, float from, float to)
     {
         for (float x = from; x >= to; x -= moveSpeed)
         {
-            x = Mathf.Round(x * 10) / 10;
-            t.position = new Vector3(x, t.position.y, t.position.z);
+            Move(t, x);
             yield return null;
         }
     }
 
+    //moves the selected gameobject right
     IEnumerator MoveRight(Transform t, float from, float to)
     {
         for (float x = from; x <= to; x += moveSpeed)
         {
-            x = Mathf.Round(x * 10) / 10;
-            t.position = new Vector3(x, t.position.y, t.position.z);
+            Move(t, x);
             yield return null;
         }
     }
 
-    //I CAN'T GET IT TO WORK AAAAAAA
-    /*IEnumerator Fade(SpriteRenderer sr, float start, float end, bool direction)
+    //controls the movement
+    void Move(Transform t, float x)
     {
-        for (float i = start; i <= end; i += fadeSpeed)
-        {
-            //float j = direction ? i : (end - fadeSpeed) - i;
-            Color c = sr.material.color;
-            i = Mathf.Round(i * (1 / fadeSpeed)) / (1 / fadeSpeed);
-            c.a = i;
-            sr.material.color = c;
-            Debug.Log(i);
-            yield return null;
-        }
-    }*/
+        x = Mathf.Round(x * 10) / 10;
+        t.position = new Vector3(x, t.position.y, t.position.z);
+    }
 
+    //fades out the selected sprite
     IEnumerator FadeOut(SpriteRenderer sr)
     {
         keyInputEnabled = false;
-        for (float alpha = 1f; alpha >= 0f; alpha -= fadeSpeed)
+        for (float a = 1f; a >= 0 - fadeSpeed; a -= fadeSpeed)
         {
-            Color c = sr.material.color;
-            alpha = Mathf.Round(alpha * (1 / fadeSpeed)) / (1 / fadeSpeed);
-            c.a = alpha;
-            sr.material.color = c;
+            Fade(sr, a);
             yield return null;
         }
     }
 
+    //fades in the selected sprite
     IEnumerator FadeIn(SpriteRenderer sr)
     {
-        for (float alpha = 0f; alpha <= 1f; alpha += fadeSpeed)
+        for (float a = 0f; a <= 1 + fadeSpeed; a += fadeSpeed)
         {
-            Color c = sr.material.color;
-            alpha = Mathf.Round(alpha * (1 / fadeSpeed)) / (1 / fadeSpeed);
-            c.a = alpha;
-            sr.material.color = c;
+            Fade(sr, a);
             yield return null;
         }
         keyInputEnabled = true;
+    }
+
+    //controls the fade
+    void Fade(SpriteRenderer sr, float alpha)
+    {
+        Color c = sr.material.color;
+        alpha = Mathf.Round(alpha * (1 / fadeSpeed)) / (1 / fadeSpeed);
+        c.a = alpha;
+        sr.material.color = c;
     }
 }
