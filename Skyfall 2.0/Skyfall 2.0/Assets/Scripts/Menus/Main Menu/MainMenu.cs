@@ -8,28 +8,26 @@ using UnityEngine.SceneManagement;
 //attached to Main Menu -> Script Holder - Main Menu
 public class MainMenu : MonoBehaviour
 {
-    private bool isMainVisible = true;
+    //private bool isMainVisible = true;
+    private bool keyInputEnabled = true;
     private int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
 
     [SerializeField]
-    private Canvas mainCanvas;
-    private CanvasGroup mainCanvasGroup;
+    private Image[] menuText = new Image[5];
 
     [SerializeField]
-    private Image[] menuText = new Image[5];
+    private Canvas mainCanvas;
 
     [Space]
 
     [SerializeField]
     private Canvas howtoplayCanvas;
-    private CanvasGroup howtoplayCanvasGroup;
     public HowToPlayMenu howtoplayMenu;
 
     [Space]
 
     [SerializeField]
     private Canvas optionsCanvas;
-    private CanvasGroup optionsCanvasGroup;
     public OptionsMenu optionsMenu;
 
     private const float fadeSpeed = 0.1f;  //the rate at which objects fade in or out per frame
@@ -40,34 +38,31 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        mainCanvasGroup = mainCanvas.GetComponent<CanvasGroup>();
-        howtoplayCanvasGroup = howtoplayCanvas.GetComponent<CanvasGroup>();
-        optionsCanvasGroup = optionsCanvas.GetComponent<CanvasGroup>();
-
         StartCoroutine(CanvasFadeIn(mainCanvas));
 
         //set default menu choice
         menuText[menuChoice].rectTransform.localScale = textLarge;
 
         //set howtoplay canvas alpha to 0
-        howtoplayCanvasGroup.alpha = 0;
+        howtoplayCanvas.gameObject.SetActive(false);
 
         //set options canvas alpha to 0
-        optionsCanvasGroup.alpha = 0;
+        optionsCanvas.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        GetKeyInput();
-        CheckCanvasVisible(mainCanvasGroup);
-        CheckCanvasVisible(howtoplayCanvasGroup);
-        CheckCanvasVisible(optionsCanvasGroup);
+        if (keyInputEnabled)
+        {
+            GetKeyInput();
+        }
     }
 
     //controls main menu selection
     void GetKeyInput()
     {
-        if (isMainVisible)
+        //Up/Down - change menu choice
+        if (mainCanvas.gameObject.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) && menuChoice != 1)
             {
@@ -82,60 +77,38 @@ public class MainMenu : MonoBehaviour
             }
         }
 
+        //X/Space - displays howtoplay or options canvas
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X))
         {
-            if (isMainVisible)
+            if (mainCanvas.gameObject.activeSelf)
             {
                 MakeSelection();
             }
 
-            else if (howtoplayMenu.isVisible && howtoplayMenu.menuChoice == howtoplayMenu.howtoplayText.Length - 1)
+            else if (howtoplayCanvas.gameObject.activeSelf && howtoplayMenu.menuChoice == howtoplayMenu.howtoplayText.Length - 1)
             {
                 StartCoroutine(SetCanvas(mainCanvas, howtoplayCanvas));
-                isMainVisible = true;
-                howtoplayMenu.isVisible = false;
             }
 
-            else if (optionsMenu.isVisible && optionsMenu.menuChoice == optionsMenu.optionsText.Length - 1)
+            else if (optionsCanvas.gameObject.activeSelf && optionsMenu.menuChoice == optionsMenu.optionsText.Length - 1)
             {
                 StartCoroutine(SetCanvas(mainCanvas, optionsCanvas));
-                isMainVisible = true;
-                optionsMenu.isVisible = false;
             }
         }
 
-        if (!isMainVisible && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape)))
+        //Z - displays the main menu
+        if (!mainCanvas.gameObject.activeSelf && (Input.GetKeyDown(KeyCode.Z)))
         {
-            if (howtoplayMenu.isVisible)
+            if (howtoplayMenu.gameObject.activeSelf)
             {
                 StartCoroutine(SetCanvas(mainCanvas, howtoplayCanvas));
-                isMainVisible = true;
-                howtoplayMenu.isVisible = false;
             }
 
-            if (optionsMenu.isVisible)
+            if (optionsMenu.gameObject.activeSelf)
             {
                 StartCoroutine(SetCanvas(mainCanvas, optionsCanvas));
-                isMainVisible = true;
-                optionsMenu.isVisible = false;
             }
         }
-    }
-
-    bool CheckCanvasVisible(CanvasGroup cg)
-    {
-        bool isVisible;
-
-        if (cg.alpha == 0)
-        {
-            isVisible = false;
-        }
-        else
-        {
-            isVisible = true;
-        }
-
-        return isVisible;
     }
 
     //scales the selected menu option larger
@@ -171,14 +144,10 @@ public class MainMenu : MonoBehaviour
 
             case 2:
                 StartCoroutine(SetCanvas(howtoplayCanvas, mainCanvas));
-                isMainVisible = false;
-                howtoplayMenu.isVisible = true;
                 break;
 
             case 3:
                 StartCoroutine(SetCanvas(optionsCanvas, mainCanvas));
-                isMainVisible = false;
-                optionsMenu.isVisible = true;
                 optionsMenu.menuChoice = 0;
                 optionsMenu.ResizeText();
                 break;
@@ -203,26 +172,34 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(CanvasFadeIn(canvasToFadeIn));
     }
 
-    //fades in the selected Canvas
-    IEnumerator CanvasFadeIn(Canvas c)
-    {
-        CanvasGroup cg = c.GetComponent<CanvasGroup>();
-        while (cg.alpha < 1)
-        {
-            cg.alpha += fadeSpeed;
-            yield return null;
-        }
-    }
-
     //fades out the selected Canvas
     IEnumerator CanvasFadeOut(Canvas c)
     {
+        keyInputEnabled = false;
+
         CanvasGroup cg = c.GetComponent<CanvasGroup>();
         while (cg.alpha > 0)
         {
             cg.alpha -= fadeSpeed;
             yield return null;
         }
+
+        c.gameObject.SetActive(false);
+    }
+
+    //fades in the selected Canvas
+    IEnumerator CanvasFadeIn(Canvas c)
+    {
+        c.gameObject.SetActive(true);
+
+        CanvasGroup cg = c.GetComponent<CanvasGroup>();
+        while (cg.alpha < 1)
+        {
+            cg.alpha += fadeSpeed;
+            yield return null;
+        }
+
+        keyInputEnabled = true;
     }
 
     //quits the game

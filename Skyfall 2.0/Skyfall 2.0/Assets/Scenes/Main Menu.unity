@@ -140,13 +140,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d830a08a70d433f40bad14d36427deff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 1619328379}
   menuText:
   - {fileID: 1399296085}
   - {fileID: 717198119}
   - {fileID: 1838669012}
   - {fileID: 1646332498}
   - {fileID: 949038226}
+  mainCanvas: {fileID: 1619328379}
   howtoplayCanvas: {fileID: 157338408}
   howtoplayMenu: {fileID: 513500109}
   optionsCanvas: {fileID: 723860363}
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6180dc2b9927bb74da62fa5636ea6fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isVisible: 0
+  optionsCanvas: {fileID: 723860363}
   slider_bgm: {fileID: 547770403}
   slider_sfx: {fileID: 73342076}
   slider_bgm_value: {fileID: 304997307}

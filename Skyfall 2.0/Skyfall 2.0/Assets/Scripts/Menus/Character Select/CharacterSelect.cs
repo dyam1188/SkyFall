@@ -21,8 +21,8 @@ public class CharacterSelect : MonoBehaviour
     void Start()
     {
         middle = -4;
-        left = -6;
-        right = -2;
+        left = middle - 2;
+        right = middle + 2;
 
         for (int i = 0; i < players.Length; i++)
         {
@@ -64,6 +64,11 @@ public class CharacterSelect : MonoBehaviour
 
             StartCoroutine(FadeIn(playersSprite[menuChoice]));
             StartCoroutine(MoveLeft(players[menuChoice].GetComponent<Transform>(), right, middle));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            SceneManager.LoadSceneAsync("Main Menu");
         }
     }
 

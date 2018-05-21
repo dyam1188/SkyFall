@@ -7,23 +7,22 @@ using UnityEngine.UI;
 //attached to Main Menu -> Script Holder - Options
 public class OptionsMenu : MonoBehaviour
 {
-    public bool isVisible = false;
+    [SerializeField]
+    private Canvas optionsCanvas;
 
     [Space]
-    
+
     //sliders
     [SerializeField]
-    Slider slider_bgm;
-    [SerializeField]
-    Slider slider_sfx;
+    Slider bgmSlider;
+    Slider sfxSlider;
 
     [Space]
 
     //slider number value text
     [SerializeField]
-    Text slider_bgm_value;
-    [SerializeField]
-    Text slider_sfx_value;
+    Text text_bgmValue;
+    Text text_sfxValue;
 
     [Space]
 
@@ -54,7 +53,7 @@ public class OptionsMenu : MonoBehaviour
 
     void Update()
     {
-        if (isVisible)
+        if (optionsCanvas.gameObject.activeSelf)
         {
             GetKeyInput();
         }
@@ -126,14 +125,14 @@ public class OptionsMenu : MonoBehaviour
 
     void ChangeBGMVolume(int changeValue)
     {
-        slider_bgm.value += changeValue;
-        BGM.volume = (slider_bgm.value / 100);
-        slider_bgm_value.text = slider_bgm.value.ToString();
+        bgmSlider.value += changeValue;
+        BGM.volume = (bgmSlider.value / 100);
+        text_bgmValue.text = bgmSlider.value.ToString();
     }
 
     void ChangeSFXVolume(int changeValue)
     {
-        slider_sfx.value += changeValue;
-        slider_sfx_value.text = slider_sfx.value.ToString();
+        sfxSlider.value += changeValue;
+        text_sfxValue.text = sfxSlider.value.ToString();
     }
 }
