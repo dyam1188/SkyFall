@@ -307,6 +307,7 @@
     <Compile Include="Assets\Scripts\Menus\ArrowAnimation.cs" />
     <Compile Include="Assets\Scripts\Menus\BackgroundScroll.cs" />
     <Compile Include="Assets\Scripts\Menus\Character Select\CharacterSelect.cs" />
+    <Compile Include="Assets\Scripts\Menus\Character Select\StatsBar.cs" />
     <Compile Include="Assets\Scripts\Menus\Main Menu\HowToPlayMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\Main Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\Main Menu\OptionsMenu.cs" />

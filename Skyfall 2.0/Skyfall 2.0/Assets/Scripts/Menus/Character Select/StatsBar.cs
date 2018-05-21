@@ -3,38 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsBar : MonoBehaviour {
-
+public class StatsBar : MonoBehaviour
+{
     [SerializeField]
-    GameObject HPBar;
+    private GameObject[] statBars = new GameObject[4];
 
-    [SerializeField]
-    GameObject AttackBar;
-
-    [SerializeField]
-    GameObject DefenseBar;
-
-    [SerializeField]
-    GameObject SpeedBar;
+    [Space]
 
     //Get stats of each class
-    public Player red;
-    public Player blue;
-    public Player green;
-    public Player yellow;
+    public Player[] players = new Player[4];
 
-    public Texture2D tex;
+    [Space]
+
+    [SerializeField]
+    [Tooltip("Stat bar sprite")]
+    private Texture2D tex;
     private Sprite mySprite;
     private SpriteRenderer sr;
 
-    // Use this for initialization
-    void Start () {
+    void Start()
+    {
         sr = gameObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-        mySprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+        for (int i = 0; i < statBars.Length; i++)
+        {
+            mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Update()
+    {
         sr.sprite = mySprite;
+    }
+
+    public void Resize(Player player)
+    {
+
     }
 }

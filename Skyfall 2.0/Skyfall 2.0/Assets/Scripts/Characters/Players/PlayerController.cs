@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed;
     private float shotDensity;
 
+    private bool canShoot;
+
     [SerializeField]
     private Transform bulletSpawn;
 
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
         moveSpeed = player.moveSpeed;
         shotDensity = player.shotDensity;
+
+        canShoot = true;
     }
 
     void Update()
@@ -44,7 +48,10 @@ public class PlayerController : MonoBehaviour
     void GetKeyInput()
     {
         Move();
-        Shoot();
+        if (canShoot)
+        {
+            Shoot();
+        }
     }
 
     void Move()
@@ -75,7 +82,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
         {
             ShootBullet();
+            canShoot = false;
+            StartCoroutine(Delay(1 / shotDensity));
         }
+    }
+
+    IEnumerator Delay(float t)
+    {
+        yield return new WaitForSeconds(t);
+        canShoot = true;
     }
 
     void ShootBullet()
