@@ -936,10 +936,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsCanvas: {fileID: 723860363}
-  slider_bgm: {fileID: 547770403}
-  slider_sfx: {fileID: 73342076}
-  slider_bgm_value: {fileID: 304997307}
-  slider_sfx_value: {fileID: 1055324816}
+  bgmSlider: {fileID: 547770403}
+  sfxSlider: {fileID: 73342076}
+  text_bgmValue: {fileID: 304997307}
+  text_sfxValue: {fileID: 1055324816}
   optionsText:
   - {fileID: 2128449127}
   - {fileID: 478620339}

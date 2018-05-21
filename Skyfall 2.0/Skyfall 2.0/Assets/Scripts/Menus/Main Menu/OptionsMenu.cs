@@ -15,6 +15,8 @@ public class OptionsMenu : MonoBehaviour
     //sliders
     [SerializeField]
     Slider bgmSlider;
+
+    [SerializeField]
     Slider sfxSlider;
 
     [Space]
@@ -22,6 +24,8 @@ public class OptionsMenu : MonoBehaviour
     //slider number value text
     [SerializeField]
     Text text_bgmValue;
+
+    [SerializeField]
     Text text_sfxValue;
 
     [Space]
