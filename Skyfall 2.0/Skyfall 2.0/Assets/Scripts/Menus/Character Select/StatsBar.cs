@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StatsBar : MonoBehaviour
 {
-    int menuChoice = 0;
+    //int menuChoice = 0;
+
+    [SerializeField]
+    private CharacterSelect cs;
+
+    [Space]
 
     [SerializeField]
     private GameObject[] statBars = new GameObject[4];
@@ -13,7 +17,12 @@ public class StatsBar : MonoBehaviour
     [Space]
 
     //Get stats of each class
-    public Player[] players = new Player[4];
+    [SerializeField]
+    private Player[] players = new Player[4];
+    private int[] baseHP = new int[4];
+    private int[] baseAttack = new int[4];
+    private int[] baseDefense = new int[4];
+    private int[] baseSpeed = new int[4];
 
     [Space]
 
@@ -21,41 +30,29 @@ public class StatsBar : MonoBehaviour
     [Tooltip("Stat bar sprite")]
     private Texture2D tex;
     private Sprite mySprite;
-    private Sprite attackSprite;
-    private Sprite defenseSprite;
-    private Sprite healthSprite;
-    private Sprite speedSprite;
     private SpriteRenderer sr;
+    private Vector2 pivot = new Vector2(0.0f, 0.5f);
 
     void Start()
     {
         sr = gameObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-        Resize(players[menuChoice]);
 
-        for (int i = 0; i < statBars.Length; i++)
+        for (int i = 0; i < players.Length; i++)
         {
-            mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.0f, 0.5f));
+            baseHP[i] = players[i].health;
+            baseAttack[i] = players[i].attack;
+            baseDefense[i] = players[i].defense;
+            baseSpeed[i] = players[i].moveSpeed;
         }
     }
 
     void Update()
     {
         sr.sprite = mySprite;
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && menuChoice != 0)
-        {
-            menuChoice--;
-            Resize(players[menuChoice]);
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow) && menuChoice != 3)
-        {
-            menuChoice++;
-            Resize(players[menuChoice]);
-        }
+        Resize();
     }
 
-
-    public void Resize(Player player)
+    void Resize()
     {
         for (int i = 0; i < statBars.Length; i++)
         {
@@ -64,103 +61,123 @@ public class StatsBar : MonoBehaviour
             //Menu choice 2 = Yellow
             //Menu choice 3 = Green
 
-            //Updates Health Bar
-            if (i == 0)
+            switch (i)
             {
-                if (menuChoice == 0)
+                case 0:
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
+                    break;
+
+                case 1:
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
+                    break;
+
+                case 2:
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
+                    break;
+
+                case 3:
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
+                    break;
+            }
+
+            statBars[i].GetComponent<SpriteRenderer>().sprite = mySprite;
+
+            //Updates Health Bar
+            /*if (i == 0)
+            {
+                if (cs.menuChoice == 0)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.health / player.health * 256, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
                 }
 
-                if (menuChoice == 1)
+                if (cs.menuChoice == 1)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.health / player.health * 512, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
                 }
 
-                if (menuChoice == 2)
+                if (cs.menuChoice == 2)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.health / player.health * 102, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
                 }
 
-                if (menuChoice == 3)
+                if (cs.menuChoice == 3)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.health / player.health * 205, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
                 }
             }
 
             //Updates Attack Bar
             if (i == 1)
             {
-                if (menuChoice == 0)
+                if (cs.menuChoice == 0)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.attack / player.attack * 512, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
                 }
 
-                if (menuChoice == 1)
+                if (cs.menuChoice == 1)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.attack / player.attack * 102, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
                 }
 
-                if (menuChoice == 2)
+                if (cs.menuChoice == 2)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.attack / player.attack * 307, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
                 }
 
-                if (menuChoice == 3)
+                if (cs.menuChoice == 3)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.attack / player.attack * 307, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
                 }
             }
 
             //Updates Defense Bar
             if (i == 2)
             {
-                if (menuChoice == 0)
+                if (cs.menuChoice == 0)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.defense / player.defense * 102, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
                 }
 
-                if (menuChoice == 1)
+                if (cs.menuChoice == 1)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.defense / player.defense * 512, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
                 }
 
-                if (menuChoice == 2)
+                if (cs.menuChoice == 2)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.defense / player.defense * 256, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
                 }
 
-                if (menuChoice == 3)
+                if (cs.menuChoice == 3)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.defense / player.defense * 204, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
                 }
             }
 
             //Updates Speed Bar
             if (i == 3)
             {
-                if (menuChoice == 0)
+                if (cs.menuChoice == 0)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.moveSpeed / player.moveSpeed * 204, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
                 }
 
-                if (menuChoice == 1)
+                if (cs.menuChoice == 1)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.moveSpeed / player.moveSpeed * 102, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
                 }
 
-                if (menuChoice == 2)
+                if (cs.menuChoice == 2)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.moveSpeed / player.moveSpeed * 512, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
                 }
 
-                if (menuChoice == 3)
+                if (cs.menuChoice == 3)
                 {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, player.moveSpeed / player.moveSpeed * 256, tex.height), new Vector2(0.0f, 0.5f));
+                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
                 }
             }
-
-            statBars[i].GetComponent<SpriteRenderer>().sprite = mySprite;
+            */
         }
     }
 }

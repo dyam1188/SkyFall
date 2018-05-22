@@ -12,14 +12,14 @@ public class Player : ScriptableObject {
 
     public int numLives;
     public int numSpecials;
-    public int health;
-    public int attack;
-    public int defense;
 
     [Space]
 
-    public float moveSpeed;
-    public float shotDensity;
+    public int health;
+    public int attack;
+    public int defense;
+    public int moveSpeed;
+    public int shotDensity;
 
     public const int maxLives = 3;
     public const int maxSpecial = 3;
