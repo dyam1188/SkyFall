@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//resizes the stat bars
+//attached to CharacterSelect -> Script Holder - Stats Bar
 public class StatsBar : MonoBehaviour
 {
-    //int menuChoice = 0;
-
     [SerializeField]
     private CharacterSelect cs;
 
@@ -81,103 +79,6 @@ public class StatsBar : MonoBehaviour
             }
 
             statBars[i].GetComponent<SpriteRenderer>().sprite = mySprite;
-
-            //Updates Health Bar
-            /*if (i == 0)
-            {
-                if (cs.menuChoice == 0)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 1)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 2)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 3)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
-                }
-            }
-
-            //Updates Attack Bar
-            if (i == 1)
-            {
-                if (cs.menuChoice == 0)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 1)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 2)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 3)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
-                }
-            }
-
-            //Updates Defense Bar
-            if (i == 2)
-            {
-                if (cs.menuChoice == 0)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 1)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 2)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 3)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
-                }
-            }
-
-            //Updates Speed Bar
-            if (i == 3)
-            {
-                if (cs.menuChoice == 0)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 1)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 2)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
-                }
-
-                if (cs.menuChoice == 3)
-                {
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
-                }
-            }
-            */
         }
     }
 }

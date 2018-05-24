@@ -1,10 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //main controller for Character Select
-//attached to Character Select -> Script Holder - Character Select
+//attached to CharacterSelect -> Script Holder - Character Select
 public class CharacterSelect : MonoBehaviour
 {
     public int menuChoice = 0;
@@ -16,11 +15,11 @@ public class CharacterSelect : MonoBehaviour
     private const float moveSpeed = 0.1f;
     private float left, middle, right;
 
-    private bool keyInputEnabled = true;
+    private bool inputEnabled = true;
 
     void Start()
     {
-        middle = -4;
+        middle = players[0].transform.position.x;
         left = middle - 2;
         right = middle + 2;
 
@@ -36,7 +35,7 @@ public class CharacterSelect : MonoBehaviour
 
     void Update()
     {
-        if (keyInputEnabled)
+        if (inputEnabled)
         {
             GetKeyInput();
         }
@@ -66,10 +65,36 @@ public class CharacterSelect : MonoBehaviour
             StartCoroutine(MoveLeft(players[menuChoice].GetComponent<Transform>(), right, middle));
         }
 
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
+        {
+            SelectCharacter();
+            ResizeCharacter();
+            LoadScene("Game");
+
+        }
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            SceneManager.LoadSceneAsync("Main Menu");
+            LoadScene("Main Menu");
         }
+    }
+
+    void LoadScene(string name)
+    {
+        SceneManager.LoadSceneAsync(name);
+    }
+
+    void SelectCharacter()
+    {
+        GameObject selection = players[menuChoice];
+        PlayerController pc = selection.GetComponent<PlayerController>();
+        DontDestroyOnLoad(selection);
+        pc.enabled = true;
+    }
+
+    void ResizeCharacter()
+    {
+        players[menuChoice].transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     //moves the selected gameobject left
@@ -102,7 +127,7 @@ public class CharacterSelect : MonoBehaviour
     //fades out the selected sprite
     IEnumerator FadeOut(SpriteRenderer sr)
     {
-        keyInputEnabled = false;
+        inputEnabled = false;
         for (float a = 1f; a >= 0 - fadeSpeed; a -= fadeSpeed)
         {
             Fade(sr, a);
@@ -118,7 +143,7 @@ public class CharacterSelect : MonoBehaviour
             Fade(sr, a);
             yield return null;
         }
-        keyInputEnabled = true;
+        inputEnabled = true;
     }
 
     //controls the fade

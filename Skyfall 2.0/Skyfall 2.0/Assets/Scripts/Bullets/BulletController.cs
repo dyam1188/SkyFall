@@ -18,6 +18,8 @@ public class BulletController : MonoBehaviour
 
         moveSpeed = bullet.moveSpeed;
         lifespan = bullet.lifespan;
+
+
     }
 
     void Update()

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -9,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     //private bool isMainVisible = true;
-    private bool keyInputEnabled = true;
+    private bool inputEnabled = true;
     private int menuChoice = 1;                     //initialized to 1 because index 0 is the logo
 
     [SerializeField]
@@ -52,7 +51,7 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (keyInputEnabled)
+        if (inputEnabled)
         {
             GetKeyInput();
         }
@@ -175,7 +174,7 @@ public class MainMenu : MonoBehaviour
     //fades out the selected Canvas
     IEnumerator CanvasFadeOut(Canvas c)
     {
-        keyInputEnabled = false;
+        inputEnabled = false;
 
         CanvasGroup cg = c.GetComponent<CanvasGroup>();
         while (cg.alpha > 0)
@@ -199,7 +198,7 @@ public class MainMenu : MonoBehaviour
             yield return null;
         }
 
-        keyInputEnabled = true;
+        inputEnabled = true;
     }
 
     //quits the game

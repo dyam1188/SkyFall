@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab78da95bfc9b0941be6727dc72d15e5, type: 3}
-  m_Name: Red
+  m_Name: Bullet_Red
   m_EditorClassIdentifier: 
   bulletSprite: {fileID: 21300000, guid: f0d8567a0910792448308a0fee2f034c, type: 3}
   moveSpeed: 8

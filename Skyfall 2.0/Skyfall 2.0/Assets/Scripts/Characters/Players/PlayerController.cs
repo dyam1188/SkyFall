@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //controls the player
+//attached to Game -> _Player
 public class PlayerController : MonoBehaviour
 {
     public Player player;
@@ -12,12 +12,12 @@ public class PlayerController : MonoBehaviour
 
     private int numLives;
     private int numSpecials;
+
     private int health;
     private int attack;
     private int defense;
-
-    private float moveSpeed;
-    private float shotDensity;
+    private int moveSpeed;
+    private int shotDensity;
 
     public bool inputEnabled;
     private bool shootEnabled;
@@ -25,7 +25,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform bulletSpawn;
 
-    void Start()
+    void Awake()
+    {
+        Initialize();
+    }
+
+    void Initialize()
     {
         GetComponent<SpriteRenderer>().sprite = player.playerSprite;
 
@@ -41,6 +46,11 @@ public class PlayerController : MonoBehaviour
         shootEnabled = true;
     }
 
+    void Start()
+    {
+        inputEnabled = true;
+    }
+
     void Update()
     {
         if (inputEnabled)
@@ -52,6 +62,7 @@ public class PlayerController : MonoBehaviour
     void GetKeyInput()
     {
         Move();
+
         if (shootEnabled)
         {
             Shoot();
@@ -83,11 +94,11 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Space))
         {
             ShootBullet();
             shootEnabled = false;
-            StartCoroutine(Delay(1 / shotDensity));
+            StartCoroutine(Delay(1f / shotDensity));
         }
     }
 
