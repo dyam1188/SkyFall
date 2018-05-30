@@ -10,4 +10,6 @@ public class Bullet : ScriptableObject {
 
     public int moveSpeed;
     public float lifespan;
+
+    public int maxMoveSpeed = 10;
 }

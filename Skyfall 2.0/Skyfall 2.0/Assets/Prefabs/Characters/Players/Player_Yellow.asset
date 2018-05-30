@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Player_Yellow
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 21300000, guid: ed592ea1687c32944922db71b04e13d8, type: 3}
+  playerBullet: {fileID: 11400000, guid: 85973599de933994a85de376ecfa1b80, type: 2}
   numLives: 3
   numSpecials: 3
   health: 10000

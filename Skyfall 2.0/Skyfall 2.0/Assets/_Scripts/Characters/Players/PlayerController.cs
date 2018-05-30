@@ -6,9 +6,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Player player;
-    public GameObject bullet;
+    public Bullet playerBullet;
+    public GameObject bulletGameObject;
 
-    private Sprite playerSprite;
+    [SerializeField]
+    private Transform bulletSpawn;
 
     private int numLives;
     private int numSpecials;
@@ -21,9 +23,6 @@ public class PlayerController : MonoBehaviour
 
     public bool inputEnabled;
     private bool shootEnabled;
-
-    [SerializeField]
-    private Transform bulletSpawn;
 
     void Awake()
     {
@@ -43,12 +42,13 @@ public class PlayerController : MonoBehaviour
         moveSpeed = player.moveSpeed;
         shotDensity = player.shotDensity;
 
-        shootEnabled = true;
+        inputEnabled = true;
     }
 
     void Start()
     {
-        inputEnabled = true;
+        bulletGameObject.GetComponent<BulletController>().bullet = playerBullet;
+        shootEnabled = true;
     }
 
     void Update()
@@ -110,6 +110,6 @@ public class PlayerController : MonoBehaviour
 
     void ShootBullet()
     {
-        Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+        Instantiate(bulletGameObject, bulletSpawn.position, bulletSpawn.rotation);
     }
 }

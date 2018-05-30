@@ -5,16 +5,16 @@ public class BulletController : MonoBehaviour
 {
     public Bullet bullet;
 
-    private Sprite bulletSprite;
-
+    private SpriteRenderer sr;
     private int moveSpeed;
     private float lifespan;
  
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = bullet.bulletSprite;
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = bullet.bulletSprite;
 
-        moveSpeed = bullet.moveSpeed;
+        moveSpeed = Mathf.Clamp(bullet.moveSpeed, 0, bullet.maxMoveSpeed);
         lifespan = bullet.lifespan;
     }
 
@@ -27,5 +27,11 @@ public class BulletController : MonoBehaviour
     void Move()
     {
         transform.Translate((Vector3.up * moveSpeed) * Time.deltaTime);
+        Resize(moveSpeed);
+    }
+
+    void Resize(float s)
+    {
+        //i want to resize the bullet so that the faster it moves, the more it stretches
     }
 }

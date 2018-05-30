@@ -69,7 +69,6 @@ public class CharacterSelect : MonoBehaviour
         {
             SelectCharacter();
             LoadScene("Game");
-
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -85,8 +84,11 @@ public class CharacterSelect : MonoBehaviour
 
     void SelectCharacter()
     {
+        //carry over selected character to the game scene
         GameObject selection = players[menuChoice];
         DontDestroyOnLoad(selection);
+
+        //enable script
         PlayerController pc = selection.GetComponent<PlayerController>();
         pc.enabled = true;
     }

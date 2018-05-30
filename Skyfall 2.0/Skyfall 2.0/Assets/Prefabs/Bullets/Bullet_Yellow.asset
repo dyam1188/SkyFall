@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab78da95bfc9b0941be6727dc72d15e5, type: 3}
   m_Name: Bullet_Yellow
   m_EditorClassIdentifier: 
-  bulletSprite: {fileID: 21300000, guid: f0d8567a0910792448308a0fee2f034c, type: 3}
+  bulletSprite: {fileID: 21300000, guid: fba184e4bba7aa2429db0238edd589ab, type: 3}
   moveSpeed: 8
   lifespan: 1

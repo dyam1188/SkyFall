@@ -5,6 +5,7 @@
 public class Player : ScriptableObject {
 
     public Sprite playerSprite;
+    public Bullet playerBullet;
 
     [Space]
 
