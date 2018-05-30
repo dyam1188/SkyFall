@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Bullet_Yellow
   m_EditorClassIdentifier: 
   bulletSprite: {fileID: 21300000, guid: fba184e4bba7aa2429db0238edd589ab, type: 3}
-  moveSpeed: 8
+  moveSpeed: 10
   lifespan: 1
+  maxMoveSpeed: 10

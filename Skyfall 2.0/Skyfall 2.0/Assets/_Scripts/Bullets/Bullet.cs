@@ -8,8 +8,8 @@ public class Bullet : ScriptableObject {
 
     [Space]
 
-    public int moveSpeed;
+    public float moveSpeed;
     public float lifespan;
 
-    public int maxMoveSpeed = 10;
+    public float maxMoveSpeed = 10f;
 }
