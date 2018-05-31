@@ -6,9 +6,13 @@ using UnityEngine;
 //attached to Game -> Script Holder - Game
 public class GameController : MonoBehaviour
 {
-    public Transform spawnTransform;
+    [SerializeField]
+    private Transform spawnTransform;
 
-    private bool isPaused;
+    [SerializeField]
+    private Canvas optionsMenu;
+
+    public bool isPaused;
 
     void Awake()
     {
@@ -19,19 +23,33 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        //todo: wangs
+
     }
 
     void Update()
     {
-        if (!isPaused)
+        Run();
+    }
+
+    //game stuffs
+    void Run()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Run(); 
+            SetPaused();
+        }
+
+        //show pause menu
+        if (isPaused)
+        {
+            
         }
     }
 
-    void Run()
+    void SetPaused()
     {
-        //game stuffs
+        isPaused = isPaused ? false : true;
+        Time.timeScale = isPaused ? 0 : 1;
+        optionsMenu.GetComponent<CanvasGroup>().alpha = isPaused ? 0 : 1;
     }
 }

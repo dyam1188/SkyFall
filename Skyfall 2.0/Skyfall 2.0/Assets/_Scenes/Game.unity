@@ -300,8 +300,8 @@ GameObject:
   - component: {fileID: 1424337206}
   - component: {fileID: 1424337207}
   m_Layer: 0
-  m_Name: Script Holder  - Game
-  m_TagString: Untagged
+  m_Name: Script Holder - Game
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTransform: {fileID: 1274037862}
+  isPaused: 0
 --- !u!1001 &1617167320
 Prefab:
   m_ObjectHideFlags: 0

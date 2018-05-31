@@ -53,7 +53,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (inputEnabled)
+        GameController gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+
+        if (inputEnabled && !gc.isPaused)
         {
             GetKeyInput();
         }
