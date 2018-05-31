@@ -53,20 +53,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        GameController gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
-
-        if (inputEnabled && !gc.isPaused)
+        if (inputEnabled)
         {
-            GetKeyInput();
-        }
-    }
-
-    void GetKeyInput()
-    {
-        Move();
-
-        if (shootEnabled)
-        {
+            Move();
             Shoot();
         }
     }
@@ -96,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Space))
+        if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Space)) && shootEnabled)
         {
             ShootBullet();
             shootEnabled = false;

@@ -6,6 +6,8 @@ using UnityEngine;
 //attached to Game -> Script Holder - Game
 public class GameController : MonoBehaviour
 {
+    private GameObject player;
+
     [SerializeField]
     private Transform spawnTransform;
 
@@ -14,16 +16,11 @@ public class GameController : MonoBehaviour
 
     public bool isPaused;
 
-    void Awake()
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        player.transform.position = spawnTransform.position;
-        player.transform.localScale = new Vector3(0.5f, 0.5f);
-    }
-
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
+        player.transform.position = spawnTransform.position;
+        player.transform.localScale = new Vector3(0.5f, 0.5f);
     }
 
     void Update()
@@ -38,18 +35,13 @@ public class GameController : MonoBehaviour
         {
             SetPaused();
         }
-
-        //show pause menu
-        if (isPaused)
-        {
-            
-        }
     }
 
     void SetPaused()
     {
         isPaused = isPaused ? false : true;
         Time.timeScale = isPaused ? 0 : 1;
-        optionsMenu.GetComponent<CanvasGroup>().alpha = isPaused ? 0 : 1;
+        player.GetComponent<PlayerController>().inputEnabled = isPaused ? false : true;
+        //optionsMenu.GetComponent<CanvasGroup>().alpha = isPaused ? 0 : 1;
     }
 }

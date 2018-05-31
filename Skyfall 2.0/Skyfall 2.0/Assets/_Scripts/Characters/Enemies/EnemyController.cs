@@ -19,10 +19,8 @@ public class EnemyController : MonoBehaviour {
 
     private bool shootEnabled;
 
-    public GameObject player;
-    Transform target;
-    public Transform myTransform;
-    float attackRange;
+    private GameObject player;
+    private Vector3 playerPosition;
 
     void Awake()
     {
@@ -38,36 +36,36 @@ public class EnemyController : MonoBehaviour {
 
         moveSpeed = enemy.moveSpeed;
         shotDensity = enemy.shotDensity;
-
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Start()
     {
-        bulletGameObject.GetComponent<BulletController>().bullet = enemyBullet;
+        bulletGameObject.GetComponent<EnemyBulletController>().bullet = enemyBullet;
         shootEnabled = true;
+
+        player = GameObject.FindWithTag("Player");
+        //Debug.Log(player.name);
     }
 
     void Update()
     {
-        Move();
+        GetPlayerDistance();
+    }
 
-        if (player != null)
-        {
-            target = player.GetComponent<Transform>();
-        }
-
-        float attackRange = Vector3.Distance(myTransform.position, target.position);
+    void GetPlayerDistance()
+    {
+        playerPosition = player.transform.position;
+        float attackRange = Vector3.Distance(transform.position, playerPosition);
 
         //If too far from player, get in range
-        if (attackRange > 20 && shootEnabled == false)
+        if (attackRange > 5)
         {
-            transform.LookAt(target);
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            //transform.LookAt(playerPosition);
+            Move();
         }
 
         //If in range of player stop and attack
-        if (attackRange < 21)
+        else
         {
             Shoot();
         }
@@ -80,9 +78,12 @@ public class EnemyController : MonoBehaviour {
 
     void Shoot()
     {
-        ShootBullet();
-        shootEnabled = false;
-        StartCoroutine(Delay(1f / shotDensity));
+        if (shootEnabled)
+        {
+            ShootBullet();
+            shootEnabled = false;
+            StartCoroutine(Delay(1f / shotDensity));
+        }
     }
 
     void ShootBullet()
