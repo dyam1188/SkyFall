@@ -51,18 +51,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
-     <Compile Include="Assets\Scripts\Bullets\BulletController.cs" />
-     <Compile Include="Assets\Scripts\Characters\Players\Player.cs" />
-     <Compile Include="Assets\Scripts\Characters\Players\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\Menus\ArrowAnimation.cs" />
-     <Compile Include="Assets\Scripts\Menus\BackgroundScroll.cs" />
-     <Compile Include="Assets\Scripts\Menus\Character Select\CharacterSelect.cs" />
-     <Compile Include="Assets\Scripts\Menus\Character Select\StatsBar.cs" />
-     <Compile Include="Assets\Scripts\Menus\Main Menu\HowToPlayMenu.cs" />
-     <Compile Include="Assets\Scripts\Menus\Main Menu\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Menus\Main Menu\OptionsMenu.cs" />
-     <Compile Include="Assets\Scripts\Menus\Main Menu\SunRotation.cs" />
+     <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
+     <Compile Include="Assets\_Scripts\Bullets\BulletController.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyCommon.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyController.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Game\GameController.cs" />
+     <Compile Include="Assets\_Scripts\Menus\ArrowAnimation.cs" />
+     <Compile Include="Assets\_Scripts\Menus\BackgroundScroll.cs" />
+     <Compile Include="Assets\_Scripts\Menus\Character Select\CharacterSelect.cs" />
+     <Compile Include="Assets\_Scripts\Menus\Character Select\StatsBar.cs" />
+     <Compile Include="Assets\_Scripts\Menus\Main Menu\HowToPlayMenu.cs" />
+     <Compile Include="Assets\_Scripts\Menus\Main Menu\MainMenu.cs" />
+     <Compile Include="Assets\_Scripts\Menus\Main Menu\OptionsMenu.cs" />
+     <Compile Include="Assets\_Scripts\Menus\Main Menu\SunRotation.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Darren Yam/Documents/GitHub/SkyFall/Skyfall 2.0/Skyfall 2.0/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
