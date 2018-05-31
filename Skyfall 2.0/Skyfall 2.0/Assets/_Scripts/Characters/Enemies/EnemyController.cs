@@ -19,6 +19,11 @@ public class EnemyController : MonoBehaviour {
 
     private bool shootEnabled;
 
+    public GameObject player;
+    Transform target;
+    public Transform myTransform;
+    float attackRange;
+
     void Awake()
     {
         Initialize();
@@ -33,6 +38,8 @@ public class EnemyController : MonoBehaviour {
 
         moveSpeed = enemy.moveSpeed;
         shotDensity = enemy.shotDensity;
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Start()
@@ -43,10 +50,32 @@ public class EnemyController : MonoBehaviour {
 
     void Update()
     {
-        if (shootEnabled)
+        Move();
+
+        if (player != null)
+        {
+            target = player.GetComponent<Transform>();
+        }
+
+        float attackRange = Vector3.Distance(myTransform.position, target.position);
+
+        //If too far from player, get in range
+        if (attackRange > 20 && shootEnabled == false)
+        {
+            transform.LookAt(target);
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        }
+
+        //If in range of player stop and attack
+        if (attackRange < 21)
         {
             Shoot();
         }
+    }
+
+    void Move()
+    {
+        transform.Translate(new Vector3(0, moveSpeed, 0) * Time.deltaTime);
     }
 
     void Shoot()
@@ -56,14 +85,14 @@ public class EnemyController : MonoBehaviour {
         StartCoroutine(Delay(1f / shotDensity));
     }
 
+    void ShootBullet()
+    {
+        Instantiate(bulletGameObject, bulletSpawn.position, bulletSpawn.rotation);
+    }
+
     IEnumerator Delay(float t)
     {
         yield return new WaitForSeconds(t);
         shootEnabled = true;
-    }
-
-    void ShootBullet()
-    {
-        Instantiate(bulletGameObject, bulletSpawn.position, bulletSpawn.rotation);
     }
 }
