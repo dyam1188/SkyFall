@@ -29,7 +29,7 @@ public class EnemyBulletController : MonoBehaviour
     void Move()
     {
         transform.Translate((Vector3.up * moveSpeed) * Time.deltaTime);
-        moveSpeed += Time.deltaTime * 5;
+        moveSpeed -= Time.deltaTime * 5;
         Resize(moveSpeed);
     }
 
