@@ -18,6 +18,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        InitializePosition();
+    }
+
+    void InitializePosition()
+    {
         player = GameObject.FindWithTag("Player");
         player.transform.position = spawnTransform.position;
         player.transform.localScale = new Vector3(0.5f, 0.5f);

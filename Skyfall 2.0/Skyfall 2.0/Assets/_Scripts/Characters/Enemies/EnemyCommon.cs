@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class EnemyCommon : Enemy
+{
+    protected override void Start()
+    {
+        base.Start();
+    }
 
-[CreateAssetMenu(fileName = "Enemy Common", menuName = "Enemy Common")]
-public class EnemyCommon : ScriptableObject {
-    public Sprite enemySprite;
-    public Bullet enemyBullet;
-
-    [Space]
-
-    public int health;
-    public int attack;
-    public int defense;
-    public int moveSpeed;
-    public int shotDensity;
+    protected override void Update()
+    {
+        base.Update();
+    }
 }

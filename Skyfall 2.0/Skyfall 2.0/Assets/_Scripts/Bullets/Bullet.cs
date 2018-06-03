@@ -1,15 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//bullet variable holder
-[CreateAssetMenu(fileName = "New Bullet", menuName = "Bullet")]
-public class Bullet : ScriptableObject {
+public class Bullet : MonoBehaviour
+{
 
-    public Sprite bulletSprite;
+    protected void Move(float speed)
+    {
+        transform.Translate((Vector3.up * speed) * Time.deltaTime);
+        speed -= Time.deltaTime * 3;
+    }
 
-    [Space]
+    //resize the bullet so that the faster it moves, the more it stretches
+    protected void Resize(float speed)
+    {
+        float stretch = Mathf.Clamp(speed, 1, 4);
+        float squish = Mathf.Clamp(speed, 1, 4);
 
-    public float moveSpeed;
-    public float lifespan;
+        transform.localScale = new Vector2(squish / speed, speed / stretch);
+    }
 
-    public float maxMoveSpeed = 10f;
+    protected void Destroy(float lifespan)
+    {
+        Destroy(gameObject, lifespan);
+    }
 }

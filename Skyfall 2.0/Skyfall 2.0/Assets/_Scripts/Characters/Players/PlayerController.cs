@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 //controls the player
@@ -6,8 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Player player;
-    public Bullet playerBullet;
-    public GameObject bulletGameObject;
+    public GameObject bullet;
 
     [SerializeField]
     private Transform bulletSpawn;
@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        bulletGameObject.GetComponent<BulletController>().bullet = playerBullet;
         shootEnabled = true;
     }
 
@@ -101,6 +100,6 @@ public class PlayerController : MonoBehaviour
 
     void ShootBullet()
     {
-        Instantiate(bulletGameObject, bulletSpawn.position, bulletSpawn.rotation);
+        Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
 }
