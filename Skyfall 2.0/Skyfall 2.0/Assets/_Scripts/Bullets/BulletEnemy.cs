@@ -19,4 +19,18 @@ public class BulletEnemy : Bullet
         Resize(moveSpeed);
         Destroy(lifespan);
     }
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.tag != "Enemy")
+        {
+            CalculateDamage(c);
+            Destroy(gameObject);
+        }
+    }
+
+    void CalculateDamage(Collider2D c)
+    {
+        Destroy(c.gameObject);
+    }
 }

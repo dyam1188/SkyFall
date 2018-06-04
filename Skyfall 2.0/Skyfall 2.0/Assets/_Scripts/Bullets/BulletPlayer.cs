@@ -19,4 +19,18 @@ public class BulletPlayer : Bullet
         Resize(moveSpeed);
         Destroy(lifespan);
     }
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.tag != "Player")
+        {
+            CalculateDamage(c);
+            Destroy(gameObject);
+        }
+    }
+
+    void CalculateDamage(Collider2D c)
+    {
+        Destroy(c.gameObject);
+    }
 }

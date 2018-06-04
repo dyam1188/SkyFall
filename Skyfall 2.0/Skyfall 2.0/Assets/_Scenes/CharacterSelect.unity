@@ -759,12 +759,6 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: a81b23c832533f94ba6afac474c1b5af,
         type: 2}
-    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
-        type: 2}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1797999062331000, guid: c3ab9a3312c0df74a9fc13481d8097e3,
-        type: 2}
     - target: {fileID: 0}
       propertyPath: bullet
       value: 
@@ -786,6 +780,34 @@ Prefab:
       propertyPath: bulletSpawn
       value: 
       objectReference: {fileID: 715479464}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58846393340098266, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1797999062331000, guid: c3ab9a3312c0df74a9fc13481d8097e3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
   m_IsPrefabParent: 0
@@ -966,12 +988,6 @@ Prefab:
       propertyPath: bulletSpawn
       value: 
       objectReference: {fileID: 1098020780}
-    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
-        type: 2}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1797999062331000, guid: c3ab9a3312c0df74a9fc13481d8097e3,
-        type: 2}
     - target: {fileID: 0}
       propertyPath: bullet
       value: 
@@ -987,6 +1003,34 @@ Prefab:
       propertyPath: playerBullet
       value: 
       objectReference: {fileID: 11400000, guid: 85973599de933994a85de376ecfa1b80,
+        type: 2}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58846393340098266, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1797999062331000, guid: c16b0565c72fba7458ec1da19de2b3fe,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
@@ -1055,12 +1099,6 @@ Prefab:
       propertyPath: bulletSpawn
       value: 
       objectReference: {fileID: 1237882233}
-    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
-        type: 2}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1797999062331000, guid: c3ab9a3312c0df74a9fc13481d8097e3,
-        type: 2}
     - target: {fileID: 0}
       propertyPath: bullet
       value: 
@@ -1076,6 +1114,34 @@ Prefab:
       propertyPath: playerBullet
       value: 
       objectReference: {fileID: 11400000, guid: 099e61e21362a4147b28556549f11bf0,
+        type: 2}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58846393340098266, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1797999062331000, guid: 03413a94c68433f4a8e86d48703bfb69,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
@@ -1448,12 +1514,6 @@ Prefab:
       propertyPath: bulletSpawn
       value: 
       objectReference: {fileID: 1848984736}
-    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
-        type: 2}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1797999062331000, guid: c3ab9a3312c0df74a9fc13481d8097e3,
-        type: 2}
     - target: {fileID: 0}
       propertyPath: bullet
       value: 
@@ -1469,6 +1529,34 @@ Prefab:
       propertyPath: playerBullet
       value: 
       objectReference: {fileID: 11400000, guid: f347c9ff21efbc246a4367565db81fef,
+        type: 2}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58846393340098266, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1797999062331000, guid: 77d6ffc992fa41841a03472eb1657a39,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}

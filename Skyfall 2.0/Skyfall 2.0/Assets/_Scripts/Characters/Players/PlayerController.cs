@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     public bool inputEnabled;
     private bool shootEnabled;
+    private bool isDead;
 
     void Awake()
     {
@@ -41,17 +42,19 @@ public class PlayerController : MonoBehaviour
 
         moveSpeed = player.moveSpeed;
         shotDensity = player.shotDensity;
-
-        inputEnabled = true;
     }
 
     void Start()
     {
+        inputEnabled = true;
         shootEnabled = true;
+        isDead = false;
     }
 
     void Update()
     {
+        UpdateStats();
+
         if (inputEnabled)
         {
             Move();
@@ -80,6 +83,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate((Vector3.down * moveSpeed) * Time.deltaTime);
         }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Die();
+        }
     }
 
     void Shoot()
@@ -101,5 +109,22 @@ public class PlayerController : MonoBehaviour
     void ShootBullet()
     {
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+    }
+
+    void UpdateStats()
+    {
+        if (health <= 0)
+        {
+            //run death stuff
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        inputEnabled = false;
+        shootEnabled = false;
+        isDead = true;
+        Destroy(gameObject);
     }
 }

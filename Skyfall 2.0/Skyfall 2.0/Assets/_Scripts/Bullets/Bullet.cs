@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     protected void Move(float speed)
     {
         transform.Translate((Vector3.up * speed) * Time.deltaTime);
-        speed -= Time.deltaTime * 3;
+        speed -= Time.deltaTime * 5;
     }
 
     //resize the bullet so that the faster it moves, the more it stretches

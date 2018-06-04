@@ -88,9 +88,11 @@ public class CharacterSelect : MonoBehaviour
         GameObject selection = players[menuChoice];
         DontDestroyOnLoad(selection);
 
-        //enable script
-        PlayerController pc = selection.GetComponent<PlayerController>();
-        pc.enabled = true;
+        //enable all components
+        foreach(Behaviour behaviour in selection.GetComponents<Behaviour>())
+        {
+            behaviour.enabled = true;
+        }
     }
 
     //moves the selected gameobject left
