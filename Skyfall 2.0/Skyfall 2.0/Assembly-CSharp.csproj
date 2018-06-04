@@ -52,9 +52,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
-     <Compile Include="Assets\_Scripts\Bullets\BulletController.cs" />
+     <Compile Include="Assets\_Scripts\Bullets\BulletEnemy.cs" />
+     <Compile Include="Assets\_Scripts\Bullets\BulletPlayer.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Enemy.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyBoss.cs" />
      <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyCommon.cs" />
-     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyController.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySpawn.cs" />
      <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />
      <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Game\GameController.cs" />
