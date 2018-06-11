@@ -30,8 +30,7 @@ public class OptionsMenu : MonoBehaviour
     [Space]
 
     //text array
-    [SerializeField]
-    private Text[] optionsText = new Text[3];
+    public Text[] optionsText = new Text[3];
 
     //text sizes
     private const int fontLarge = 28;
