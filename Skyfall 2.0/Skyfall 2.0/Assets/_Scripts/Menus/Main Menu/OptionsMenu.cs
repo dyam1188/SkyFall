@@ -7,6 +7,7 @@ public class OptionsMenu : MonoBehaviour
 {
     [SerializeField]
     private Canvas optionsCanvas;
+    public int menuChoice = 0;
 
     [Space]
 
@@ -30,8 +31,7 @@ public class OptionsMenu : MonoBehaviour
 
     //text array
     [SerializeField]
-    public Text[] optionsText = new Text[3];
-    public int menuChoice = 0;
+    private Text[] optionsText = new Text[3];
 
     //text sizes
     private const int fontLarge = 28;

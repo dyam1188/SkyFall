@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  ps_BulletDestruction: {fileID: 198146317374168702, guid: 4bbaddccfb3a3c64497f82d5e6c1d934,
+    type: 2}
 --- !u!212 &212040096448882682
 SpriteRenderer:
   m_ObjectHideFlags: 1

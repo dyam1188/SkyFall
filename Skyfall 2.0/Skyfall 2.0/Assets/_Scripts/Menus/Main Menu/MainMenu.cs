@@ -158,7 +158,7 @@ public class MainMenu : MonoBehaviour
     }
 
     //asynchronously loads the selected scene
-    void LoadScene(string sceneName)
+    public void LoadScene(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);
     }

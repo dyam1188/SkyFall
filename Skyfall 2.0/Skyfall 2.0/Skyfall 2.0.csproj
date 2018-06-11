@@ -306,8 +306,10 @@
     <Compile Include="Assets\_Scripts\Characters\Enemies\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyBoss.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyCommon.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySpawn.cs" />
     <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />
     <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
+    <Compile Include="Assets\_Scripts\Game\CalculateDamage.cs" />
     <Compile Include="Assets\_Scripts\Game\GameController.cs" />
     <Compile Include="Assets\_Scripts\Menus\ArrowAnimation.cs" />
     <Compile Include="Assets\_Scripts\Menus\BackgroundScroll.cs" />

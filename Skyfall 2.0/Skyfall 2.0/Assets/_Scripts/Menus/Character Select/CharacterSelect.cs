@@ -28,7 +28,7 @@ public class CharacterSelect : MonoBehaviour
             playersSprite[i] = players[i].GetComponent<SpriteRenderer>();
             if (i != menuChoice)
             {
-                playersSprite[i].material.color = new Color (1, 1, 1, 0);
+                playersSprite[i].material.color = new Color(1, 1, 1, 0);
             }
         }
     }
@@ -43,6 +43,7 @@ public class CharacterSelect : MonoBehaviour
 
     void GetKeyInput()
     {
+        //there has to be a better way to do this >_>
         if (Input.GetKeyDown(KeyCode.LeftArrow) && menuChoice != 0)
         {
             StartCoroutine(FadeOut(playersSprite[menuChoice]));
@@ -88,8 +89,8 @@ public class CharacterSelect : MonoBehaviour
         GameObject selection = players[menuChoice];
         DontDestroyOnLoad(selection);
 
-        //enable all components
-        foreach(Behaviour behaviour in selection.GetComponents<Behaviour>())
+        //enable all components (scripts, collider, etc.)
+        foreach (Behaviour behaviour in selection.GetComponents<Behaviour>())
         {
             behaviour.enabled = true;
         }

@@ -122,8 +122,8 @@ MonoBehaviour:
   attack: 50
   defense: 50
   moveSpeed: 3
-  shotDensity: 4
-  attackRange: 4
+  shotDensity: 1
+  attackRange: 5
   bullet: {fileID: 1836083601457198, guid: 4f7e6c377d9e30b49a09bb06f66753e8, type: 2}
   bulletSpawn: {fileID: 4204394266362650}
 --- !u!212 &212642344875438314

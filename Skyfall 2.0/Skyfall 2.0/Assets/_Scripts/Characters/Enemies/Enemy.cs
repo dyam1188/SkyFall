@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
     protected GameObject player;  //reference to player
 
     [Header("Stats")]
 
-    public int health;
-    public int attack;
-    public int defense;
+    public float health;
+    public float defense;
     public int moveSpeed;
     public int shotDensity;
     public int attackRange;
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField]
     [Tooltip("Where the bullet spawns")]
-    protected Transform bulletSpawn;
+    private Transform bulletSpawn;
 
     protected bool shootEnabled;
 
@@ -34,7 +34,16 @@ public class Enemy : MonoBehaviour {
 
     protected virtual void Update()
     {
+        CheckState();
         FindPlayer();
+    }
+
+    void CheckState()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void FindPlayer()
@@ -49,16 +58,16 @@ public class Enemy : MonoBehaviour {
 
         else
         {
-            Shoot(bullet);
+            Shoot();
         }
     }
 
-    protected void Move()
+    void Move()
     {
         transform.Translate(new Vector3(0, moveSpeed, 0) * Time.deltaTime);
     }
 
-    protected void Shoot(GameObject bullet)
+     void Shoot()
     {
         if (shootEnabled)
         {

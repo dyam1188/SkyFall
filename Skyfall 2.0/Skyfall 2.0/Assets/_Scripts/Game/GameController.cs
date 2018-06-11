@@ -9,22 +9,21 @@ public class GameController : MonoBehaviour
     private GameObject player;
 
     [SerializeField]
-    private Transform spawnTransform;
-
-    [SerializeField]
     private Canvas optionsMenu;
 
     public bool isPaused;
 
     void Start()
     {
-        InitializePosition();
+        InitializePlayer();
     }
 
-    void InitializePosition()
+    //sets player's starting transform
+    //this is needed because the player is passed from the Character Select scene through DontDestroyOnLoad()
+    void InitializePlayer()
     {
         player = GameObject.FindWithTag("Player");
-        player.transform.position = spawnTransform.position;
+        player.transform.position = transform.position;
         player.transform.localScale = new Vector3(0.5f, 0.5f);
     }
 
@@ -36,12 +35,14 @@ public class GameController : MonoBehaviour
     //game stuffs
     void Run()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             SetPaused();
         }
+        //add more stuff later
     }
 
+    //?: operators are useful ^_^
     void SetPaused()
     {
         isPaused = isPaused ? false : true;

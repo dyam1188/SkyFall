@@ -8,29 +8,34 @@ public class BulletEnemy : Bullet
     private float moveSpeed;
     private float lifespan = 1f;
 
-    void Start()
-    {
+    [SerializeField]
+    private ParticleSystem ps_BulletDestruction;
 
+    protected override void Start()
+    {
+        base.Start();
     }
 
     void Update()
     {
         Move(moveSpeed);
         Resize(moveSpeed);
-        Destroy(lifespan);
+        DestroyMe(lifespan);
     }
 
-    void OnTriggerEnter2D(Collider2D c)
+    protected override void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.tag != "Enemy")
+        if (c.tag == "Player")
         {
-            CalculateDamage(c);
-            Destroy(gameObject);
+            base.OnTriggerEnter2D(c);
+            CalculateDamage();
         }
     }
 
-    void CalculateDamage(Collider2D c)
+    //CalculateDamage.cs will be used instead of this
+    void CalculateDamage()
     {
-        Destroy(c.gameObject);
+        player.health -= attack;
+        Debug.Log(player.health);
     }
 }

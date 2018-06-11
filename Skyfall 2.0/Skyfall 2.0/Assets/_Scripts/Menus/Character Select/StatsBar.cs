@@ -17,9 +17,9 @@ public class StatsBar : MonoBehaviour
     //Get stats of each class
     [SerializeField]
     private Player[] players = new Player[4];
-    private int[] baseHP = new int[4];
-    private int[] baseAttack = new int[4];
-    private int[] baseDefense = new int[4];
+    private float[] baseHP = new float[4];
+    private float[] baseAttack = new float[4];
+    private float[] baseDefense = new float[4];
     private int[] baseSpeed = new int[4];
 
     [Space]
@@ -54,25 +54,24 @@ public class StatsBar : MonoBehaviour
     {
         for (int i = 0; i < statBars.Length; i++)
         {
-            //Menu choice 0 = Red
-            //Menu choice 1 = Blue
-            //Menu choice 2 = Yellow
-            //Menu choice 3 = Green
-
             switch (i)
             {
+                //red
                 case 0:
                     mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
                     break;
 
+                //blue
                 case 1:
                     mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
                     break;
 
+                //yellow
                 case 2:
                     mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
                     break;
 
+                //green
                 case 3:
                     mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
                     break;
@@ -80,5 +79,10 @@ public class StatsBar : MonoBehaviour
 
             statBars[i].GetComponent<SpriteRenderer>().sprite = mySprite;
         }
+    }
+
+    void SetSprite(float length)
+    {
+
     }
 }

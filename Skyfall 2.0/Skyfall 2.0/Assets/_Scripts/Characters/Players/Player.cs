@@ -4,8 +4,8 @@ using UnityEngine;
 
 //player variable holder
 [CreateAssetMenu(fileName = "New Player", menuName = "Player")]
-public class Player : ScriptableObject {
-
+public class Player : ScriptableObject
+{
     public Sprite playerSprite;
     public Bullet playerBullet;
 
@@ -16,9 +16,9 @@ public class Player : ScriptableObject {
 
     [Space]
 
-    public int health;
-    public int attack;
-    public int defense;
+    public float health;
+    public float attack;
+    public float defense;
     public int moveSpeed;
     public int shotDensity;
 

@@ -15,9 +15,10 @@ public class PlayerController : MonoBehaviour
     private int numLives;
     private int numSpecials;
 
-    private int health;
-    private int attack;
-    private int defense;
+    public float health;
+    public float attack;
+    public float defense;
+
     private int moveSpeed;
     private int shotDensity;
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
         numLives = player.numLives;
         numSpecials = player.numSpecials;
+
         health = player.health;
         attack = player.attack;
         defense = player.defense;
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        UpdateStats();
+        CheckState();
 
         if (inputEnabled)
         {
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
             transform.Translate((Vector3.down * moveSpeed) * Time.deltaTime);
         }
 
+        //debugging purposes, will remove later
         if (Input.GetKeyDown(KeyCode.K))
         {
             Die();
@@ -111,11 +114,16 @@ public class PlayerController : MonoBehaviour
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
 
-    void UpdateStats()
+    void CheckState()
     {
         if (health <= 0)
         {
-            //run death stuff
+            //lose a life
+            numLives--;
+        }
+
+        if (numLives <= 0)
+        {
             Die();
         }
     }
