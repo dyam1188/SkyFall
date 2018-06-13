@@ -24,19 +24,16 @@ public class BulletPlayer : Bullet
         DestroyMe(lifespan);
     }
 
-    protected override void OnTriggerEnter2D(Collider2D c)
+    void OnTriggerEnter2D(Collider2D c)
     {
         if (c.tag == "Enemy")
         {
-            base.OnTriggerEnter2D(c);
-            CalculateDamage(c);
+            DamageCalculator dc = GetComponent<DamageCalculator>();
+            EnemyCommon ec = c.GetComponent<EnemyCommon>();
+            float damage = dc.CalculateDamage(attack, ec.defense);
+            ec.health -= damage;
+            Debug.Log(damage);
+            Destroy(gameObject);
         }
-    }
-
-    //CalculateDamage.cs will be used instead of this
-    void CalculateDamage(Collider2D c)
-    {
-        EnemyCommon ec = c.GetComponent<EnemyCommon>();
-        ec.health -= attack;
     }
 }

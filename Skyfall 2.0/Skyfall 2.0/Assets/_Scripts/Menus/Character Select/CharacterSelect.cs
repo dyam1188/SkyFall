@@ -11,7 +11,7 @@ public class CharacterSelect : MonoBehaviour
     public GameObject[] players = new GameObject[4];
     private SpriteRenderer[] playersSprite = new SpriteRenderer[4];
 
-    private const float fadeSpeed = 0.1f;
+    private const float fadeSpeed = 0.1f;       //how fast the alpha increases/decreases over 1 frame
     private const float moveSpeed = 0.1f;
     private float left, middle, right;
 

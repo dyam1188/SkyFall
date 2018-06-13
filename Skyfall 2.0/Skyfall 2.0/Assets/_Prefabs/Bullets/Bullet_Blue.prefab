@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212040096448882682}
   - component: {fileID: 114512800758561254}
   - component: {fileID: 58989044654240670}
+  - component: {fileID: 114562663712189966}
   m_Layer: 0
   m_Name: Bullet_Blue
   m_TagString: Untagged
@@ -72,6 +73,17 @@ MonoBehaviour:
   moveSpeed: 6
   ps_BulletDestruction: {fileID: 198146317374168702, guid: 4bbaddccfb3a3c64497f82d5e6c1d934,
     type: 2}
+--- !u!114 &114562663712189966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797999062331000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251d1d8ac636ba643bc65f344cb5b480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212040096448882682
 SpriteRenderer:
   m_ObjectHideFlags: 1

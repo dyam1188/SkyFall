@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212040096448882682}
   - component: {fileID: 114512800758561254}
   - component: {fileID: 58976186920501542}
+  - component: {fileID: 114495890591010444}
   m_Layer: 0
   m_Name: Bullet_Red
   m_TagString: Untagged
@@ -57,6 +58,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
+--- !u!114 &114495890591010444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797999062331000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251d1d8ac636ba643bc65f344cb5b480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114512800758561254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92bf3ae08ba8f74da3a0db62362b848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 0
   moveSpeed: 7
   ps_BulletDestruction: {fileID: 198146317374168702, guid: 4bbaddccfb3a3c64497f82d5e6c1d934,
     type: 2}

@@ -15,19 +15,10 @@ public class MainMenu : MonoBehaviour
     private Image[] menuText = new Image[5];
 
     [SerializeField]
-    private Canvas mainCanvas;
+    private Canvas mainCanvas, howtoplayCanvas, optionsCanvas;
 
-    [Space]
-
-    [SerializeField]
-    private Canvas howtoplayCanvas;
-    public HowToPlayMenu howtoplayMenu;
-
-    [Space]
-
-    [SerializeField]
-    private Canvas optionsCanvas;
-    public OptionsMenu optionsMenu;
+    private HowToPlayMenu howtoplayMenu;
+    private OptionsMenu optionsMenu;
 
     private const float fadeSpeed = 0.1f;  //the rate at which objects fade in or out per frame
 
@@ -38,6 +29,9 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         StartCoroutine(CanvasFadeIn(mainCanvas));
+
+        howtoplayMenu = GetComponent<HowToPlayMenu>();
+        optionsMenu = GetComponent<OptionsMenu>();
 
         //set default menu choice
         menuText[menuChoice].rectTransform.localScale = textLarge;
@@ -157,7 +151,6 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    //asynchronously loads the selected scene
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);

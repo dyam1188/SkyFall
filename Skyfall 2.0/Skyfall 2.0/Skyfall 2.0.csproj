@@ -309,10 +309,10 @@
     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySpawn.cs" />
     <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />
     <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
-    <Compile Include="Assets\_Scripts\Game\CalculateDamage.cs" />
+    <Compile Include="Assets\_Scripts\Game\DamageCalculator.cs" />
     <Compile Include="Assets\_Scripts\Game\GameController.cs" />
-    <Compile Include="Assets\_Scripts\Menus\ArrowAnimation.cs" />
     <Compile Include="Assets\_Scripts\Menus\BackgroundScroll.cs" />
+    <Compile Include="Assets\_Scripts\Menus\Character Select\ArrowAnimation.cs" />
     <Compile Include="Assets\_Scripts\Menus\Character Select\CharacterSelect.cs" />
     <Compile Include="Assets\_Scripts\Menus\Character Select\StatsBar.cs" />
     <Compile Include="Assets\_Scripts\Menus\Main Menu\HowToPlayMenu.cs" />
@@ -321,6 +321,7 @@
     <Compile Include="Assets\_Scripts\Menus\Main Menu\SunRotation.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\_Scripts\Characters\Enemies\WaveHandler.txt" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Templates\Alert.uxml" />

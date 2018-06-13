@@ -41,10 +41,4 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, lifespan);
         //play particle effect here
     }
-
-    //destroys bullet upon impact
-    protected virtual void OnTriggerEnter2D(Collider2D c)
-    {
-        Destroy(gameObject);
-    }
 }

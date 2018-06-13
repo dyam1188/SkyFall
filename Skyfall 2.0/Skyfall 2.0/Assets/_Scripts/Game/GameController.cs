@@ -29,11 +29,11 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        Run();
+        CheckState();
     }
 
     //game stuffs
-    void Run()
+    void CheckState()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {

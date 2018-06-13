@@ -4,7 +4,6 @@
 //attached to CharacterSelect -> Script Holder - Stats Bar
 public class StatsBar : MonoBehaviour
 {
-    [SerializeField]
     private CharacterSelect cs;
 
     [Space]
@@ -14,10 +13,11 @@ public class StatsBar : MonoBehaviour
 
     [Space]
 
-    //Get stats of each class
+    //Get stats of each character
     [SerializeField]
     private Player[] players = new Player[4];
-    private float[] baseHP = new float[4];
+
+    private float[] baseHealth = new float[4];
     private float[] baseAttack = new float[4];
     private float[] baseDefense = new float[4];
     private int[] baseSpeed = new int[4];
@@ -27,17 +27,17 @@ public class StatsBar : MonoBehaviour
     [SerializeField]
     [Tooltip("Stat bar sprite")]
     private Texture2D tex;
+
     private Sprite mySprite;
-    private SpriteRenderer sr;
     private Vector2 pivot = new Vector2(0.0f, 0.5f);
 
     void Start()
     {
-        sr = gameObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+        cs = GetComponent<CharacterSelect>();
 
         for (int i = 0; i < players.Length; i++)
         {
-            baseHP[i] = players[i].health;
+            baseHealth[i] = players[i].health;
             baseAttack[i] = players[i].attack;
             baseDefense[i] = players[i].defense;
             baseSpeed[i] = players[i].moveSpeed;
@@ -46,7 +46,6 @@ public class StatsBar : MonoBehaviour
 
     void Update()
     {
-        sr.sprite = mySprite;
         Resize();
     }
 
@@ -56,24 +55,24 @@ public class StatsBar : MonoBehaviour
         {
             switch (i)
             {
-                //red
+                //health bar
                 case 0:
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].health / Mathf.Max(baseHP)), tex.height), pivot);
+                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].health / Mathf.Max(baseHealth)));
                     break;
 
-                //blue
+                //attack bar
                 case 1:
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].attack / Mathf.Max(baseAttack)), tex.height), pivot);
+                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].attack / Mathf.Max(baseAttack)));
                     break;
 
-                //yellow
+                //defense bar
                 case 2:
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].defense / Mathf.Max(baseDefense)), tex.height), pivot);
+                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].defense / Mathf.Max(baseDefense)));
                     break;
 
-                //green
+                //speed bar
                 case 3:
-                    mySprite = Sprite.Create(tex, new Rect(0, 0, tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)), tex.height), pivot);
+                    mySprite = SetSprite(tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)));
                     break;
             }
 
@@ -81,8 +80,9 @@ public class StatsBar : MonoBehaviour
         }
     }
 
-    void SetSprite(float length)
+    Sprite SetSprite(float width)
     {
-
+        Sprite s = Sprite.Create(tex, new Rect(0, 0, width, tex.height), pivot);
+        return s;
     }
 }
