@@ -42,4 +42,13 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, lifespan);
         //play particle effect here
     }
+
+    protected float DealDamage(float attack, float defense)
+    {
+        DamageCalculator dc = GetComponent<DamageCalculator>();
+        float damage = dc.CalculateDamage(attack, defense);
+        Destroy(gameObject);
+        Debug.Log(damage);
+        return damage;
+    }
 }

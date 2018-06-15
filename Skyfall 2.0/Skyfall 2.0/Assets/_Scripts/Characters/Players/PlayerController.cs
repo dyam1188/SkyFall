@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private bool shootEnabled;
     private bool isDead;
 
+    public int gold;
+
     void Awake()
     {
         Initialize();
@@ -65,6 +67,11 @@ public class PlayerController : MonoBehaviour
         if (shootEnabled)
         {
             Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log(gold);
         }
     }
 

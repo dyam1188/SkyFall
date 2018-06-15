@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Timers;
 
 //controls enemy spawn pattern using file reading
 //attached to Game -> Script Holder - Game
@@ -29,49 +30,42 @@ public class EnemySpawn : MonoBehaviour
         string[] splitFile = entireFile.Split(delimiters, System.StringSplitOptions.RemoveEmptyEntries);    //splits the string
 
         eachLine.AddRange(splitFile);                                                                       //adds each split section to its own list index
-        
+
         for (int i = 0; i < eachLine.Count; i++)    //loop through all elements in the split file
         {
             if (eachLine[i][0] != '/')              //if the line isn't a comment, tell the game where to spawn what enemy
             {
                 switch (i % dataAmount)             //for case descriptions, refer to txt file
                 {
-                    case 0:                         
+                    case 0:
                         enemiesToSpawn.Add(enemyArray[System.Int32.Parse(eachLine[i])]);
                         break;
                     case 1:
                         xPositions.Add(float.Parse(eachLine[i]));
                         break;
-                    //case 2:
-                    //    break;
+                        //case 2:
+                        //    break;
                 }
             }
         }
 
         for (int i = 0; i < eachLine.Count / dataAmount - 1; i++)
         {
-            if (!isDelaying)
-            {
-                Spawn(enemiesToSpawn[i], xPositions[i]);
-            }
+            Spawn(enemiesToSpawn[i], xPositions[i]);
+            //isDelaying = true;
+            //StartCoroutine(Delay(1f));
         }
     }
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Debug.Log(enemyCount);
-        }
+        
     }
 
     void Spawn(GameObject enemyToSpawn, float xPosition)
     {
         Instantiate(enemyToSpawn, new Vector3(xPosition, enemyToSpawn.transform.position.y, enemyToSpawn.transform.position.z), enemyToSpawn.transform.rotation);
         enemyCount++;
-        //isDelaying = true;
-        //StartCoroutine(Delay(1f));
     }
 
     IEnumerator Delay(float time)

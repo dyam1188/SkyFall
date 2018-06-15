@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public int shotDensity;
     public int attackRange;
 
+    public int gold;
+
     [Space]
 
     [SerializeField]
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
+            player.GetComponent<PlayerController>().gold += gold;
             Destroy(gameObject);
         }
     }

@@ -123,6 +123,7 @@ MonoBehaviour:
   moveSpeed: 3
   shotDensity: 1
   attackRange: 5
+  gold: 25
   bullet: {fileID: 1836083601457198, guid: 3e8f6e4db89b5814692d168de23edde1, type: 2}
   bulletSpawn: {fileID: 4469383960570844}
 --- !u!212 &212738055372816300

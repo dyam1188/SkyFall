@@ -28,12 +28,8 @@ public class BulletPlayer : Bullet
     {
         if (c.tag == "Enemy")
         {
-            DamageCalculator dc = GetComponent<DamageCalculator>();
             EnemyCommon ec = c.GetComponent<EnemyCommon>();
-            float damage = dc.CalculateDamage(attack, ec.defense);
-            ec.health -= damage;
-            Debug.Log(damage);
-            Destroy(gameObject);
+            ec.health -= DealDamage(attack, ec.defense);
         }
     }
 }

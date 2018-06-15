@@ -27,11 +27,7 @@ public class BulletEnemy : Bullet
     {
         if (c.tag == "Player")
         {
-            DamageCalculator dc = GetComponent<DamageCalculator>();
-            float damage = dc.CalculateDamage(attack, player.defense);
-            player.health -= damage;
-            Debug.Log(damage);
-            Destroy(gameObject);
+            player.health -= DealDamage(attack, player.defense);
         }
     }
 }

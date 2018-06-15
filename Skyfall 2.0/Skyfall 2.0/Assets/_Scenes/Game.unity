@@ -471,7 +471,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1135720673316864, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
         type: 2}

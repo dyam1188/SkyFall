@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//used to return damage by passing raw damage through damage formula
+//returns damage by passing raw damage through damage formula
 public class DamageCalculator : MonoBehaviour
 {
     //how much to randomize the damage by
@@ -13,10 +13,11 @@ public class DamageCalculator : MonoBehaviour
 
     public float CalculateDamage(float attack, float defense)
     {
-        float damage = (attack * (40 * Random.Range(0, atkVariance))) - (defense * (20 * Random.Range(0, defVariance)));
+        //float damage = (attack * (40 * Random.Range(0, atkVariance))) - (defense * (20 * Random.Range(0, defVariance)));
+        float damage = attack - defense;
 
-        //add variance, clamp it down to [0, infinity], and round it back to a whole number
-        damage = Mathf.Clamp(Mathf.Round(damage * (1 + Random.Range(-variance, variance))), 0, Mathf.Infinity);
+        //add variance, set minimum damage to 1, and round it back to a whole number
+        damage = Mathf.Max(Mathf.Round(damage * (1 + Random.Range(-variance, variance))), 1);
 
         return damage;
     }
