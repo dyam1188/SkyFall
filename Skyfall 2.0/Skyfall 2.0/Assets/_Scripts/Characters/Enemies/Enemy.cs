@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//parent Enemy class
 public class Enemy : MonoBehaviour
 {
     protected GameObject player;  //reference to player
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
 
     public float health;
+    //we are tracking attack in the bullets now
     public float defense;
     public int moveSpeed;
     public int shotDensity;

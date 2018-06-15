@@ -140,8 +140,9 @@ Transform:
   m_Children:
   - {fileID: 1021218272}
   - {fileID: 1617167321}
+  - {fileID: 1945702762}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &686098824
 Prefab:
@@ -180,7 +181,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4069601176019210, guid: 2c9443dd48e7d1e4f8373568dff3790c, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1051980062082028, guid: 2c9443dd48e7d1e4f8373568dff3790c, type: 2}
       propertyPath: m_Name
@@ -312,51 +313,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4215294375147306, guid: 3a5fc60ff9fc357448cd4789584155df,
     type: 2}
   m_PrefabInternal: {fileID: 1021218271}
---- !u!1 &1274037861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1274037862}
-  - component: {fileID: 1274037863}
-  m_Layer: 0
-  m_Name: Script Holder - Enemy Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1274037862
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1274037861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1274037863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1274037861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ed867a189020048a5f3fc9e86213db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  file: {fileID: 4900000, guid: e65c4ffc1a410ab4fb5471279a5214f9, type: 3}
-  enemyArray:
-  - {fileID: 1316538922939218, guid: aab8240bb47d5284a801f29333548808, type: 2}
-  - {fileID: 1189564539106010, guid: d76595af9a5ec72458305d6633d87dc3, type: 2}
-  - {fileID: 1051980062082028, guid: 2c9443dd48e7d1e4f8373568dff3790c, type: 2}
 --- !u!1 &1424337205
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1424337206}
   - component: {fileID: 1424337207}
+  - component: {fileID: 1424337208}
   m_Layer: 0
   m_Name: Script Holder - Game
   m_TagString: GameController
@@ -398,7 +355,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 0}
+  blackBG: {fileID: 1945702763}
   isPaused: 0
+--- !u!114 &1424337208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424337205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ed867a189020048a5f3fc9e86213db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file: {fileID: 4900000, guid: e65c4ffc1a410ab4fb5471279a5214f9, type: 3}
+  enemyArray:
+  - {fileID: 1316538922939218, guid: aab8240bb47d5284a801f29333548808, type: 2}
+  - {fileID: 1189564539106010, guid: d76595af9a5ec72458305d6633d87dc3, type: 2}
+  - {fileID: 1051980062082028, guid: 2c9443dd48e7d1e4f8373568dff3790c, type: 2}
 --- !u!1001 &1617167320
 Prefab:
   m_ObjectHideFlags: 0
@@ -482,7 +456,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4430063842949474, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114049506601277142, guid: 9a1175c34b90cc94e9bca72858106fa9,
         type: 2}
@@ -535,3 +509,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a1175c34b90cc94e9bca72858106fa9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1945702761
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 16293190}
+    m_Modifications:
+    - target: {fileID: 4912466955038952, guid: 531a51ff139f90d4cbf323b0971f120d, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 531a51ff139f90d4cbf323b0971f120d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1945702762 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4912466955038952, guid: 531a51ff139f90d4cbf323b0971f120d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1945702761}
+--- !u!212 &1945702763 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212578294225471898, guid: 531a51ff139f90d4cbf323b0971f120d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1945702761}

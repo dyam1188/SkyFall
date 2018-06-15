@@ -11,11 +11,15 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Canvas optionsMenu;
 
+    [SerializeField]
+    private SpriteRenderer blackBG;
+
     public bool isPaused;
 
     void Start()
     {
         InitializePlayer();
+        blackBG.material.color = new Color(1, 1, 1, 0);
     }
 
     //sets player's starting transform
@@ -48,6 +52,9 @@ public class GameController : MonoBehaviour
         isPaused = isPaused ? false : true;
         Time.timeScale = isPaused ? 0 : 1;
         player.GetComponent<PlayerController>().inputEnabled = isPaused ? false : true;
+
+        float alpha = isPaused ? 0.7f : 0f;
+        blackBG.material.color = new Color(1, 1, 1, alpha);
         //optionsMenu.GetComponent<CanvasGroup>().alpha = isPaused ? 0 : 1;
     }
 }

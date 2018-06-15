@@ -121,6 +121,9 @@ MonoBehaviour:
   player: {fileID: 0}
   bullet: {fileID: 0}
   bulletSpawn: {fileID: 4143338623353342}
+  health: 0
+  attack: 0
+  defense: 0
   inputEnabled: 0
 --- !u!212 &212008117747321292
 SpriteRenderer:
@@ -156,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

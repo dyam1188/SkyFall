@@ -1,5 +1,7 @@
-//Handles spawn waves for enemies. Index 0: (int) enemyArray index. 1: (float) x-position. 2: (float) time spawned.
+//Handles spawn waves for enemies. Index 0: (int) enemyArray index. 1: (float) x-position. 2 (not implemented yet): (float) time spawned.
 //WAVE 1
 0, -5
-1, 0
-2, 5
+1, -2.5
+2, 0
+1, 2.5
+0, 5

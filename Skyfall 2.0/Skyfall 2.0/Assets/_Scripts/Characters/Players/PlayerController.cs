@@ -60,6 +60,10 @@ public class PlayerController : MonoBehaviour
         if (inputEnabled)
         {
             Move();
+        }
+
+        if (shootEnabled)
+        {
             Shoot();
         }
     }
@@ -103,9 +107,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Delay(float t)
+    IEnumerator Delay(float time)
     {
-        yield return new WaitForSeconds(t);
+        yield return new WaitForSeconds(time);
         shootEnabled = true;
     }
 
@@ -118,7 +122,6 @@ public class PlayerController : MonoBehaviour
     {
         if (health <= 0)
         {
-            //lose a life
             numLives--;
         }
 

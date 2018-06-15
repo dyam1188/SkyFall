@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//parent Bullet class
 public class Bullet : MonoBehaviour
 {
     protected PlayerController player;  //reference to player
