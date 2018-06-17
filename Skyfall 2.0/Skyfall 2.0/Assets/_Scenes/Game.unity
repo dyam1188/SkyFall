@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 8768927}
+  - component: {fileID: 8768928}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -143,6 +144,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8768928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8768926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbaec6bffadf684f97f12e0c3f82e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+  GoldText: {fileID: 2023038729}
+  UICanvas: {fileID: 1405028452}
+  HealthSlider: {fileID: 401366209}
 --- !u!1 &16293189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1326,7 @@ GameObject:
   - component: {fileID: 2023038730}
   - component: {fileID: 2023038729}
   m_Layer: 5
-  m_Name: Text
+  m_Name: text_gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

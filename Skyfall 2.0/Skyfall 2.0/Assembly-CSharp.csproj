@@ -62,6 +62,7 @@
      <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Game\DamageCalculator.cs" />
      <Compile Include="Assets\_Scripts\Game\GameController.cs" />
+     <Compile Include="Assets\_Scripts\Game\UIScript.cs" />
      <Compile Include="Assets\_Scripts\Menus\BackgroundScroll.cs" />
      <Compile Include="Assets\_Scripts\Menus\Character Select\ArrowAnimation.cs" />
      <Compile Include="Assets\_Scripts\Menus\Character Select\CharacterSelect.cs" />
