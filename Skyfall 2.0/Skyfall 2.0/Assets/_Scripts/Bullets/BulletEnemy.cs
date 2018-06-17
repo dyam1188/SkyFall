@@ -27,7 +27,7 @@ public class BulletEnemy : Bullet
     {
         if (c.tag == "Player")
         {
-            player.health -= DealDamage(attack, player.defense);
+            player.currentHealth -= DealDamage(attack, player.defense);
         }
     }
 }

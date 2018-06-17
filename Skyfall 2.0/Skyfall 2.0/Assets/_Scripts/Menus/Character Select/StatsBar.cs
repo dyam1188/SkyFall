@@ -37,7 +37,7 @@ public class StatsBar : MonoBehaviour
 
         for (int i = 0; i < players.Length; i++)
         {
-            baseHealth[i] = players[i].health;
+            baseHealth[i] = players[i].maxHealth;
             baseAttack[i] = players[i].attack;
             baseDefense[i] = players[i].defense;
             baseSpeed[i] = players[i].moveSpeed;
@@ -57,7 +57,7 @@ public class StatsBar : MonoBehaviour
             {
                 //health bar
                 case 0:
-                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].health / Mathf.Max(baseHealth)));
+                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].maxHealth / Mathf.Max(baseHealth)));
                     break;
 
                 //attack bar

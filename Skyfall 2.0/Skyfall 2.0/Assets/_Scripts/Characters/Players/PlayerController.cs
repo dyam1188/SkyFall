@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Player player;
-    public GameObject bullet;
+    private GameObject bullet;
 
     [SerializeField]
     private Transform bulletSpawn;
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private int numLives;
     private int numSpecials;
 
-    public float health;
+    public float currentHealth, maxHealth;
     public float attack;
     public float defense;
 
@@ -35,12 +35,14 @@ public class PlayerController : MonoBehaviour
 
     void Initialize()
     {
-        GetComponent<SpriteRenderer>().sprite = player.playerSprite;
+        GetComponent<SpriteRenderer>().sprite = player.sprite;
+        bullet = player.bullet;
 
         numLives = player.numLives;
         numSpecials = player.numSpecials;
 
-        health = player.health;
+        maxHealth = player.maxHealth;
+        currentHealth = maxHealth;
         attack = player.attack;
         defense = player.defense;
 
@@ -67,11 +69,6 @@ public class PlayerController : MonoBehaviour
         if (shootEnabled)
         {
             Shoot();
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Debug.Log(gold);
         }
     }
 
@@ -127,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckState()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             numLives--;
         }

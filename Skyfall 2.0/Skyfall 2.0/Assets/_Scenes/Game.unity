@@ -159,6 +159,7 @@ MonoBehaviour:
   GoldText: {fileID: 2023038729}
   UICanvas: {fileID: 1405028452}
   HealthSlider: {fileID: 401366209}
+  player: {fileID: 0}
 --- !u!1 &16293189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,7 +1383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 000
+  m_Text: 0
 --- !u!222 &2023038730
 CanvasRenderer:
   m_ObjectHideFlags: 0

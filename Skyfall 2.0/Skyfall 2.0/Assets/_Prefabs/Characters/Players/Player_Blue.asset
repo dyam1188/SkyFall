@@ -11,11 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc6b3c2e1d1b1b43be71602ee832089, type: 3}
   m_Name: Player_Blue
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 21300000, guid: 13660c7da9305fa4ea4632eca2dde1b3, type: 3}
-  playerBullet: {fileID: 11400000, guid: 099e61e21362a4147b28556549f11bf0, type: 2}
+  sprite: {fileID: 21300000, guid: 13660c7da9305fa4ea4632eca2dde1b3, type: 3}
+  bullet: {fileID: 1797999062331000, guid: 03413a94c68433f4a8e86d48703bfb69, type: 2}
   numLives: 3
   numSpecials: 3
-  health: 17000
+  currentHealth: 0
+  maxHealth: 17000
   attack: 700
   defense: 500
   moveSpeed: 4

@@ -75,6 +75,4 @@ public class EnemySpawn : MonoBehaviour
         Debug.Log("delay finished.");
         isDelaying = false;
     }
-
-
 }

@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Player", menuName = "Player")]
 public class Player : ScriptableObject
 {
-    public Sprite playerSprite;
-    public Bullet playerBullet;
+    public Sprite sprite;
+    public GameObject bullet;
 
     [Space]
 
@@ -16,7 +16,8 @@ public class Player : ScriptableObject
 
     [Space]
 
-    public float health;
+    public float currentHealth;
+    public float maxHealth;
     public float attack;
     public float defense;
     public int moveSpeed;
