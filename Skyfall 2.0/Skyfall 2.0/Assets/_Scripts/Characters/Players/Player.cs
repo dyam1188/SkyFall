@@ -8,6 +8,7 @@ public class Player : ScriptableObject
 {
     public Sprite sprite;
     public GameObject bullet;
+    public Color uiColor;
 
     [Space]
 

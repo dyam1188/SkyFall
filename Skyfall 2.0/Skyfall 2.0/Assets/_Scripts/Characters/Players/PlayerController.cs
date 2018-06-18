@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public Player player;
     private GameObject bullet;
+    public Color uiColor;
 
     [SerializeField]
     private Transform bulletSpawn;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = player.sprite;
         bullet = player.bullet;
+        uiColor = player.uiColor;
 
         numLives = player.numLives;
         numSpecials = player.numSpecials;

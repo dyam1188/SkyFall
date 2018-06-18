@@ -5,25 +5,28 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
-
     public int gold;
 
     [SerializeField]
     Text GoldText;
 
     public Transform UICanvas;
-    public Slider HealthSlider;
-    public Player player;
+    public Slider healthSlider;
+
+    [SerializeField]
+    private Image healthSliderFill;
 
     void Start()
     {
-        gold = 0;
-
-        //HealthSlider.value = currentHealth / maxHealth;
+        //healthSlider.value = currentHealth / maxHealth;
     }
 
     void Update()
     {
         GoldText.text = gold.ToString();
+
+        PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+        healthSliderFill.color = pc.uiColor;
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: ed592ea1687c32944922db71b04e13d8, type: 3}
   bullet: {fileID: 1797999062331000, guid: c16b0565c72fba7458ec1da19de2b3fe, type: 2}
+  uiColor: {r: 1, g: 0.75, b: 0, a: 0.7490196}
   numLives: 3
   numSpecials: 3
   currentHealth: 0
