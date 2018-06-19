@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
 
     public float health;
-    //we are tracking attack in the bullets now
+    //we are tracking attack in the respective bullet scripts
     public float defense;
     public int moveSpeed;
     public int shotDensity;

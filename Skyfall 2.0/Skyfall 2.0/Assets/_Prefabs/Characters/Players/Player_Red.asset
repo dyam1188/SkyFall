@@ -22,3 +22,4 @@ MonoBehaviour:
   defense: 200
   moveSpeed: 5
   shotDensity: 6
+  specialDelay: 2

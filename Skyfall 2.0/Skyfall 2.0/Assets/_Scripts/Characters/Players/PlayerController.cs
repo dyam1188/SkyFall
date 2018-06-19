@@ -16,17 +16,17 @@ public class PlayerController : MonoBehaviour
     private int numLives;
     public int numSpecials;
 
-    public float currentHealth, maxHealth;
+    public float currentHealth;
+    public float maxHealth;
     public float attack;
     public float defense;
 
     private int moveSpeed;
-    private int shotDensity;
+    private float specialDelay;
 
     public bool inputEnabled;
     private bool shootEnabled;
     private bool specialEnabled;
-    private int specialDensity = 5;
 
     private bool isDead;
 
@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         defense = player.defense;
 
         moveSpeed = player.moveSpeed;
-        shotDensity = player.shotDensity;
     }
 
     void Start()
@@ -66,6 +65,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckState();
+        ClampStats();
 
         if (inputEnabled)
         {
@@ -74,10 +74,28 @@ public class PlayerController : MonoBehaviour
 
         if (shootEnabled)
         {
-            Shoot();
+            ShootDefault();
+            ShootSpecial();
+        }
+    }
+
+    void CheckState()
+    {
+        if (currentHealth <= 0)
+        {
+            numLives--;
         }
 
-        UseSpecial();
+        if (numLives <= 0)
+        {
+            Die();
+        }
+    }
+
+    void ClampStats()
+    {
+        numLives = Mathf.Clamp(numLives, 0, Player.maxLives);
+        numSpecials = Mathf.Clamp(numSpecials, 0, Player.maxSpecials);
     }
 
     void Move()
@@ -109,23 +127,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void ShootDefault()
     {
         if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Space)) && shootEnabled)
         {
             ShootBullet();
             shootEnabled = false;
-            StartCoroutine(ShootDelay(1f / shotDensity));
+            StartCoroutine(ShootDelay(1f / player.shotDensity));
         }
     }
 
-    void UseSpecial()
+    void ShootSpecial()
     {
-        if (Input.GetKey(KeyCode.Z) && specialEnabled && numSpecials > 0) {
-            //Do special
+        if (Input.GetKeyDown(KeyCode.Z) && specialEnabled) {
+            //shoot special
             numSpecials--;
             specialEnabled = false;
-            StartCoroutine(SpecialDelay(specialDensity));
+            StartCoroutine(SpecialDelay(player.specialDelay));
         }
     }
 
@@ -146,18 +164,7 @@ public class PlayerController : MonoBehaviour
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
 
-    void CheckState()
-    {
-        if (currentHealth <= 0)
-        {
-            numLives--;
-        }
-
-        if (numLives <= 0)
-        {
-            Die();
-        }
-    }
+ 
 
     void Die()
     {

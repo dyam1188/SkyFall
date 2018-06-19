@@ -156,8 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 0
-  GoldText: {fileID: 2023038729}
-  UICanvas: {fileID: 1405028452}
+  goldText: {fileID: 2023038729}
   healthSlider: {fileID: 401366209}
   healthSliderFill: {fileID: 685241635}
   specialBars:

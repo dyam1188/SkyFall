@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour
 {
     public int gold;
-    private int numSpecials;
 
     [SerializeField]
-    Text GoldText;
+    private Text goldText;
 
-    public Transform UICanvas;
-    public Slider healthSlider;
+    [SerializeField]
+    private Slider healthSlider;
 
     [SerializeField]
     private Image healthSliderFill;
@@ -22,9 +21,7 @@ public class UIScript : MonoBehaviour
 
     void Start()
     {
-        specialBars[0].gameObject.SetActive(false);
-        specialBars[1].gameObject.SetActive(false);
-        specialBars[2].gameObject.SetActive(false);
+
     }
 
     void Update()
@@ -33,10 +30,21 @@ public class UIScript : MonoBehaviour
 
         healthSliderFill.color = pc.uiColor;
         healthSlider.value = pc.currentHealth / pc.maxHealth;
-        GoldText.text = pc.gold.ToString();
-        numSpecials = pc.numSpecials;
+        goldText.text = pc.gold.ToString();
 
-        switch (numSpecials)
+        for (int i = 0; i < specialBars.Length; i++)
+        {
+            if (i < pc.numSpecials)
+            {
+                specialBars[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                specialBars[i].gameObject.SetActive(false);
+            }
+        }
+
+        /*switch (numSpecials)
         {
             case 0:
                 specialBars[0].gameObject.SetActive(false);
@@ -61,6 +69,6 @@ public class UIScript : MonoBehaviour
                 specialBars[1].gameObject.SetActive(true);
                 specialBars[2].gameObject.SetActive(true);
             break;
-        }
+        }*/
     }
 }

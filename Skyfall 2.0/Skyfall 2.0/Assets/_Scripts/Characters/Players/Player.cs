@@ -23,7 +23,9 @@ public class Player : ScriptableObject
     public float defense;
     public int moveSpeed;
     public int shotDensity;
+    public float specialDelay;       //how long the player has to wait before using another special
 
     public const int maxLives = 3;
-    public const int maxSpecial = 3;
+    public const int maxSpecials = 3;
+    
 }
