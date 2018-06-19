@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Transform bulletSpawn;
 
     private int numLives;
-    private int numSpecials;
+    public int numSpecials;
 
     public float currentHealth, maxHealth;
     public float attack;
@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
     public bool inputEnabled;
     private bool shootEnabled;
+    private bool specialEnabled;
+    private int specialDensity = 5;
+
     private bool isDead;
 
     public int gold;
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         inputEnabled = true;
         shootEnabled = true;
+        specialEnabled = true;
         isDead = false;
     }
 
@@ -72,6 +76,8 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+
+        UseSpecial();
     }
 
     void Move()
@@ -109,14 +115,30 @@ public class PlayerController : MonoBehaviour
         {
             ShootBullet();
             shootEnabled = false;
-            StartCoroutine(Delay(1f / shotDensity));
+            StartCoroutine(ShootDelay(1f / shotDensity));
         }
     }
 
-    IEnumerator Delay(float time)
+    void UseSpecial()
+    {
+        if (Input.GetKey(KeyCode.Z) && specialEnabled && numSpecials > 0) {
+            //Do special
+            numSpecials--;
+            specialEnabled = false;
+            StartCoroutine(SpecialDelay(specialDensity));
+        }
+    }
+
+    IEnumerator ShootDelay(float time)
     {
         yield return new WaitForSeconds(time);
         shootEnabled = true;
+    }
+
+    IEnumerator SpecialDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        specialEnabled = true;
     }
 
     void ShootBullet()
