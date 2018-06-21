@@ -42,33 +42,8 @@ public class UIScript : MonoBehaviour
             {
                 specialBars[i].gameObject.SetActive(false);
             }
+
+            specialBars[i].GetComponent<SpriteRenderer>().material.color = pc.uiColor;
         }
-
-        /*switch (numSpecials)
-        {
-            case 0:
-                specialBars[0].gameObject.SetActive(false);
-                specialBars[1].gameObject.SetActive(false);
-                specialBars[2].gameObject.SetActive(false);
-            break;
-
-            case 1:
-                specialBars[0].gameObject.SetActive(true);
-                specialBars[1].gameObject.SetActive(false);
-                specialBars[2].gameObject.SetActive(false);
-            break;
-
-            case 2:
-                specialBars[0].gameObject.SetActive(true);
-                specialBars[1].gameObject.SetActive(true);
-                specialBars[2].gameObject.SetActive(false);
-            break;
-
-            case 3:
-                specialBars[0].gameObject.SetActive(true);
-                specialBars[1].gameObject.SetActive(true);
-                specialBars[2].gameObject.SetActive(true);
-            break;
-        }*/
     }
 }
