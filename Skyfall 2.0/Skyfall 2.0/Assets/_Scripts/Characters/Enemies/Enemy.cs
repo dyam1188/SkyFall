@@ -82,6 +82,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Once enemy leaves camera view, destroy it after 2 seconds
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject, 2.0f);
+    }
+
     IEnumerator Delay(float t)
     {
         yield return new WaitForSeconds(t);
