@@ -19,16 +19,16 @@ public class UIScript : MonoBehaviour
     [SerializeField]
     private GameObject[] specialBars = new GameObject[3];
 
+    PlayerController pc;
+
     void Start()
     {
-
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        healthSliderFill.color = pc.uiColor;
     }
 
     void Update()
     {
-        PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-
-        healthSliderFill.color = pc.uiColor;
         healthSlider.value = pc.currentHealth / pc.maxHealth;
         goldText.text = pc.gold.ToString();
 

@@ -51,10 +51,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Once enemy leaves camera view, destroy it after 2 seconds
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
     void FindPlayer()
     {
         Vector3 playerPosition = player.transform.position;
         float distance = Vector3.Distance(transform.position, playerPosition);
+
+        LookAt();
 
         if (distance > attackRange)
         {
@@ -67,28 +75,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void LookAt()
+    {
+        transform.up = player.transform.position - transform.position;
+    }
+
     void Move()
     {
         transform.Translate(new Vector3(0, moveSpeed, 0) * Time.deltaTime);
     }
 
-     void Shoot()
+    void Shoot()
     {
         if (shootEnabled)
         {
             Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
             shootEnabled = false;
-            StartCoroutine(Delay(1f / shotDensity));
+            StartCoroutine(ShootCooldown(1f / shotDensity));
         }
     }
 
-    //Once enemy leaves camera view, destroy it after 2 seconds
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject, 2.0f);
-    }
-
-    IEnumerator Delay(float t)
+    IEnumerator ShootCooldown(float t)
     {
         yield return new WaitForSeconds(t);
         shootEnabled = true;

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System;
 //resizes the stat bars
 //attached to CharacterSelect -> Script Holder - Stats Bar
 public class StatsBar : MonoBehaviour
@@ -13,7 +13,7 @@ public class StatsBar : MonoBehaviour
 
     [Space]
 
-    //Get stats of each character
+    //Hold stats of each playable character
     [SerializeField]
     private Player[] players = new Player[4];
 
@@ -42,6 +42,11 @@ public class StatsBar : MonoBehaviour
             baseDefense[i] = players[i].defense;
             baseSpeed[i] = players[i].moveSpeed;
         }
+
+        Array.Sort(baseHealth);
+        Array.Sort(baseAttack);
+        Array.Sort(baseDefense);
+        Array.Sort(baseSpeed);
     }
 
     void Update()
@@ -58,21 +63,25 @@ public class StatsBar : MonoBehaviour
                 //health bar
                 case 0:
                     mySprite = SetSprite(tex.width * (players[cs.menuChoice].maxHealth / Mathf.Max(baseHealth)));
+                    //mySprite = SetSprite(tex.width * (Array.IndexOf(baseHealth, players[cs.menuChoice].maxHealth) / players.Length));
                     break;
 
                 //attack bar
                 case 1:
                     mySprite = SetSprite(tex.width * (players[cs.menuChoice].attack / Mathf.Max(baseAttack)));
+                    //mySprite = SetSprite(tex.width * (Array.IndexOf(baseAttack, players[cs.menuChoice].attack) / players.Length));
                     break;
 
                 //defense bar
                 case 2:
                     mySprite = SetSprite(tex.width * (players[cs.menuChoice].defense / Mathf.Max(baseDefense)));
+                    //mySprite = SetSprite(tex.width * (Array.IndexOf(baseDefense, players[cs.menuChoice].defense) / players.Length));
                     break;
 
                 //speed bar
                 case 3:
                     mySprite = SetSprite(tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)));
+                    //mySprite = SetSprite(tex.width * (Array.IndexOf(baseSpeed, players[cs.menuChoice].moveSpeed) / players.Length));
                     break;
             }
 

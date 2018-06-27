@@ -7,8 +7,12 @@ using UnityEngine;
 public class Player : ScriptableObject
 {
     public Sprite sprite;
-    public GameObject bullet;
     public Color uiColor;
+
+    [Space]
+
+    public GameObject bullet;
+    public ParticleSystem special;
 
     [Space]
 
@@ -23,7 +27,7 @@ public class Player : ScriptableObject
     public float defense;
     public int moveSpeed;
     public int shotDensity;
-    public float specialDelay;       //how long the player has to wait before using another special
+    public float specialCooldown;       //how long the player has to wait before using another special
 
     public const int maxLives = 3;
     public const int maxSpecials = 3;

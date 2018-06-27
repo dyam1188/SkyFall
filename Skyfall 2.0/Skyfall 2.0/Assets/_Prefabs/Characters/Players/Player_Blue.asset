@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: Player_Blue
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 13660c7da9305fa4ea4632eca2dde1b3, type: 3}
-  bullet: {fileID: 1797999062331000, guid: 03413a94c68433f4a8e86d48703bfb69, type: 2}
   uiColor: {r: 0, g: 0.5, b: 1, a: 0.7490196}
+  bullet: {fileID: 1797999062331000, guid: 03413a94c68433f4a8e86d48703bfb69, type: 2}
+  special: {fileID: 0}
   numLives: 3
   numSpecials: 3
   currentHealth: 0
@@ -22,4 +23,4 @@ MonoBehaviour:
   defense: 500
   moveSpeed: 4
   shotDensity: 5
-  specialDelay: 2
+  specialCooldown: 1

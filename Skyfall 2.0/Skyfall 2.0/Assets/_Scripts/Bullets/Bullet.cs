@@ -12,17 +12,20 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     protected float attack;
 
+    private float slowSpeed = 5f;
+
+    [SerializeField]
+    private ParticleSystem bulletDestruction;
+
     protected virtual void Start()
     {
-        //finds the player
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
-    //moves bullet upwards and decreases its velocity over time
     protected void Move(float speed)
     {
         transform.Translate((Vector3.up * speed) * Time.deltaTime);
-        speed -= Time.deltaTime * 5;
+        speed -= slowSpeed * Time.deltaTime;            //decreases its speed over time
     }
 
     //resizes the bullet so that the faster it moves, the more it stretches
@@ -43,11 +46,15 @@ public class Bullet : MonoBehaviour
         //play particle effect here
     }
 
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
     protected float DealDamage(float attack, float defense)
     {
         DamageCalculator dc = GetComponent<DamageCalculator>();
         float damage = dc.CalculateDamage(attack, defense);
-        Destroy(gameObject);
         Debug.Log(damage);
         return damage;
     }

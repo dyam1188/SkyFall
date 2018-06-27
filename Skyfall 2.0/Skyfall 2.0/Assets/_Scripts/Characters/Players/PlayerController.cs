@@ -22,13 +22,11 @@ public class PlayerController : MonoBehaviour
     public float defense;
 
     private int moveSpeed;
-    private float specialDelay;
+    private float specialCooldown;
 
     public bool inputEnabled;
     private bool shootEnabled;
     private bool specialEnabled;
-
-    private bool isDead;
 
     public int gold;
 
@@ -52,6 +50,7 @@ public class PlayerController : MonoBehaviour
         defense = player.defense;
 
         moveSpeed = player.moveSpeed;
+        specialCooldown = player.specialCooldown;
     }
 
     void Start()
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
         inputEnabled = true;
         shootEnabled = true;
         specialEnabled = true;
-        isDead = false;
     }
 
     void Update()
@@ -84,6 +82,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             numLives--;
+            currentHealth = maxHealth;
         }
 
         if (numLives <= 0)
@@ -133,29 +132,33 @@ public class PlayerController : MonoBehaviour
         {
             ShootBullet();
             shootEnabled = false;
-            StartCoroutine(ShootDelay(1f / player.shotDensity));
+            StartCoroutine(ShootCooldown(1f / player.shotDensity));
         }
     }
 
     void ShootSpecial()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && specialEnabled) {
+        if (Input.GetKeyDown(KeyCode.Z) && numSpecials > 0 && specialEnabled) {
             //shoot special
             numSpecials--;
+            inputEnabled = false;
+            shootEnabled = false;
             specialEnabled = false;
-            StartCoroutine(SpecialDelay(player.specialDelay));
+            StartCoroutine(SpecialCooldown(specialCooldown));
         }
     }
 
-    IEnumerator ShootDelay(float time)
+    IEnumerator ShootCooldown(float time)
     {
         yield return new WaitForSeconds(time);
         shootEnabled = true;
     }
 
-    IEnumerator SpecialDelay(float time)
+    IEnumerator SpecialCooldown(float time)
     {
         yield return new WaitForSeconds(time);
+        inputEnabled = true;
+        shootEnabled = true;
         specialEnabled = true;
     }
 
@@ -164,13 +167,10 @@ public class PlayerController : MonoBehaviour
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
 
- 
-
     void Die()
     {
         inputEnabled = false;
         shootEnabled = false;
-        isDead = true;
         Destroy(gameObject);
     }
 }

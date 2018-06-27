@@ -8,9 +8,6 @@ public class BulletEnemy : Bullet
     private float moveSpeed;
     private float lifespan = 1f;
 
-    [SerializeField]
-    private ParticleSystem ps_BulletDestruction;
-
     protected override void Start()
     {
         base.Start();
@@ -28,6 +25,7 @@ public class BulletEnemy : Bullet
         if (c.tag == "Player")
         {
             player.currentHealth -= DealDamage(attack, player.defense);
+            Destroy(gameObject);
         }
     }
 }
