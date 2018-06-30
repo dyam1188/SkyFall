@@ -6,7 +6,6 @@ public class BulletPlayer : Bullet
 {
     [SerializeField]
     private float moveSpeed;
-    private float lifespan = 1f;
 
     protected override void Start()
     {
@@ -25,8 +24,8 @@ public class BulletPlayer : Bullet
     {
         if (c.tag == "Enemy")
         {
-            EnemyCommon ec = c.GetComponent<EnemyCommon>();
-            ec.health -= DealDamage(attack, ec.defense);
+            Enemy enemy = c.GetComponent<Enemy>();
+            enemy.health -= DealDamage(attack, enemy.defense);
             Destroy(gameObject);
         }
     }

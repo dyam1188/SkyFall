@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     public float attack;
     public float defense;
-
-    private int moveSpeed;
+    private float moveSpeed;
+    private float shotDensity;
     private float specialCooldown;
 
     public bool inputEnabled;
@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         attack = player.attack;
         defense = player.defense;
-
         moveSpeed = player.moveSpeed;
+        shotDensity = player.shotDensity;
         specialCooldown = player.specialCooldown;
     }
 
@@ -68,12 +68,12 @@ public class PlayerController : MonoBehaviour
         if (inputEnabled)
         {
             Move();
-        }
 
-        if (shootEnabled)
-        {
-            ShootDefault();
-            ShootSpecial();
+            if (shootEnabled)
+            {
+                ShootDefault();
+                ShootSpecial();
+            }
         }
     }
 
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             ShootBullet();
             shootEnabled = false;
-            StartCoroutine(ShootCooldown(1f / player.shotDensity));
+            StartCoroutine(ShootCooldown(1f / shotDensity));
         }
     }
 

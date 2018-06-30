@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4368012226667444}
   - component: {fileID: 212668112769076958}
-  - component: {fileID: 114395198280805892}
-  - component: {fileID: 58580039005202948}
+  - component: {fileID: 114326859792260596}
   - component: {fileID: 50717133440314190}
+  - component: {fileID: 60386593858274848}
   m_Layer: 0
   m_Name: Cyan
   m_TagString: Enemy
@@ -92,8 +92,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58580039005202948
-CircleCollider2D:
+--- !u!60 &60386593858274848
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -105,9 +105,22 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
---- !u!114 &114395198280805892
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: 0.75, y: -1}
+      - {x: 0, y: -0.75}
+      - {x: -0.75, y: -1}
+--- !u!114 &114326859792260596
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -115,11 +128,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1316538922939218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 369f2e1c35fe2cf40bb29e24da32cfdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 95fb09fb344e41742b7d551dc4e6670a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1500
-  defense: 50
+  health: 1200
+  defense: 60
   moveSpeed: 3
   shotDensity: 1
   attackRange: 5

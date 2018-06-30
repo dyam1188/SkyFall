@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 129
+  controlID: 99
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 163
+  controlID: 10
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 104
+  controlID: 100
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -277,8 +277,8 @@ MonoBehaviour:
     y: 0
     width: 500
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -386,14 +386,14 @@ MonoBehaviour:
     height: 461
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 3095.512088869051
+  lastFramingTime: 1276.371837515093
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.044193454, y: -0.17875747, z: 0.01953125}
+    m_Target: {x: 0.118043885, y: -0.3827914, z: 1.0366642}
     speed: 2
-    m_Value: {x: 0.044193454, y: -0.17875747, z: 0.01953125}
+    m_Value: {x: 0.118043885, y: -0.3827914, z: 1.0366642}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -425,15 +425,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.116671
+    m_Target: 11.554755
     speed: 2
-    m_Value: 11.116671
+    m_Value: 11.554755
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: 0.14083849, y: 0.0053488626, z: -0.0007610243, w: 0.99001783}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -466,9 +466,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 000900005c0900006a0b0000c20c0000
+    m_SelectedIDs: da0c0000
     m_LastClickedID: 0
-    m_ExpandedIDs: f0fbffff00000000a20d0000
+    m_ExpandedIDs: 5866feff4619fffff0fbffff000000008e0d0000980d0000ca0d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -529,20 +529,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/_Prefabs/Characters/Players
+    - Assets/_Prefabs/Characters/Enemies/Boss
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Assets/_Prefabs/Characters/Players
+  - Assets/_Prefabs/Characters/Enemies/Boss
   m_LastFoldersGridSize: 71
   m_LastProjectPath: D:\Program Files\GitHub\SkyFall\Skyfall 2.0\Skyfall 2.0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 040d0000
-    m_LastClickedID: 3332
-    m_ExpandedIDs: 00000000fc08000080090000040a00002c0a00005a0a0000c00a0000ce0a0000200b0000700b0000ac0b0000c40b0000ba0c0000f40c0000320d0000e82e0000ea2e000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 49}
+    m_SelectedIDs: a80a0000
+    m_LastClickedID: 2728
+    m_ExpandedIDs: 00000000fa080000840900000e0a0000360a0000640a0000cc0a0000da0a00002e0b00007e0b0000800b0000c20b0000c60b0000dc0b0000e20c0000160d00001c0d00005a0d00002a2f00002c2f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -570,7 +570,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fc08000080090000040a00002c0a00005a0a0000c00a0000ce0a0000200b0000700b0000ac0b0000c40b0000ba0c0000f40c0000320d0000e82e0000ea2e0000
+    m_ExpandedIDs: 00000000fa080000840900000e0a0000360a0000640a0000cc0a0000da0a00002e0b00007e0b0000800b0000c20b0000c60b0000dc0b0000e20c0000160d00001c0d00005a0d00002a2f00002c2f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -598,7 +598,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 00000000a62a0000a20b00006a090000a8b0feff720a0000
+    m_ExpandedInstanceIDs: a62a0000a20b00006a090000a8b0feff720a0000bc0a00002e38000000000000a60c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

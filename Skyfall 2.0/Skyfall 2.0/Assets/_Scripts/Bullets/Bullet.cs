@@ -11,8 +11,9 @@ public class Bullet : MonoBehaviour
     //the player bullets' attack can be grabbed from the player in the scene because there is always only one player
     [SerializeField]
     protected float attack;
+    protected float lifespan = 3f;
 
-    private float slowSpeed = 5f;
+    private float slowSpeed = 10f;
 
     [SerializeField]
     private ParticleSystem bulletDestruction;

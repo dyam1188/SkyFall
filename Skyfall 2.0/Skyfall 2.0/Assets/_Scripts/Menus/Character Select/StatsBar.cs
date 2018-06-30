@@ -20,7 +20,7 @@ public class StatsBar : MonoBehaviour
     private float[] baseHealth = new float[4];
     private float[] baseAttack = new float[4];
     private float[] baseDefense = new float[4];
-    private int[] baseSpeed = new int[4];
+    private float[] baseSpeed = new float[4];
 
     [Space]
 

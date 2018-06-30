@@ -21,6 +21,6 @@ MonoBehaviour:
   maxHealth: 10000
   attack: 800
   defense: 400
-  moveSpeed: 5
-  shotDensity: 8
+  moveSpeed: 8
+  shotDensity: 10
   specialCooldown: 1

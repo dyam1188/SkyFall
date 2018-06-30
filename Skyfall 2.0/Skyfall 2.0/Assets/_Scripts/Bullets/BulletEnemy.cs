@@ -6,7 +6,6 @@ public class BulletEnemy : Bullet
 {
     [SerializeField]
     private float moveSpeed;
-    private float lifespan = 1f;
 
     protected override void Start()
     {

@@ -12,9 +12,9 @@ public class Enemy : MonoBehaviour
     public float health;
     //we are tracking attack in the respective bullet scripts
     public float defense;
-    public int moveSpeed;
-    public int shotDensity;
-    public int attackRange;
+    public float moveSpeed;
+    public float shotDensity;
+    public float attackRange;
 
     public int gold;
 
@@ -39,10 +39,10 @@ public class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         CheckState();
-        FindPlayer();
+        TargetPlayer();
     }
 
-    void CheckState()
+    protected void CheckState()
     {
         if (health <= 0)
         {
@@ -51,48 +51,48 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //Once enemy leaves camera view, destroy it after 2 seconds
-    void OnBecameInvisible()
+    protected virtual void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
 
-    void FindPlayer()
+    protected void TargetPlayer()
     {
         Vector3 playerPosition = player.transform.position;
         float distance = Vector3.Distance(transform.position, playerPosition);
 
-        LookAt();
-
         if (distance > attackRange)
         {
-            Move();
+            Move(moveSpeed);
         }
-
         else
         {
-            Shoot();
+            Shoot(5);
         }
+
+        LookAt();
     }
 
-    void LookAt()
+    void Move(float speed)
     {
-        transform.up = player.transform.position - transform.position;
+        transform.Translate(new Vector3(0, speed, 0) * Time.deltaTime);
     }
 
-    void Move()
+    protected void Shoot(int ammo)
     {
-        transform.Translate(new Vector3(0, moveSpeed, 0) * Time.deltaTime);
-    }
-
-    void Shoot()
-    {
-        if (shootEnabled)
+        if (shootEnabled && ammo > 0)
         {
             Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+            ammo--;
+
             shootEnabled = false;
             StartCoroutine(ShootCooldown(1f / shotDensity));
         }
+    }
+
+    protected void LookAt()
+    {
+        transform.up = player.transform.position - transform.position;
     }
 
     IEnumerator ShootCooldown(float t)

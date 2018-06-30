@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4642689613526274}
   - component: {fileID: 212738055372816300}
-  - component: {fileID: 114134349704518978}
-  - component: {fileID: 58757935527627140}
+  - component: {fileID: 114389447740894792}
   - component: {fileID: 50399323084952660}
+  - component: {fileID: 60675476834077570}
   m_Layer: 0
   m_Name: Orange
   m_TagString: Enemy
@@ -92,8 +92,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58757935527627140
-CircleCollider2D:
+--- !u!60 &60675476834077570
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -105,9 +105,22 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
---- !u!114 &114134349704518978
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: 0.75, y: -1}
+      - {x: 0, y: -0.75}
+      - {x: -0.75, y: -1}
+--- !u!114 &114389447740894792
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -115,15 +128,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1189564539106010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 369f2e1c35fe2cf40bb29e24da32cfdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 95fb09fb344e41742b7d551dc4e6670a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1500
-  defense: 50
+  health: 1000
+  defense: 75
   moveSpeed: 3
   shotDensity: 1
   attackRange: 5
-  gold: 25
+  gold: 20
   bullet: {fileID: 1836083601457198, guid: 3e8f6e4db89b5814692d168de23edde1, type: 2}
   bulletSpawn: {fileID: 4469383960570844}
 --- !u!212 &212738055372816300

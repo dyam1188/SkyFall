@@ -70,9 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0
-  moveSpeed: 8
-  ps_BulletDestruction: {fileID: 198146317374168702, guid: 4bbaddccfb3a3c64497f82d5e6c1d934,
-    type: 2}
+  bulletDestruction: {fileID: 0}
+  moveSpeed: 10
 --- !u!114 &114872889660395610
 MonoBehaviour:
   m_ObjectHideFlags: 1

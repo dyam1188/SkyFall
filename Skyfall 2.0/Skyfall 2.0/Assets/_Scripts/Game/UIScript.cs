@@ -11,10 +11,7 @@ public class UIScript : MonoBehaviour
     private Text goldText;
 
     [SerializeField]
-    private Slider healthSlider;
-
-    [SerializeField]
-    private Image healthSliderFill;
+    private Image hpFill;
 
     [SerializeField]
     private GameObject[] specialBars = new GameObject[3];
@@ -24,12 +21,12 @@ public class UIScript : MonoBehaviour
     void Start()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        healthSliderFill.color = pc.uiColor;
+        hpFill.color = pc.uiColor;
     }
 
     void Update()
     {
-        healthSlider.value = pc.currentHealth / pc.maxHealth;
+        hpFill.GetComponent<Image>().fillAmount = pc.currentHealth / pc.maxHealth;
         goldText.text = pc.gold.ToString();
 
         for (int i = 0; i < specialBars.Length; i++)
@@ -44,6 +41,11 @@ public class UIScript : MonoBehaviour
             }
 
             specialBars[i].GetComponent<SpriteRenderer>().material.color = pc.uiColor;
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log(hpFill.GetComponent<Image>().fillAmount);
         }
     }
 }
