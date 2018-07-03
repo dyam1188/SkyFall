@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50553186823769212}
   - component: {fileID: 60513837425802836}
   m_Layer: 0
-  m_Name: 3_Gim_Ein
+  m_Name: 3_Gemini
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1634138757071964}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 3.42, y: 2.51, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4634019842558750}
@@ -139,6 +139,8 @@ MonoBehaviour:
   gold: 500
   bullet: {fileID: 1005386526265672, guid: fa94e29743dfca340a8b7ac8c81b0e54, type: 2}
   bulletSpawn: {fileID: 4634019842558750}
+  name: Gim
+  healthBar: {fileID: 0}
 --- !u!212 &212780937939504340
 SpriteRenderer:
   m_ObjectHideFlags: 1

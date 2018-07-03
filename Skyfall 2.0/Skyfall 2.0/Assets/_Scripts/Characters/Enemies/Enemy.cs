@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     public int gold;
 
-    [Space]
+    [Header("Bullet Data")]
 
     [SerializeField]
     [Tooltip("Bullet reference")]
@@ -90,6 +90,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //rotates to face player
     protected void LookAt()
     {
         transform.up = player.transform.position - transform.position;

@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAries : Enemy
+public class Boss : Enemy
 {
+    [SerializeField]
+    new string name;
+
+    [SerializeField]
+    GameObject healthBar;
+
     protected override void Start()
     {
         base.Start();

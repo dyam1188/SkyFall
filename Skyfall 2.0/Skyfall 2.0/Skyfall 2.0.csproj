@@ -303,8 +303,11 @@
     <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletEnemy.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletPlayer.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Aries.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Boss.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Gemini.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Sagittarius.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Enemy.cs" />
-    <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyAries.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySpawn.cs" />
     <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />
     <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
