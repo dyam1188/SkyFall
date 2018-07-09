@@ -305,6 +305,7 @@
     <Compile Include="Assets\_Scripts\Bullets\BulletPlayer.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Aries.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Boss.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\BossHealthBar.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Gemini.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Sagittarius.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Enemy.cs" />
@@ -324,7 +325,7 @@
     <Compile Include="Assets\_Scripts\Menus\Main Menu\SunRotation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Scripts\Characters\Enemies\WaveHandler.txt" />
+    <None Include="Assets\_Scripts\Characters\Enemies\Level1.txt" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Templates\Alert.uxml" />

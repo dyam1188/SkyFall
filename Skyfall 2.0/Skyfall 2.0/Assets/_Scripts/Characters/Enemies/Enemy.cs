@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
         TargetPlayer();
     }
 
-    protected void CheckState()
+    protected virtual void CheckState()
     {
         if (health <= 0)
         {

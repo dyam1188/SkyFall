@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField]
-    private TextAsset file;                                     //WaveHandler.txt
+    private TextAsset file;
 
     [SerializeField]
     private GameObject[] enemyArray = new GameObject[3];
@@ -18,6 +18,8 @@ public class EnemySpawn : MonoBehaviour
     List<float> spawnTimes = new List<float>();                 //                                2
 
     List<string> eachLine = new List<string>();
+
+    public bool endOfFile;
 
     void Start()
     {
@@ -59,5 +61,7 @@ public class EnemySpawn : MonoBehaviour
             Instantiate(enemiesToSpawn[i], new Vector3(xPositions[i], enemiesToSpawn[i].transform.position.y, enemiesToSpawn[i].transform.position.z), enemiesToSpawn[i].transform.rotation);
             yield return new WaitForSeconds(spawnTimes[i]);
         }
+
+        endOfFile = true;
     }
 }

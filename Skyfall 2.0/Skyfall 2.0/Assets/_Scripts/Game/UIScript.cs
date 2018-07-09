@@ -5,47 +5,40 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
-    public int gold;
+    [SerializeField]
+    Image healthFill;
 
     [SerializeField]
-    private Text goldText;
+    GameObject[] specials = new GameObject[3];
 
     [SerializeField]
-    private Image hpFill;
-
-    [SerializeField]
-    private GameObject[] specialBars = new GameObject[3];
+    Text goldText;
 
     PlayerController pc;
 
     void Start()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        hpFill.color = pc.uiColor;
+        healthFill.color = pc.uiColor;
     }
 
     void Update()
     {
-        hpFill.GetComponent<Image>().fillAmount = pc.currentHealth / pc.maxHealth;
+        healthFill.fillAmount = pc.currentHealth / pc.maxHealth;
         goldText.text = pc.gold.ToString();
 
-        for (int i = 0; i < specialBars.Length; i++)
+        for (int i = 0; i < specials.Length; i++)
         {
             if (i < pc.numSpecials)
             {
-                specialBars[i].gameObject.SetActive(true);
+                specials[i].gameObject.SetActive(true);
             }
             else
             {
-                specialBars[i].gameObject.SetActive(false);
+                specials[i].gameObject.SetActive(false);
             }
 
-            specialBars[i].GetComponent<SpriteRenderer>().material.color = pc.uiColor;
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Debug.Log(hpFill.GetComponent<Image>().fillAmount);
+            specials[i].GetComponent<SpriteRenderer>().material.color = pc.uiColor;
         }
     }
 }

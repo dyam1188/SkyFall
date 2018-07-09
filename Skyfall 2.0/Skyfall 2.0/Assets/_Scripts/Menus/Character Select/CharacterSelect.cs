@@ -90,9 +90,9 @@ public class CharacterSelect : MonoBehaviour
         DontDestroyOnLoad(selection);
 
         //enable all components (scripts, collider, etc.)
-        foreach (Behaviour behaviour in selection.GetComponents<Behaviour>())
+        foreach (Behaviour b in selection.GetComponents<Behaviour>())
         {
-            behaviour.enabled = true;
+            b.enabled = true;
         }
     }
 

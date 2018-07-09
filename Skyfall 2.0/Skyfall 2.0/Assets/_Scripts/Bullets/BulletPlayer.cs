@@ -22,7 +22,7 @@ public class BulletPlayer : Bullet
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.tag == "Enemy")
+        if (c.tag == "Enemy" || c.tag == "Boss")
         {
             Enemy enemy = c.GetComponent<Enemy>();
             enemy.health -= DealDamage(attack, enemy.defense);

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 60731360177527640}
   m_Layer: 0
   m_Name: 2_Sagittarius
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4424678374735222}
   name: Saji
   healthBar: {fileID: 0}
+  maxHealth: 0
 --- !u!212 &212477832409063776
 SpriteRenderer:
   m_ObjectHideFlags: 1
