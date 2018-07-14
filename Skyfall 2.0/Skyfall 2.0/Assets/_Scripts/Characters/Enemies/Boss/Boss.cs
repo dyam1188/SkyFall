@@ -34,11 +34,12 @@ public class Boss : Enemy
 
     protected override void Update()
     {
-        UpdateState();
+        CheckState();
+
         if (GetComponent<SpriteRenderer>().material.color.a == 1)
         {
             LookAt();
-            Shoot(10);
+            StartCoroutine(Shoot(100));
         }
     }
 
@@ -49,11 +50,15 @@ public class Boss : Enemy
         StartCoroutine(FadeIn(fadeSpeed));
     }
 
-    void UpdateState()
+    protected override void CheckState()
     {
         if (health <= 0)
         {
-           StartCoroutine(FadeOut(fadeSpeed));
+            StartCoroutine(FadeOut(fadeSpeed));
+            if (!hasCoroutineStarted)
+            {
+                StartCoroutine(DropGold(gold));
+            }
         }
     }
 
@@ -67,7 +72,7 @@ public class Boss : Enemy
     }
 
     //sets alpha from 0 - 1
-    public IEnumerator FadeIn(float fadeSpeed)
+    IEnumerator FadeIn(float fadeSpeed)
     {
         for (float alpha = 0f; alpha <= 1f; alpha += fadeSpeed)
         {
@@ -76,6 +81,7 @@ public class Boss : Enemy
             GetComponent<SpriteRenderer>().material.color = c;
             yield return null;
         }
+
         GetComponent<Collider2D>().enabled = true;
     }
 
@@ -83,6 +89,7 @@ public class Boss : Enemy
     IEnumerator FadeOut(float fadeSpeed)
     {
         GetComponent<Collider2D>().enabled = false;
+
         for (float alpha = 1f; alpha >= 0f; alpha -= fadeSpeed)
         {
             alpha = Mathf.Round(alpha * 100) / 100;
@@ -90,6 +97,5 @@ public class Boss : Enemy
             GetComponent<SpriteRenderer>().material.color = c;
             yield return null;
         }
-        Destroy(gameObject);
     }
 }

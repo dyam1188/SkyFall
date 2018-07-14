@@ -25,7 +25,7 @@ public class UIScript : MonoBehaviour
     void Update()
     {
         healthFill.fillAmount = pc.currentHealth / pc.maxHealth;
-        goldText.text = pc.gold.ToString();
+        goldText.text = pc.gold.ToString("0");
 
         for (int i = 0; i < specials.Length; i++)
         {

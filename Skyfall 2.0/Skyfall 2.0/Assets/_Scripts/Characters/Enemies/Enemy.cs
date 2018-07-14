@@ -29,11 +29,12 @@ public class Enemy : MonoBehaviour
     private Transform bulletSpawn;
 
     protected bool shootEnabled;
+    protected bool hasCoroutineStarted;
 
     protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
-        shootEnabled = true;
+        //shootEnabled = true;
     }
 
     protected virtual void Update()
@@ -46,8 +47,12 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
-            player.GetComponent<PlayerController>().gold += gold;
-            Destroy(gameObject);
+            GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 0);
+            GetComponent<Collider2D>().enabled = false;
+            if (!hasCoroutineStarted)
+            {
+                StartCoroutine(DropGold(gold));
+            }
         }
     }
 
@@ -56,10 +61,12 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected void TargetPlayer()
+    void TargetPlayer()
     {
         Vector3 playerPosition = player.transform.position;
         float distance = Vector3.Distance(transform.position, playerPosition);
+
+        LookAt();
 
         if (distance > attackRange)
         {
@@ -67,26 +74,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Shoot(5);
-        }
-
-        LookAt();
-    }
-
-    void Move(float speed)
-    {
-        transform.Translate(new Vector3(0, speed, 0) * Time.deltaTime);
-    }
-
-    protected void Shoot(int ammo)
-    {
-        if (shootEnabled && ammo > 0)
-        {
-            Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
-            ammo--;
-
-            shootEnabled = false;
-            StartCoroutine(ShootCooldown(1f / shotDensity));
+            StartCoroutine(Shoot(3));
         }
     }
 
@@ -96,9 +84,40 @@ public class Enemy : MonoBehaviour
         transform.up = player.transform.position - transform.position;
     }
 
-    IEnumerator ShootCooldown(float t)
+    void Move(float speed)
     {
-        yield return new WaitForSeconds(t);
-        shootEnabled = true;
+        transform.Translate(new Vector3(0, speed, 0) * Time.deltaTime);
+    }
+
+    protected IEnumerator Shoot(int ammo)
+    {
+        if (shootEnabled)
+        {
+            for (int i = ammo; i > 0; i--)
+            {
+                Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+                shootEnabled = false;
+                yield return new WaitForSeconds(1f / shotDensity);
+                shootEnabled = true;
+            }
+            shootEnabled = false;
+        }
+    }
+
+    protected IEnumerator DropGold(int amount)
+    {
+        PlayerController pc = player.GetComponent<PlayerController>();
+        hasCoroutineStarted = true;
+
+        float duration = 1f;
+
+        //don't ask why it works when i starts at 1 because idk why
+        for (int i = 1; i < duration / Time.fixedDeltaTime; i++)
+        {
+            pc.gold += (amount / duration) * Time.fixedDeltaTime;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

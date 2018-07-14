@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private bool shootEnabled;
     private bool specialEnabled;
 
-    public int gold;
+    public float gold;
 
     void Awake()
     {

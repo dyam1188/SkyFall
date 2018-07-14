@@ -19,7 +19,7 @@ public class EnemySpawn : MonoBehaviour
 
     List<string> eachLine = new List<string>();
 
-    public bool endOfFile;
+    bool endOfFile;
 
     void Start()
     {
