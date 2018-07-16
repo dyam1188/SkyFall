@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4069601176019210}
   - component: {fileID: 212642344875438314}
   - component: {fileID: 114199146851467730}
+  - component: {fileID: 114641517835569424}
   - component: {fileID: 50620053551339300}
   - component: {fileID: 60984531017215676}
   m_Layer: 0
@@ -134,11 +135,28 @@ MonoBehaviour:
   health: 1500
   defense: 50
   moveSpeed: 3
-  shotDensity: 1
-  attackRange: 5
+  attackSpeed: 5
   gold: 25
   bullet: {fileID: 1836083601457198, guid: 4f7e6c377d9e30b49a09bb06f66753e8, type: 2}
   bulletSpawn: {fileID: 4204394266362650}
+--- !u!114 &114641517835569424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051980062082028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d47a9e90bcbb94aa9ca0240921b347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  defense: 0
+  moveSpeed: 0
+  attackSpeed: 0
+  gold: 0
+  bullet: {fileID: 0}
+  bulletSpawn: {fileID: 0}
 --- !u!212 &212642344875438314
 SpriteRenderer:
   m_ObjectHideFlags: 1

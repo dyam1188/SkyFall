@@ -32,8 +32,8 @@ public class Boss : Enemy
 
         if (GetComponent<SpriteRenderer>().material.color.a == 1)
         {
-            LookAt();
-            StartCoroutine(Shoot(100));
+            LookAtPlayer();
+            Shoot();
         }
     }
 

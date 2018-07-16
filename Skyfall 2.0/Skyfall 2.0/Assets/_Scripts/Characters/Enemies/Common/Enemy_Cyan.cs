@@ -11,6 +11,12 @@ public class Enemy_Cyan : Enemy
 
     protected override void Update()
     {
+        base.Update();
+        Move(moveSpeed);
+    }
 
+    protected override void OnBecameInvisible()
+    {
+        base.OnBecameInvisible();
     }
 }

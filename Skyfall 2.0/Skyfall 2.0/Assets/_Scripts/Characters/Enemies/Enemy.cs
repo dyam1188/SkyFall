@@ -14,8 +14,7 @@ public class Enemy : MonoBehaviour
     //we are tracking attack in the respective bullet scripts
     public float defense;
     public float moveSpeed;
-    public float shotDensity;
-    public float attackRange;
+    public float attackSpeed;
 
     public int gold;
 
@@ -41,7 +40,6 @@ public class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         CheckState();
-        TargetPlayer();
     }
 
     protected virtual void CheckState()
@@ -57,54 +55,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
-
-    void TargetPlayer()
-    {
-        Vector3 playerPosition = player.transform.position;
-        float distance = Vector3.Distance(transform.position, playerPosition);
-
-        //LookAt();
-
-        if (distance > attackRange)
-        {
-            Move(moveSpeed);
-        }
-        else
-        {
-            StartCoroutine(Shoot(3));
-        }
-    }
-
     //rotates to face player
-    protected void LookAt()
+    protected void LookAtPlayer()
     {
         transform.up = player.transform.position - transform.position;
     }
 
-    void Move(float speed)
+    protected virtual void Move(float speed)
     {
         transform.Translate(new Vector3(0, speed, 0) * Time.deltaTime);
     }
 
-    protected IEnumerator Shoot(int ammo)
+    protected void Shoot()
     {
         if (shootEnabled)
         {
-            for (int i = ammo; i > 0; i--)
-            {
-                Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
-                shootEnabled = false;
-                yield return new WaitForSeconds(1f / shotDensity);
-                shootEnabled = true;
-            }
+            Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
             shootEnabled = false;
+            StartCoroutine(ShootCooldown(1f / attackSpeed));
         }
+    }
 
-        Debug.Log("coroutine finished.");
+    IEnumerator ShootCooldown(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        shootEnabled = true;
     }
 
     protected IEnumerator DropGold(int amount)
@@ -123,4 +98,11 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    //destroy itself if it leaves the camera
+    protected virtual void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
 }

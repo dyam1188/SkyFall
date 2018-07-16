@@ -26,7 +26,7 @@ public class Player : ScriptableObject
     public float attack;
     public float defense;
     public float moveSpeed;
-    public float shotDensity;
+    public float attackSpeed;
     public float specialCooldown;       //how long the player has to wait before using another special
 
     public const int maxLives = 3;

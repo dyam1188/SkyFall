@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public float attack;
     public float defense;
     private float moveSpeed;
-    private float shotDensity;
+    private float attackSpeed;
     private float specialCooldown;
 
     public bool inputEnabled;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         attack = player.attack;
         defense = player.defense;
         moveSpeed = player.moveSpeed;
-        shotDensity = player.shotDensity;
+        attackSpeed = player.attackSpeed;
         specialCooldown = player.specialCooldown;
     }
 
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
         {
             ShootBullet();
             shootEnabled = false;
-            StartCoroutine(ShootCooldown(1f / shotDensity));
+            StartCoroutine(ShootCooldown(1f / attackSpeed));
         }
     }
 
@@ -159,9 +159,9 @@ public class PlayerController : MonoBehaviour
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
 
-    IEnumerator ShootCooldown(float time)
+    IEnumerator ShootCooldown(float duration)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(duration);
         shootEnabled = true;
     }
 
@@ -178,9 +178,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator SpecialCooldown(float time)
+    IEnumerator SpecialCooldown(float duration)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(duration);
         inputEnabled = true;
         shootEnabled = true;
         specialEnabled = true;
@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 0.5f);
         moveSpeed /= 2;
-        shotDensity /= 2;
+        attackSpeed /= 2;
         attack /= 2;
         specialEnabled = false;
 
@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
         GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 1);
         moveSpeed *= 2;
-        shotDensity *= 2;
+        attackSpeed *= 2;
         attack *= 2;
         specialEnabled = true;
     }
