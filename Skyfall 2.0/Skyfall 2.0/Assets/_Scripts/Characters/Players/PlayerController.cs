@@ -199,6 +199,8 @@ public class PlayerController : MonoBehaviour
         GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 0.5f);
         moveSpeed /= 2;
         shotDensity /= 2;
+        attack /= 2;
+        specialEnabled = false;
 
         StartCoroutine(Wait(duration));
     }
@@ -211,6 +213,8 @@ public class PlayerController : MonoBehaviour
         GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 1);
         moveSpeed *= 2;
         shotDensity *= 2;
+        attack *= 2;
+        specialEnabled = true;
     }
 
     void Die()

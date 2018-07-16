@@ -308,6 +308,9 @@
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\BossHealthBar.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Gemini.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Sagittarius.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Common\Enemy_Cyan.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Common\Enemy_Orange.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Enemies\Common\Enemy_Purple.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySpawn.cs" />
     <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />

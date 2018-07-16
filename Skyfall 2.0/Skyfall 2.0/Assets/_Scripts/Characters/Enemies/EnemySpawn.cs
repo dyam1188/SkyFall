@@ -12,10 +12,11 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField]
     private GameObject[] enemyArray = new GameObject[4];
 
-    int dataAmount = 3;                                         //amount of elements per line in txt file
+    int dataAmount = 4;                                         //amount of elements per line in txt file
     List<GameObject> enemiesToSpawn = new List<GameObject>();   //list to hold all lines' element 0
     List<float> xPositions = new List<float>();                 //                                1
-    List<float> spawnTimes = new List<float>();                 //                                2
+    List<float> yPositions = new List<float>();                 //                                2
+    List<float> spawnTimes = new List<float>();                 //                                3
 
     List<string> eachLine = new List<string>();
 
@@ -46,6 +47,9 @@ public class EnemySpawn : MonoBehaviour
                     xPositions.Add(float.Parse(eachLine[i]));
                     break;
                 case 2:
+                    yPositions.Add(float.Parse(eachLine[i]));
+                    break;
+                case 3:
                     spawnTimes.Add(float.Parse(eachLine[i]));
                     break;
             }
@@ -58,7 +62,7 @@ public class EnemySpawn : MonoBehaviour
     {
         for (int i = 0; i < eachLine.Count / dataAmount; i++)
         {
-            Instantiate(enemiesToSpawn[i], new Vector3(xPositions[i], enemiesToSpawn[i].transform.position.y, enemiesToSpawn[i].transform.position.z), enemiesToSpawn[i].transform.rotation);
+            Instantiate(enemiesToSpawn[i], new Vector3(xPositions[i], yPositions[i], enemiesToSpawn[i].transform.position.z), enemiesToSpawn[i].transform.rotation);
             yield return new WaitForSeconds(spawnTimes[i]);
         }
 

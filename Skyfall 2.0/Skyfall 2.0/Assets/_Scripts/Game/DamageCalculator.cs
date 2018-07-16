@@ -8,8 +8,6 @@ public class DamageCalculator : MonoBehaviour
     //how much to randomize the damage by
     //we don't want the damage amount to be the exact same every single time
     float variance = 0.05f;
-    float atkVariance = 0.04f;
-    float defVariance = 0.02f;
 
     public float CalculateDamage(float attack, float defense)
     {

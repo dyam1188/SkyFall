@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
-        //shootEnabled = true;
+        shootEnabled = true;
     }
 
     protected virtual void Update()
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
         Vector3 playerPosition = player.transform.position;
         float distance = Vector3.Distance(transform.position, playerPosition);
 
-        LookAt();
+        //LookAt();
 
         if (distance > attackRange)
         {
@@ -103,6 +103,8 @@ public class Enemy : MonoBehaviour
             }
             shootEnabled = false;
         }
+
+        Debug.Log("coroutine finished.");
     }
 
     protected IEnumerator DropGold(int amount)
