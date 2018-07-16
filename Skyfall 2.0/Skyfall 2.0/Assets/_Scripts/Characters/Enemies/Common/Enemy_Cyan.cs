@@ -6,7 +6,7 @@ public class Enemy_Cyan : Enemy
 {
     protected override void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
     }
 
     protected override void Update()

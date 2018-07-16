@@ -14,6 +14,7 @@ public class Enemy_Purple : Enemy
     {
         base.Update();
         Move(moveSpeed);
+        LookAtPlayer();
         Shoot();
     }
 

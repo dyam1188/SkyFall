@@ -54,10 +54,15 @@
      <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
      <Compile Include="Assets\_Scripts\Bullets\BulletEnemy.cs" />
      <Compile Include="Assets\_Scripts\Bullets\BulletPlayer.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Aries.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Boss.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\BossHealthBar.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Gemini.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Sagittarius.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Common\Enemy_Cyan.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Common\Enemy_Orange.cs" />
+     <Compile Include="Assets\_Scripts\Characters\Enemies\Common\Enemy_Purple.cs" />
      <Compile Include="Assets\_Scripts\Characters\Enemies\Enemy.cs" />
-     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyAries.cs" />
-     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemyGimEin.cs" />
-     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySaji.cs" />
      <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySpawn.cs" />
      <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />
      <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
@@ -72,7 +77,7 @@
      <Compile Include="Assets\_Scripts\Menus\Main Menu\MainMenu.cs" />
      <Compile Include="Assets\_Scripts\Menus\Main Menu\OptionsMenu.cs" />
      <Compile Include="Assets\_Scripts\Menus\Main Menu\SunRotation.cs" />
-     <None Include="Assets\_Scripts\Characters\Enemies\WaveHandler.txt" />
+     <None Include="Assets\_Scripts\Characters\Enemies\Level1.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Darren Yam/Documents/GitHub/SkyFall/Skyfall 2.0/Skyfall 2.0/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

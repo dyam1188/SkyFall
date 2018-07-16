@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1200
   defense: 60
-  moveSpeed: 3
+  moveSpeed: 5
   attackSpeed: 5
   gold: 10
   bullet: {fileID: 1836083601457198, guid: 71ee768bb18e1794eae4ba3b5782d172, type: 2}

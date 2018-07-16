@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 9
+  controlID: 10433
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 55
+  controlID: 10460
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -178,8 +178,8 @@ MonoBehaviour:
     y: 479
     width: 649
     height: 468
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 10
+  controlID: 10434
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,8 +227,8 @@ MonoBehaviour:
     y: 0
     width: 708
     height: 479
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -277,8 +277,8 @@ MonoBehaviour:
     y: 0
     width: 563
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -466,9 +466,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 320c0000
+    m_SelectedIDs: ae050000
     m_LastClickedID: 0
-    m_ExpandedIDs: c6f5fffff0fbffff00000000
+    m_ExpandedIDs: 14f2ffff0000000002320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -529,34 +529,35 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/_Prefabs/Characters/Enemies/Common
+    - Assets/_Scripts/Characters/Enemies/Boss
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_Prefabs/Characters/Enemies/Common
+  - Assets/_Scripts/Characters/Enemies/Boss
   m_LastFoldersGridSize: 64
-  m_LastProjectPath: D:\Program Files\GitHub\SkyFall\Skyfall 2.0\Skyfall 2.0
+  m_LastProjectPath: C:\Users\Darren Yam\Documents\GitHub\SkyFall\Skyfall 2.0\Skyfall
+    2.0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 46}
-    m_SelectedIDs: 6a0c0000
-    m_LastClickedID: 3178
-    m_ExpandedIDs: 0000000008090000940900001a0a0000420a0000700a0000b80a0000e20a0000f00a0000380b0000480b0000a20b0000e40b0000e80b0000fe0b0000080d00003c0d0000420d0000800d0000880d00006c2f00006e2f0000702f000000ca9a3bffffff7f
+    m_SelectedIDs: e82d0000
+    m_LastClickedID: 11752
+    m_ExpandedIDs: 00000000da2d0000522e0000c82e0000ec2e0000142f0000562f00006e2f00007c2f0000ba2f0000c82f0000183000004e30000052300000643000004e310000763100007c310000b2310000b831000060320000623200006432000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: _Scenes
-      m_OriginalName: _Scenes
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 2322
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -570,7 +571,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000008090000940900001a0a0000420a0000700a0000b80a0000e20a0000380b0000480b0000a20b0000e40b0000e80b0000fe0b0000080d00003c0d0000420d0000800d0000880d00006c2f00006e2f0000702f0000
+    m_ExpandedIDs: 00000000da2d0000522e0000c82e0000ec2e0000142f0000562f00006e2f00007c2f0000ba2f0000c82f0000183000004e30000052300000643000004e310000763100007c310000b2310000b831000060320000623200006432000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -597,7 +598,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: a62a0000a20b00006a090000a8b0feff720a0000bc0a00002e38000000000000a60c0000822a0000682d0000342d0000440c0000080a00000a0a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -614,7 +615,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 3}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

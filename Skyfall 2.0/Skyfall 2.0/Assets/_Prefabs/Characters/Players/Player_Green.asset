@@ -22,5 +22,5 @@ MonoBehaviour:
   attack: 800
   defense: 300
   moveSpeed: 8.5
-  shotDensity: 9
+  attackSpeed: 7.5
   specialCooldown: 1
