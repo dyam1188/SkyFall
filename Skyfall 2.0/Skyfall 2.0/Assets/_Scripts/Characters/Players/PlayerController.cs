@@ -72,8 +72,33 @@ public class PlayerController : MonoBehaviour
             if (shootEnabled)
             {
                 ShootDefault();
+            }
+
+            if (specialEnabled)
+            {
                 ShootSpecial();
             }
+        }
+
+        Debug();
+    }
+
+    //debugging purposes, will remove later
+    void Debug()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Die();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoseLife();
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SetInvincible(3f);
         }
     }
 
@@ -81,8 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            numLives--;
-            currentHealth = maxHealth;
+            LoseLife();
         }
 
         if (numLives <= 0)
@@ -118,12 +142,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate((Vector3.down * moveSpeed) * Time.deltaTime);
         }
-
-        //debugging purposes, will remove later
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Die();
-        }
     }
 
     void ShootDefault()
@@ -136,9 +154,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ShootBullet()
+    {
+        Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+    }
+
+    IEnumerator ShootCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        shootEnabled = true;
+    }
+
     void ShootSpecial()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && numSpecials > 0 && specialEnabled) {
+        if (Input.GetKeyDown(KeyCode.Z) && numSpecials > 0 && specialEnabled)
+        {
             //shoot special
             numSpecials--;
             inputEnabled = false;
@@ -146,12 +176,6 @@ public class PlayerController : MonoBehaviour
             specialEnabled = false;
             StartCoroutine(SpecialCooldown(specialCooldown));
         }
-    }
-
-    IEnumerator ShootCooldown(float time)
-    {
-        yield return new WaitForSeconds(time);
-        shootEnabled = true;
     }
 
     IEnumerator SpecialCooldown(float time)
@@ -162,9 +186,31 @@ public class PlayerController : MonoBehaviour
         specialEnabled = true;
     }
 
-    void ShootBullet()
+    void LoseLife()
     {
-        Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+        numLives--;
+        currentHealth = maxHealth;
+        SetInvincible(3f);
+    }
+
+    void SetInvincible(float duration)
+    {
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 0.5f);
+        moveSpeed /= 2;
+        shotDensity /= 2;
+
+        StartCoroutine(Wait(duration));
+    }
+
+    IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 1);
+        moveSpeed *= 2;
+        shotDensity *= 2;
     }
 
     void Die()

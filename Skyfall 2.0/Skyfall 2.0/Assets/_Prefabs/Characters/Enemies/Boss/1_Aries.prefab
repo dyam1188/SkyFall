@@ -140,7 +140,10 @@ MonoBehaviour:
   bullet: {fileID: 1076358248011136, guid: 16026482e44b838488465603e6a088b6, type: 2}
   bulletSpawn: {fileID: 4337051953711212}
   name: Seria
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 114704750009346236, guid: 4a2b08e858951a04f9932aa667b68ea7,
+    type: 2}
+  canvas: {fileID: 0}
+  maxHealth: 0
 --- !u!212 &212158042092419904
 SpriteRenderer:
   m_ObjectHideFlags: 1

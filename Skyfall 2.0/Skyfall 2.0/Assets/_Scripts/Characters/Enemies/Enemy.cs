@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //parent Enemy class
+//controls all common enemy mechanics
 public class Enemy : MonoBehaviour
 {
     protected GameObject player;  //reference to player

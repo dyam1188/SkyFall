@@ -43,7 +43,7 @@ public class CharacterSelect : MonoBehaviour
 
     void GetKeyInput()
     {
-        //there has to be a better way to do this >_>
+        //there has to be a better way to do this
         if (Input.GetKeyDown(KeyCode.LeftArrow) && menuChoice != 0)
         {
             StartCoroutine(FadeOut(playersSprite[menuChoice]));

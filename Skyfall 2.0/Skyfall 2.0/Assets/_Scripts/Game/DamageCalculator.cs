@@ -13,7 +13,6 @@ public class DamageCalculator : MonoBehaviour
 
     public float CalculateDamage(float attack, float defense)
     {
-        //float damage = (attack * (40 * Random.Range(0, atkVariance))) - (defense * (20 * Random.Range(0, defVariance)));
         float damage = attack - defense;
 
         //add variance, set minimum damage to 1, and round it back to a whole number

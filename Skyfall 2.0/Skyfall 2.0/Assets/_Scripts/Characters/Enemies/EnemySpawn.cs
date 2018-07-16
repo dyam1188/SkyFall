@@ -10,7 +10,7 @@ public class EnemySpawn : MonoBehaviour
     private TextAsset file;
 
     [SerializeField]
-    private GameObject[] enemyArray = new GameObject[3];
+    private GameObject[] enemyArray = new GameObject[4];
 
     int dataAmount = 3;                                         //amount of elements per line in txt file
     List<GameObject> enemiesToSpawn = new List<GameObject>();   //list to hold all lines' element 0
@@ -19,7 +19,7 @@ public class EnemySpawn : MonoBehaviour
 
     List<string> eachLine = new List<string>();
 
-    bool endOfFile;
+    public bool hasBossSpawned;
 
     void Start()
     {
@@ -62,6 +62,6 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(spawnTimes[i]);
         }
 
-        endOfFile = true;
+        hasBossSpawned = true;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//controls boss-specific mechanics (such as moving and shooting)
 public class Boss : Enemy
 {
     [Header("Boss-specific Data")]
@@ -10,15 +11,8 @@ public class Boss : Enemy
     [SerializeField]
     new string name;
 
-    [SerializeField]
-    Image healthBar;
-
-    [SerializeField]
-    Canvas canvas;
-
-    public float maxHealth;         //variable is required to scale its health bar, unlike common enemies
-
-    float fadeSpeed = 0.01f;
+    public float maxHealth;         //variable is needed to scale its health bar, unlike common enemies (which don't have health bars)
+    public float fadeSpeed = 0.01f;
 
     void Awake()
     {
@@ -45,7 +39,6 @@ public class Boss : Enemy
 
     void EnterScene()
     {
-        Instantiate(healthBar, canvas.transform);
         StartCoroutine(MoveIn());
         StartCoroutine(FadeIn(fadeSpeed));
     }
