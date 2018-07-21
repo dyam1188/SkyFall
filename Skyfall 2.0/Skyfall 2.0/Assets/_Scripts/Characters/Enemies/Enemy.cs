@@ -22,11 +22,11 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Bullet reference")]
-    private GameObject bullet;
+    GameObject bullet;
 
     [SerializeField]
     [Tooltip("Where the bullet spawns")]
-    private Transform bulletSpawn;
+    Transform bulletSpawn;
 
     protected bool shootEnabled;
     protected bool hasCoroutineStarted;

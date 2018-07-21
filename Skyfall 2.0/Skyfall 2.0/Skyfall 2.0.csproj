@@ -300,9 +300,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\BackgroundScroll.cs" />
     <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletEnemy.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletPlayer.cs" />
+    <Compile Include="Assets\_Scripts\Character Select\ArrowAnimation.cs" />
+    <Compile Include="Assets\_Scripts\Character Select\CharacterSelect.cs" />
+    <Compile Include="Assets\_Scripts\Character Select\StatsBar.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Aries.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\Boss.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Boss\BossHealthBar.cs" />
@@ -313,22 +317,25 @@
     <Compile Include="Assets\_Scripts\Characters\Enemies\Common\Enemy_Purple.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Characters\Enemies\EnemySpawn.cs" />
-    <Compile Include="Assets\_Scripts\Characters\Players\Player.cs" />
-    <Compile Include="Assets\_Scripts\Characters\Players\PlayerController.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Player\Player.cs" />
+    <Compile Include="Assets\_Scripts\Characters\Player\PlayerController.cs" />
     <Compile Include="Assets\_Scripts\Game\DamageCalculator.cs" />
     <Compile Include="Assets\_Scripts\Game\GameController.cs" />
+    <Compile Include="Assets\_Scripts\Game\PauseMenu.cs" />
     <Compile Include="Assets\_Scripts\Game\UIScript.cs" />
-    <Compile Include="Assets\_Scripts\Menus\BackgroundScroll.cs" />
-    <Compile Include="Assets\_Scripts\Menus\Character Select\ArrowAnimation.cs" />
-    <Compile Include="Assets\_Scripts\Menus\Character Select\CharacterSelect.cs" />
-    <Compile Include="Assets\_Scripts\Menus\Character Select\StatsBar.cs" />
-    <Compile Include="Assets\_Scripts\Menus\Main Menu\HowToPlayMenu.cs" />
-    <Compile Include="Assets\_Scripts\Menus\Main Menu\MainMenu.cs" />
-    <Compile Include="Assets\_Scripts\Menus\Main Menu\OptionsMenu.cs" />
-    <Compile Include="Assets\_Scripts\Menus\Main Menu\SunRotation.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\HowToPlay.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\HowToPlayMenu.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\Main.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\MainMenu.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\Menu.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\Options.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\OptionsMenu.cs" />
+    <Compile Include="Assets\_Scripts\Main Menu\SunRotation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Scripts\Characters\Enemies\Level1.txt" />
+    <None Include="Assets\_Scripts\Game\Level Data\Level1.txt" />
+    <None Include="Assets\_Scripts\Game\Level Data\Level2.txt" />
+    <None Include="Assets\_Scripts\Game\Level Data\Level3.txt" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="C:\Users\nicch\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Templates\Alert.uxml" />

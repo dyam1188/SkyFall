@@ -1,25 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //controls game's main functions
-//attached to Game -> Script Holder - Game
+//attached to Level# -> Script Holder - Game
 public class GameController : MonoBehaviour
 {
-    private GameObject player;
+    GameObject player;
 
     [SerializeField]
-    private Canvas optionsMenu;
-
-    [SerializeField]
-    private SpriteRenderer blackBG;
+    GameObject pauseMenu;
 
     public bool isPaused;
 
     void Start()
     {
         InitializePlayer();
-        blackBG.material.color = new Color(1, 1, 1, 0);
+        DisablePauseMenu();
     }
 
     //sets player's starting transform
@@ -31,9 +30,18 @@ public class GameController : MonoBehaviour
         player.transform.localScale = new Vector3(0.5f, 0.5f);
     }
 
+    void DisablePauseMenu()
+    {
+        foreach (Behaviour b in pauseMenu.GetComponents<Behaviour>())
+        {
+            b.enabled = false;
+        }
+    }
+
     void Update()
     {
         CheckState();
+        DebugStuff();
     }
 
     //game stuffs
@@ -46,15 +54,33 @@ public class GameController : MonoBehaviour
         //add more stuff later
     }
 
-    //?: operators are useful ^_^
+    //?: operators are useful
     void SetPaused()
     {
         isPaused = isPaused ? false : true;
         Time.timeScale = isPaused ? 0 : 1;
         player.GetComponent<PlayerController>().inputEnabled = isPaused ? false : true;
+        foreach (Behaviour b in pauseMenu.GetComponents<Behaviour>())
+        {
+            b.enabled = isPaused ? true : false;
+        }
+    }
 
-        float alpha = isPaused ? 0.7f : 0f;
-        blackBG.material.color = new Color(1, 1, 1, alpha);
-        //optionsMenu.GetComponent<CanvasGroup>().alpha = isPaused ? 0 : 1;
+    void DebugStuff()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    void LoadScene(int index)
+    {
+        SceneManager.LoadSceneAsync(index);
     }
 }
