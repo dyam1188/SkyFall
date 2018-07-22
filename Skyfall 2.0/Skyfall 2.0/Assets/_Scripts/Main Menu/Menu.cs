@@ -18,7 +18,7 @@ public class Menu : MonoBehaviour
     //text effects
     const int large = 72;
     const int small = 60;
-    float fadeSpeed = 0.1f;
+    protected const float fadeSpeed = 0.1f;
 
     protected virtual void Start()
     {
@@ -32,6 +32,8 @@ public class Menu : MonoBehaviour
         {
             GetKeyInput();
         }
+
+        ResizeText();
     }
 
     protected virtual void GetKeyInput()
@@ -39,13 +41,11 @@ public class Menu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && choice != 0)
         {
             choice--;
-            ResizeText();
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && choice != textArray.Length - 1)
         {
             choice++;
-            ResizeText();
         }
 
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
@@ -59,27 +59,26 @@ public class Menu : MonoBehaviour
     {
         for (int i = 0; i < textArray.Length; i++)
         {
-            if (i == choice)
-            {
-                SetText(textArray[i], large, new Vector2(2, 2));
-            }
-
-            else
-            {
-                SetText(textArray[i], small, new Vector2(0, 0));
-            }
+            textArray[i].fontSize = i == choice ? large : small;
+            textArray[i].GetComponent<Outline>().enabled = i == choice ? true : false;
         }
-    }
-
-    void SetText(Text t, int fontSize, Vector2 outlineSize)
-    {
-        t.fontSize = fontSize;
-        t.GetComponent<Outline>().effectDistance = new Vector2(outlineSize.x, outlineSize.y);
     }
 
     protected virtual void MakeChoice(int choice)
     {
         //code goes in children's respective override classes
+    }
+
+    protected void ToggleActive(Main m, HowToPlay h)
+    {
+        m.enabled = m.enabled ? false : true;
+        h.enabled = h.enabled ? false : true;
+    }
+
+    protected void ToggleActive(Main m, Options o)
+    {
+        m.enabled = m.enabled ? false : true;
+        o.enabled = o.enabled ? false : true;
     }
 
     protected IEnumerator ChangeMenu(CanvasGroup canvasOut, CanvasGroup canvasIn)
@@ -93,6 +92,7 @@ public class Menu : MonoBehaviour
         }
 
         canvasOut.gameObject.SetActive(false);
+        choice = 0;
         canvasIn.gameObject.SetActive(true);
 
         while (canvasIn.alpha < 1)
@@ -106,9 +106,8 @@ public class Menu : MonoBehaviour
         enabled = false;
     }
 
-    protected void BackToMainMenu()
+    protected virtual void BackToMainMenu()
     {
         StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[1]));
-        GetComponent<Main>().enabled = true;
     }
 }

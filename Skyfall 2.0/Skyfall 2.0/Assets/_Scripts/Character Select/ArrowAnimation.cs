@@ -27,11 +27,11 @@ public class ArrowAnimation : MonoBehaviour
     //make selection arrows disappear at appropriate times
     void Redisplay()
     {
-        if (cs.menuChoice == 0)
+        if (cs.choice == 0)
         {
             leftArrow.SetActive(false);
         }
-        else if (cs.menuChoice == cs.players.Length - 1)
+        else if (cs.choice == cs.players.Length - 1)
         {
             rightArrow.SetActive(false);
         }

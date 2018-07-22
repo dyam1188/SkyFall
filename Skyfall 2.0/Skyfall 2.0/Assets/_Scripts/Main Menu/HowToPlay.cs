@@ -21,6 +21,17 @@ public class HowToPlay : Menu
 
     protected override void MakeChoice(int choice)
     {
-        BackToMainMenu();
+        switch (choice)
+        {
+            case 0:
+                BackToMainMenu();
+                break;
+        }
+    }
+
+    protected override void BackToMainMenu()
+    {
+        base.BackToMainMenu();
+        ToggleActive(GetComponent<Main>(), this);
     }
 }

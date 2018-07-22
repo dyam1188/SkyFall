@@ -324,12 +324,9 @@
     <Compile Include="Assets\_Scripts\Game\PauseMenu.cs" />
     <Compile Include="Assets\_Scripts\Game\UIScript.cs" />
     <Compile Include="Assets\_Scripts\Main Menu\HowToPlay.cs" />
-    <Compile Include="Assets\_Scripts\Main Menu\HowToPlayMenu.cs" />
     <Compile Include="Assets\_Scripts\Main Menu\Main.cs" />
-    <Compile Include="Assets\_Scripts\Main Menu\MainMenu.cs" />
     <Compile Include="Assets\_Scripts\Main Menu\Menu.cs" />
     <Compile Include="Assets\_Scripts\Main Menu\Options.cs" />
-    <Compile Include="Assets\_Scripts\Main Menu\OptionsMenu.cs" />
     <Compile Include="Assets\_Scripts\Main Menu\SunRotation.cs" />
   </ItemGroup>
   <ItemGroup>

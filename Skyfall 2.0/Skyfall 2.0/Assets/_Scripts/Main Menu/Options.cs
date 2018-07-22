@@ -21,6 +21,14 @@ public class Options : Menu
     [SerializeField]
     Text soundVolumeText;
 
+    [SerializeField]
+    AudioSource backgroundMusic;
+
+    private void Awake()
+    {
+        UpdateMusic();
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -29,8 +37,19 @@ public class Options : Menu
     protected override void Update()
     {
         base.Update();
+        UpdateText();
+        UpdateMusic();
+    }
+
+    void UpdateText()
+    {
         musicVolumeText.text = musicSlider.value.ToString();
         soundVolumeText.text = soundSlider.value.ToString();
+    }
+
+    void UpdateMusic()
+    {
+        backgroundMusic.volume = musicSlider.value / musicSlider.maxValue;
     }
 
     protected override void GetKeyInput()
@@ -42,7 +61,7 @@ public class Options : Menu
             BackToMainMenu();
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             switch (choice)
             {
@@ -55,7 +74,7 @@ public class Options : Menu
             }
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             switch (choice)
             {
@@ -80,5 +99,11 @@ public class Options : Menu
         {
             BackToMainMenu();
         }
+    }
+
+    protected override void BackToMainMenu()
+    {
+        base.BackToMainMenu();
+        ToggleActive(GetComponent<Main>(), this);
     }
 }

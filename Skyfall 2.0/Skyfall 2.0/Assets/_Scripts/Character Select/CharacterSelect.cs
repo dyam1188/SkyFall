@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 //attached to CharacterSelect -> Script Holder - Character Select
 public class CharacterSelect : MonoBehaviour
 {
-    public int menuChoice = 0;
+    bool inputEnabled = true;
+
+    public int choice = 0;
 
     public GameObject[] players = new GameObject[4];
-    private SpriteRenderer[] playersSprite = new SpriteRenderer[4];
+    SpriteRenderer[] playersSprite = new SpriteRenderer[4];
 
-    private const float fadeSpeed = 0.1f;       //how fast the alpha increases/decreases over 1 frame
-    private const float moveSpeed = 0.1f;
-    private float left, middle, right;
-
-    private bool inputEnabled = true;
+    const float fadeSpeed = 0.1f;
+    const float scrollSpeed = 0.1f;
+    float left, middle, right;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class CharacterSelect : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             playersSprite[i] = players[i].GetComponent<SpriteRenderer>();
-            if (i != menuChoice)
+            if (i != choice)
             {
                 playersSprite[i].material.color = new Color(1, 1, 1, 0);
             }
@@ -44,26 +44,26 @@ public class CharacterSelect : MonoBehaviour
     void GetKeyInput()
     {
         //there has to be a better way to do this
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && menuChoice != 0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && choice != 0)
         {
-            StartCoroutine(FadeOut(playersSprite[menuChoice]));
-            StartCoroutine(MoveRight(players[menuChoice].GetComponent<Transform>(), middle, right));
+            StartCoroutine(FadeOut(playersSprite[choice]));
+            StartCoroutine(MoveRight(players[choice].GetComponent<Transform>(), middle, right));
 
-            menuChoice--;
+            choice--;
 
-            StartCoroutine(FadeIn(playersSprite[menuChoice]));
-            StartCoroutine(MoveRight(players[menuChoice].GetComponent<Transform>(), left, middle));
+            StartCoroutine(FadeIn(playersSprite[choice]));
+            StartCoroutine(MoveRight(players[choice].GetComponent<Transform>(), left, middle));
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && menuChoice != players.Length - 1)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && choice != players.Length - 1)
         {
-            StartCoroutine(FadeOut(playersSprite[menuChoice]));
-            StartCoroutine(MoveLeft(players[menuChoice].GetComponent<Transform>(), middle, left));
+            StartCoroutine(FadeOut(playersSprite[choice]));
+            StartCoroutine(MoveLeft(players[choice].GetComponent<Transform>(), middle, left));
 
-            menuChoice++;
+            choice++;
 
-            StartCoroutine(FadeIn(playersSprite[menuChoice]));
-            StartCoroutine(MoveLeft(players[menuChoice].GetComponent<Transform>(), right, middle));
+            StartCoroutine(FadeIn(playersSprite[choice]));
+            StartCoroutine(MoveLeft(players[choice].GetComponent<Transform>(), right, middle));
         }
 
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
@@ -86,7 +86,7 @@ public class CharacterSelect : MonoBehaviour
     void SelectCharacter()
     {
         //carry over selected character to the game scene
-        GameObject selection = players[menuChoice];
+        GameObject selection = players[choice];
         DontDestroyOnLoad(selection);
 
         //enable all components (scripts, collider, etc.)
@@ -96,34 +96,34 @@ public class CharacterSelect : MonoBehaviour
         }
     }
 
-    //moves the selected gameobject left
+    //scrolls the characters left
     IEnumerator MoveLeft(Transform t, float from, float to)
     {
-        for (float x = from; x >= to; x -= moveSpeed)
+        for (float x = from; x >= to; x -= scrollSpeed)
         {
             Move(t, x);
             yield return null;
         }
     }
 
-    //moves the selected gameobject right
+    //"" right
     IEnumerator MoveRight(Transform t, float from, float to)
     {
-        for (float x = from; x <= to; x += moveSpeed)
+        for (float x = from; x <= to; x += scrollSpeed)
         {
             Move(t, x);
             yield return null;
         }
     }
 
-    //controls the movement
+    //controls scrolling
     void Move(Transform t, float x)
     {
         x = Mathf.Round(x * 10) / 10;
         t.position = new Vector3(x, t.position.y, t.position.z);
     }
 
-    //fades out the selected sprite
+    //fades the character sprite out
     IEnumerator FadeOut(SpriteRenderer sr)
     {
         inputEnabled = false;
@@ -135,7 +135,7 @@ public class CharacterSelect : MonoBehaviour
         sr.gameObject.SetActive(false);
     }
 
-    //fades in the selected sprite
+    //"" in
     IEnumerator FadeIn(SpriteRenderer sr)
     {
         sr.gameObject.SetActive(true);
@@ -147,12 +147,10 @@ public class CharacterSelect : MonoBehaviour
         inputEnabled = true;
     }
 
-    //controls the fade
+    //controls fade
     void Fade(SpriteRenderer sr, float alpha)
     {
-        Color c = sr.material.color;
         alpha = Mathf.Round(alpha * (1 / fadeSpeed)) / (1 / fadeSpeed);
-        c.a = alpha;
-        sr.material.color = c;
+        sr.material.color = new Color(1, 1, 1, alpha);
     }
 }

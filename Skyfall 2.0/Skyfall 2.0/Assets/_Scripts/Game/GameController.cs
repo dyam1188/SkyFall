@@ -18,11 +18,10 @@ public class GameController : MonoBehaviour
     void Start()
     {
         InitializePlayer();
-        DisablePauseMenu();
     }
 
     //sets player's starting transform
-    //this is needed because the player is passed from the Character Select scene through DontDestroyOnLoad()
+    //this is needed because the player is passed from the Character Select scene with DontDestroyOnLoad()
     void InitializePlayer()
     {
         player = GameObject.FindWithTag("Player");
@@ -30,53 +29,26 @@ public class GameController : MonoBehaviour
         player.transform.localScale = new Vector3(0.5f, 0.5f);
     }
 
-    void DisablePauseMenu()
-    {
-        foreach (Behaviour b in pauseMenu.GetComponents<Behaviour>())
-        {
-            b.enabled = false;
-        }
-    }
-
     void Update()
     {
-        CheckState();
-        DebugStuff();
+        GetKeyInput();
+        CheckPauseState();
     }
 
-    //game stuffs
-    void CheckState()
+    void GetKeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            SetPaused();
+            isPaused = isPaused ? false : true;
         }
-        //add more stuff later
     }
 
     //?: operators are useful
-    void SetPaused()
+    void CheckPauseState()
     {
-        isPaused = isPaused ? false : true;
         Time.timeScale = isPaused ? 0 : 1;
         player.GetComponent<PlayerController>().inputEnabled = isPaused ? false : true;
-        foreach (Behaviour b in pauseMenu.GetComponents<Behaviour>())
-        {
-            b.enabled = isPaused ? true : false;
-        }
-    }
-
-    void DebugStuff()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        pauseMenu.SetActive(isPaused ? true : false);
     }
 
     void LoadScene(int index)

@@ -31,11 +31,11 @@ public class Main : Menu
                 break;
             case 1:
                 StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[choice]));
-                GetComponent<HowToPlay>().enabled = true;
+                ToggleActive(this, GetComponent<HowToPlay>());
                 break;
             case 2:
                 StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[choice]));
-                GetComponent<Options>().enabled = true;
+                ToggleActive(this, GetComponent<Options>());
                 break;
             case 3:
                 Quit();

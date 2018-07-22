@@ -63,22 +63,22 @@ public class StatsBar : MonoBehaviour
             {
                 //health bar
                 case 0:
-                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].maxHealth / Mathf.Max(baseHealth)));
+                    mySprite = SetSprite(tex.width * (players[cs.choice].maxHealth / Mathf.Max(baseHealth)));
                     break;
 
                 //attack bar
                 case 1:
-                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].attack / Mathf.Max(baseAttack)));
+                    mySprite = SetSprite(tex.width * (players[cs.choice].attack / Mathf.Max(baseAttack)));
                     break;
 
                 //defense bar
                 case 2:
-                    mySprite = SetSprite(tex.width * (players[cs.menuChoice].defense / Mathf.Max(baseDefense)));
+                    mySprite = SetSprite(tex.width * (players[cs.choice].defense / Mathf.Max(baseDefense)));
                     break;
 
                 //speed bar
                 case 3:
-                    mySprite = SetSprite(tex.width * ((float)players[cs.menuChoice].moveSpeed / Mathf.Max(baseSpeed)));
+                    mySprite = SetSprite(tex.width * ((float)players[cs.choice].moveSpeed / Mathf.Max(baseSpeed)));
                     break;
             }
 
