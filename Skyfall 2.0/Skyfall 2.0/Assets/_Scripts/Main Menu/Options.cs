@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//menu handling for options menu in main menu and game (while paused)
 public class Options : Menu
 {
     [Space]
@@ -24,8 +25,9 @@ public class Options : Menu
     [SerializeField]
     AudioSource backgroundMusic;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         UpdateMusic();
     }
 

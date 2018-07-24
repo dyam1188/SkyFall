@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//parent menu class
 public class Menu : MonoBehaviour
 {
     bool inputEnabled;
@@ -18,22 +19,25 @@ public class Menu : MonoBehaviour
     //text effects
     const int large = 72;
     const int small = 60;
-    protected const float fadeSpeed = 0.1f;
+    const float fadeSpeed = 0.1f;
+
+    protected virtual void Awake()
+    {
+        ResizeText(large, small);
+    }
 
     protected virtual void Start()
     {
-        textArray[choice].fontSize = large;
         inputEnabled = true;
     }
 
     protected virtual void Update()
     {
-        if (inputEnabled)
+        if (inputEnabled && gameObject.activeSelf)
         {
             GetKeyInput();
         }
-
-        ResizeText();
+        ResizeText(large, small);
     }
 
     protected virtual void GetKeyInput()
@@ -48,18 +52,18 @@ public class Menu : MonoBehaviour
             choice++;
         }
 
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.X) || Input.GetKeyUp(KeyCode.Space))
         {
             MakeChoice(choice);
         }
     }
 
     //resizes text according to menu choice
-    void ResizeText()
+    protected void ResizeText(int sizeLarge, int sizeSmall)
     {
         for (int i = 0; i < textArray.Length; i++)
         {
-            textArray[i].fontSize = i == choice ? large : small;
+            textArray[i].fontSize = i == choice ? sizeLarge : sizeSmall;
             textArray[i].GetComponent<Outline>().enabled = i == choice ? true : false;
         }
     }

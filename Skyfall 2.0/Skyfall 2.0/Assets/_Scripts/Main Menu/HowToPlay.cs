@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//menu handling for how to play menu in main menu
 public class HowToPlay : Menu
 {
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected override void Start()
     {
         base.Start();

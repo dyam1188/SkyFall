@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//menu handling for main menu
 public class Main : Menu
 {
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected override void Start()
     {
         base.Start();
