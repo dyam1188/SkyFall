@@ -106,6 +106,7 @@ public class Options : Menu
     protected override void BackToMainMenu()
     {
         base.BackToMainMenu();
-        ToggleActive(GetComponent<Main>(), this);
+        ToggleActive(GetComponent<Main>());
+        ToggleActive(this);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 //controls game's main functions
 //attached to Level# -> Script Holder - Game
@@ -12,44 +11,21 @@ public class GameController : MonoBehaviour
     [SerializeField]
     GameObject blackScreen;
 
-    [SerializeField]
-    GameObject pauseMenuController;
-
     public bool isPaused;
 
     void Start()
     {
-        StartCoroutine(FadeInScene());
-        InitializePlayer();
-    }
-
-    IEnumerator FadeInScene()
-    {
-        float alpha = 1;
-        while (blackScreen.GetComponent<SpriteRenderer>().material.color.a >= 0)
-        {
-            alpha -= 0.01f;
-            blackScreen.GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, alpha);
-            yield return null;
-        }
-    }
-
-    //sets player's starting transform
-    //this is needed because the player is passed from the Character Select scene with DontDestroyOnLoad()
-    void InitializePlayer()
-    {
         player = GameObject.FindWithTag("Player");
-        player.transform.position = transform.position;
-        player.transform.localScale = new Vector3(0.5f, 0.5f);
+        SetPosition();
     }
 
     void Update()
     {
-        GetKeyInput();
         CheckPauseState();
+        UpdatePauseState();
     }
 
-    void GetKeyInput()
+    void CheckPauseState()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
@@ -57,12 +33,35 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //?: operators are useful
-    void CheckPauseState()
+    //things to change when paused
+    void UpdatePauseState()
     {
-        Time.timeScale = isPaused ? 0 : 1;
-        player.GetComponent<PlayerController>().inputEnabled = isPaused ? false : true;
+        PlayerController pc = player.GetComponent<PlayerController>();
 
-        pauseMenuController.gameObject.SetActive(isPaused ? true : false);
+        if (isPaused)
+        {
+            pc.inputEnabled = false;
+            Time.timeScale = 0;
+            blackScreen.GetComponent<SpriteRenderer>().material.color = new Color(0, 0, 0, 0.7f);
+        }
+        else
+        {
+            pc.inputEnabled = true;
+            Time.timeScale = 1;
+            blackScreen.GetComponent<SpriteRenderer>().material.color = new Color(0, 0, 0, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log(blackScreen.GetComponent<SpriteRenderer>().material.color);
+        }
+    }
+
+    //sets player's starting transform
+    //this is needed because the player is passed from the Character Select scene with DontDestroyOnLoad()
+    void SetPosition()
+    {
+        player.transform.position = transform.position;
+        player.transform.localScale = new Vector3(0.5f, 0.5f);
     }
 }

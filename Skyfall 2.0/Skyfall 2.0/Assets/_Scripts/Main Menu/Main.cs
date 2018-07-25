@@ -33,15 +33,17 @@ public class Main : Menu
         switch (choice)
         {
             case 0:
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("CharacterSelect");
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
                 break;
             case 1:
                 StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[choice]));
-                ToggleActive(this, GetComponent<HowToPlay>());
+                ToggleActive(this);
+                ToggleActive(GetComponent<HowToPlay>());
                 break;
             case 2:
                 StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[choice]));
-                ToggleActive(this, GetComponent<Options>());
+                ToggleActive(this);
+                ToggleActive(GetComponent<Options>());
                 break;
             case 3:
                 Quit();

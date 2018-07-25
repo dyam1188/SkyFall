@@ -73,16 +73,17 @@ public class Menu : MonoBehaviour
         //code goes in children's respective override classes
     }
 
-    protected void ToggleActive(Main m, HowToPlay h)
+    protected void ToggleActive(Behaviour script)
     {
-        m.enabled = m.enabled ? false : true;
-        h.enabled = h.enabled ? false : true;
+        script.enabled = script.enabled ? false : true;
     }
 
-    protected void ToggleActive(Main m, Options o)
+    protected void HideTextIfDisabled()
     {
-        m.enabled = m.enabled ? false : true;
-        o.enabled = o.enabled ? false : true;
+        for (int i = 0; i < textArray.Length; i++)
+        {
+            textArray[i].gameObject.SetActive(enabled ? true : false);
+        }
     }
 
     protected IEnumerator ChangeMenu(CanvasGroup canvasOut, CanvasGroup canvasIn)

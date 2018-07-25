@@ -21,10 +21,13 @@ public class BackToMain : PauseMenu
         switch (choice)
         {
             case 0:
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main Menu");
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
                 break;
             case 1:
-                
+                canvasGroupArray[0].gameObject.SetActive(false);
+                canvasGroupArray[choice].gameObject.SetActive(true);
+                ToggleActive(this);
+                ToggleActive(GetComponent<PauseMenu>());
                 break;
         }
     }

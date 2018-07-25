@@ -69,18 +69,18 @@ public class CharacterSelect : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Space))
         {
             SelectCharacter();
-            LoadScene("Game");
+            LoadScene(2);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            LoadScene("Main Menu");
+            LoadScene(0);
         }
     }
 
-    void LoadScene(string name)
+    void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadSceneAsync(name);
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
 
     void SelectCharacter()
