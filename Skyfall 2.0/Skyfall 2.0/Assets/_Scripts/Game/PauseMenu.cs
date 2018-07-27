@@ -6,40 +6,14 @@ using UnityEngine.UI;
 //menu handling for pause menu in game scenes
 public class PauseMenu : Menu
 {
-    const int large = 48;
-    const int small = 36;
-
     GameController gc;
 
     protected override void Awake()
     {
-        ResizeText(large, small);
+        UpdateTextSize();
 
         PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         SetOutlineColor(pc.uiColor);
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-
-        for (int i = 0; i < canvasGroupArray.Length - 1; i++)
-        {
-            if (i != choice)
-            {
-                canvasGroupArray[i].gameObject.SetActive(false);
-            }
-        }
-
-        gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        ResizeText(large, small);
-
-        canvasGroupArray[0].alpha = gc.isPaused ? 1 : 0;
     }
 
     void SetOutlineColor(Color c)
@@ -50,21 +24,56 @@ public class PauseMenu : Menu
         }
     }
 
+
+    protected override void Start()
+    {
+        base.Start();
+
+        //hides all submenus
+        for (int i = 0; i < canvasGroupArray.Length - 1; i++)
+        {
+            if (i != choice)
+            {
+                canvasGroupArray[i].gameObject.SetActive(false);
+            }
+        }
+
+        gc = GetComponent<GameController>();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        UpdateTextSize();
+
+        canvasGroupArray[0].gameObject.SetActive(gc.isPaused ? true : false);
+    }
+    
     protected override void MakeChoice(int choice)
     {
         switch (choice)
         {
+            //"Resume"
             case 0:
                 gc.isPaused = false;
                 break;
-            case 1:
 
+            //"Options"
+            case 1:
+                ToggleCanvas(canvasGroupArray[choice]);     //enables the options canvas
+                ToggleScript(GetComponent<Options>());      //turns the options script on
+
+                canvasGroupArray[0].alpha = 0;              //sets the pause menu alpha to 0
+                ToggleScript(this);                         //turns this script off
                 break;
+            
+            //"Back to main menu"
             case 2:
-                canvasGroupArray[0].gameObject.SetActive(false);
-                canvasGroupArray[1].gameObject.SetActive(true);
-                ToggleActive(this);
-                ToggleActive(GetComponent<BackToMain>());
+                ToggleCanvas(canvasGroupArray[choice]);     //enables the backtomain canvas
+                ToggleScript(GetComponent<BackToMain>());   //turns the backtomain script on
+
+                canvasGroupArray[0].alpha = 0;              //sets the pause menu alpha to 0
+                ToggleScript(this);                         //turns this script off
                 break;
         }
     }

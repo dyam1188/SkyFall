@@ -17,13 +17,13 @@ public class Menu : MonoBehaviour
     protected Text[] textArray;
 
     //text effects
-    const int large = 72;
-    const int small = 60;
+    const int large = 60;
+    const int small = 48;
     const float fadeSpeed = 0.1f;
 
     protected virtual void Awake()
     {
-        ResizeText(large, small);
+        UpdateTextSize();
     }
 
     protected virtual void Start()
@@ -37,7 +37,7 @@ public class Menu : MonoBehaviour
         {
             GetKeyInput();
         }
-        ResizeText(large, small);
+        UpdateTextSize();
     }
 
     protected virtual void GetKeyInput()
@@ -59,11 +59,11 @@ public class Menu : MonoBehaviour
     }
 
     //resizes text according to menu choice
-    protected void ResizeText(int sizeLarge, int sizeSmall)
+    protected void UpdateTextSize()
     {
         for (int i = 0; i < textArray.Length; i++)
         {
-            textArray[i].fontSize = i == choice ? sizeLarge : sizeSmall;
+            textArray[i].fontSize = i == choice ? large : small;
             textArray[i].GetComponent<Outline>().enabled = i == choice ? true : false;
         }
     }
@@ -73,7 +73,14 @@ public class Menu : MonoBehaviour
         //code goes in children's respective override classes
     }
 
-    protected void ToggleActive(Behaviour script)
+    //sets the canvasGroup active if it isn't active, and vice versa
+    protected void ToggleCanvas(CanvasGroup cg)
+    {
+        cg.gameObject.SetActive(cg.gameObject.activeSelf ? false : true);
+    }
+
+    //enables the script if it is disabled, and vice versa
+    protected void ToggleScript(Behaviour script)
     {
         script.enabled = script.enabled ? false : true;
     }
@@ -86,33 +93,27 @@ public class Menu : MonoBehaviour
         }
     }
 
-    protected IEnumerator ChangeMenu(CanvasGroup canvasOut, CanvasGroup canvasIn)
+    //only used in main menu scene
+    protected void BackToMainMenu()
     {
-        inputEnabled = false;
+        ToggleCanvas(canvasGroupArray[0]);
+        ToggleScript(GetComponent<Main>());
 
-        while (canvasOut.alpha > 0)
-        {
-            canvasOut.alpha -= fadeSpeed;
-            yield return null;
-        }
-
-        canvasOut.gameObject.SetActive(false);
         choice = 0;
-        canvasIn.gameObject.SetActive(true);
 
-        while (canvasIn.alpha < 1)
-        {
-            canvasIn.alpha += fadeSpeed;
-            yield return null;
-        }
-
-        inputEnabled = true;
-
-        enabled = false;
+        ToggleCanvas(canvasGroupArray[1]);
+        ToggleScript(this);
     }
-
-    protected virtual void BackToMainMenu()
+    
+    //only used in game scenes
+    protected void BackToPauseMenu()
     {
-        StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[1]));
+        canvasGroupArray[0].alpha = 1;
+        ToggleScript(GetComponent<PauseMenu>());
+
+        choice = 0;
+
+        ToggleCanvas(canvasGroupArray[1]);
+        ToggleScript(this);
     }
 }

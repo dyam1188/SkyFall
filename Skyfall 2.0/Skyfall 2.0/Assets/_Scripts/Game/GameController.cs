@@ -19,18 +19,18 @@ public class GameController : MonoBehaviour
         SetPosition();
     }
 
-    void Update()
+    //sets player's starting transform
+    //this is needed because the player is passed from the Character Select scene with DontDestroyOnLoad()
+    void SetPosition()
     {
-        CheckPauseState();
-        UpdatePauseState();
+        player.transform.position = transform.position;
+        player.transform.localScale = new Vector3(0.5f, 0.5f);
     }
 
-    void CheckPauseState()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-        {
-            isPaused = isPaused ? false : true;
-        }
+        UpdatePauseState();
+        CheckPauseState();
     }
 
     //things to change when paused
@@ -43,25 +43,22 @@ public class GameController : MonoBehaviour
             pc.inputEnabled = false;
             Time.timeScale = 0;
             blackScreen.GetComponent<SpriteRenderer>().material.color = new Color(0, 0, 0, 0.7f);
+            GetComponent<PauseMenu>().enabled = true;
         }
         else
         {
             pc.inputEnabled = true;
             Time.timeScale = 1;
             blackScreen.GetComponent<SpriteRenderer>().material.color = new Color(0, 0, 0, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Debug.Log(blackScreen.GetComponent<SpriteRenderer>().material.color);
+            GetComponent<PauseMenu>().enabled = false;
         }
     }
 
-    //sets player's starting transform
-    //this is needed because the player is passed from the Character Select scene with DontDestroyOnLoad()
-    void SetPosition()
+    void CheckPauseState()
     {
-        player.transform.position = transform.position;
-        player.transform.localScale = new Vector3(0.5f, 0.5f);
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            isPaused = isPaused ? false : true;
+        }
     }
 }

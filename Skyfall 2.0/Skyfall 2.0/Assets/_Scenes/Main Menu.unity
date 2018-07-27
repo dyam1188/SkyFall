@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 157338406}
   - component: {fileID: 157338410}
   m_Layer: 5
-  m_Name: Canvas_howtoplay
+  m_Name: How to Play (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 304997307}
   - component: {fileID: 304997309}
   m_Layer: 0
-  m_Name: Music Volume Value
+  m_Name: Music Volume (value)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1156,7 +1156,7 @@ GameObject:
   - component: {fileID: 723860361}
   - component: {fileID: 723860364}
   m_Layer: 0
-  m_Name: Canvas_options
+  m_Name: Options (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1408,8 +1408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroupArray:
-  - {fileID: 157338410}
   - {fileID: 1619328381}
+  - {fileID: 157338410}
   textArray:
   - {fileID: 243441771}
 --- !u!114 &835030560
@@ -1424,16 +1424,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroupArray:
-  - {fileID: 723860364}
   - {fileID: 1619328381}
+  - {fileID: 723860364}
   textArray:
   - {fileID: 2128449127}
   - {fileID: 478620339}
   - {fileID: 1260503909}
   musicSlider: {fileID: 547770403}
   soundSlider: {fileID: 73342076}
-  musicVolumeText: {fileID: 304997307}
-  soundVolumeText: {fileID: 1055324816}
+  musicVolumeValue: {fileID: 304997307}
+  soundVolumeValue: {fileID: 1055324816}
   backgroundMusic: {fileID: 436073126}
 --- !u!1 &895228373
 GameObject:
@@ -1795,7 +1795,7 @@ GameObject:
   - component: {fileID: 1055324816}
   - component: {fileID: 1055324818}
   m_Layer: 0
-  m_Name: Sound Volume Value
+  m_Name: Sound Volume (value)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2353,7 +2353,7 @@ GameObject:
   - component: {fileID: 1619328377}
   - component: {fileID: 1619328381}
   m_Layer: 5
-  m_Name: Canvas_main
+  m_Name: Main Menu (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

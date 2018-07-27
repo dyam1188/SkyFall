@@ -34,11 +34,4 @@ public class HowToPlay : Menu
                 break;
         }
     }
-
-    protected override void BackToMainMenu()
-    {
-        base.BackToMainMenu();
-        ToggleActive(GetComponent<Main>());
-        ToggleActive(this);
-    }
 }

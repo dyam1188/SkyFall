@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //menu handling for options menu in main menu and game (while paused)
 public class Options : Menu
 {
-    [Space]
+    [SerializeField]
+    AudioSource backgroundMusic;
 
     [SerializeField]
     Slider musicSlider;
@@ -17,13 +19,18 @@ public class Options : Menu
     [Space]
 
     [SerializeField]
-    Text musicVolumeText;
+    Image musicSliderFill;
 
     [SerializeField]
-    Text soundVolumeText;
+    Image soundSliderFill;
+
+    [Space]
 
     [SerializeField]
-    AudioSource backgroundMusic;
+    Text musicVolumeValue;
+
+    [SerializeField]
+    Text soundVolumeValue;
 
     protected override void Awake()
     {
@@ -34,6 +41,25 @@ public class Options : Menu
     protected override void Start()
     {
         base.Start();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            SetOutlineColor(pc.uiColor);
+        }
+    }
+
+    void SetOutlineColor(Color c)
+    {
+        foreach (Text t in textArray)
+        {
+            t.GetComponent<Outline>().effectColor = c;
+        }
+
+        musicSliderFill.color = c;
+        soundSliderFill.color = c;
+
+        musicVolumeValue.GetComponent<Outline>().effectColor = c;
+        soundVolumeValue.GetComponent<Outline>().effectColor = c;
     }
 
     protected override void Update()
@@ -45,8 +71,8 @@ public class Options : Menu
 
     void UpdateText()
     {
-        musicVolumeText.text = musicSlider.value.ToString();
-        soundVolumeText.text = soundSlider.value.ToString();
+        musicVolumeValue.text = musicSlider.value.ToString();
+        soundVolumeValue.text = soundSlider.value.ToString();
     }
 
     void UpdateMusic()
@@ -99,14 +125,14 @@ public class Options : Menu
     {
         if (choice == textArray.Length - 1)
         {
-            BackToMainMenu();
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                BackToMainMenu();
+            }
+            else
+            {
+                BackToPauseMenu();
+            }
         }
-    }
-
-    protected override void BackToMainMenu()
-    {
-        base.BackToMainMenu();
-        ToggleActive(GetComponent<Main>());
-        ToggleActive(this);
     }
 }

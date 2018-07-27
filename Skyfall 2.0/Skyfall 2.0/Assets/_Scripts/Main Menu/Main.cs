@@ -32,19 +32,28 @@ public class Main : Menu
     {
         switch (choice)
         {
+            //"Play"
             case 0:
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
                 break;
+
+            //"How to Play"
             case 1:
-                StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[choice]));
-                ToggleActive(this);
-                ToggleActive(GetComponent<HowToPlay>());
+                ToggleCanvas(canvasGroupArray[0]);
+                ToggleCanvas(canvasGroupArray[choice]);
+                ToggleScript(this);
+                ToggleScript(GetComponent<HowToPlay>());
                 break;
+
+            //"Options"
             case 2:
-                StartCoroutine(ChangeMenu(canvasGroupArray[0], canvasGroupArray[choice]));
-                ToggleActive(this);
-                ToggleActive(GetComponent<Options>());
+                ToggleCanvas(canvasGroupArray[0]);
+                ToggleCanvas(canvasGroupArray[choice]);
+                ToggleScript(this);
+                ToggleScript(GetComponent<Options>());
                 break;
+
+            //"Exit"
             case 3:
                 Quit();
                 break;
