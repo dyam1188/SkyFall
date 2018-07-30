@@ -95,11 +95,6 @@ public class PlayerController : MonoBehaviour
         {
             LoseLife();
         }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SetInvincible(3f);
-        }
     }
 
     void CheckState()

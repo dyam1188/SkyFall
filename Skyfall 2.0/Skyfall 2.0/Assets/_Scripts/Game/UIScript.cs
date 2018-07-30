@@ -11,7 +11,7 @@ public class UIScript : MonoBehaviour
     Image playerHealthBar, bossHealthBar;
 
     [SerializeField]
-    GameObject[] specials = new GameObject[3];
+    Image[] specials = new Image[3];
 
     [SerializeField]
     Text goldText;
@@ -35,8 +35,11 @@ public class UIScript : MonoBehaviour
 
         for (int i = 0; i < specials.Length; i++)
         {
+            //enable images equal to the number of numSpecials
             specials[i].gameObject.SetActive(i < pc.numSpecials ? true : false);
-            specials[i].GetComponent<SpriteRenderer>().material.color = pc.uiColor;
+
+            //changes colour to match the player's character color
+            specials[i].color = pc.uiColor;
         }
 
         //only enable when the boss has spawned

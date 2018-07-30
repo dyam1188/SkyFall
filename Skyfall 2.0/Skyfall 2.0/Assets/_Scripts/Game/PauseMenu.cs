@@ -61,19 +61,19 @@ public class PauseMenu : Menu
             //"Options"
             case 1:
                 ToggleCanvas(canvasGroupArray[choice]);     //enables the options canvas
-                ToggleScript(GetComponent<Options>());      //turns the options script on
+                ToggleScript(GetComponent<Options>());      //enables Options.cs
 
-                canvasGroupArray[0].alpha = 0;              //sets the pause menu alpha to 0
+                canvasGroupArray[0].alpha = 0;              //sets this menu's alpha to 0 
                 ToggleScript(this);                         //turns this script off
                 break;
             
             //"Back to main menu"
             case 2:
                 ToggleCanvas(canvasGroupArray[choice]);     //enables the backtomain canvas
-                ToggleScript(GetComponent<BackToMain>());   //turns the backtomain script on
+                ToggleScript(GetComponent<BackToMain>());   //enables BackToMain.cs
 
-                canvasGroupArray[0].alpha = 0;              //sets the pause menu alpha to 0
-                ToggleScript(this);                         //turns this script off
+                canvasGroupArray[0].alpha = 0;
+                ToggleScript(this);
                 break;
         }
     }
