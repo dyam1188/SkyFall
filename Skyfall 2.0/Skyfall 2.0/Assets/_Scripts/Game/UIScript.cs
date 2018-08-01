@@ -38,7 +38,7 @@ public class UIScript : MonoBehaviour
             //enable images equal to the number of numSpecials
             specials[i].gameObject.SetActive(i < pc.numSpecials ? true : false);
 
-            //changes colour to match the player's character color
+            //changes colour to match the player's character colour
             specials[i].color = pc.uiColor;
         }
 

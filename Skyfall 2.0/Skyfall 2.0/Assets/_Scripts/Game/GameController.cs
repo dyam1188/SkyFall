@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //controls game's main functions
 //attached to Level# -> Script Holder - Game
 public class GameController : MonoBehaviour
 {
-    GameObject player;
-
     [SerializeField]
     GameObject blackScreen;
 
@@ -15,14 +14,14 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        SetPosition();
+        SetPlayerPosition();
     }
 
     //sets player's starting transform
     //this is needed because the player is passed from the Character Select scene with DontDestroyOnLoad()
-    void SetPosition()
+    void SetPlayerPosition()
     {
+        GameObject player = GameObject.FindWithTag("Player");
         player.transform.position = transform.position;
         player.transform.localScale = new Vector3(0.5f, 0.5f);
     }
@@ -36,7 +35,7 @@ public class GameController : MonoBehaviour
     //things to change when paused
     void UpdatePauseState()
     {
-        PlayerController pc = player.GetComponent<PlayerController>();
+        PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 
         if (isPaused)
         {

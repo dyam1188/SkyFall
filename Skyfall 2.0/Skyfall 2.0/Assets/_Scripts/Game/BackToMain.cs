@@ -14,6 +14,11 @@ public class BackToMain : PauseMenu
     protected override void Update()
     {
         base.Update();
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            BackToPauseMenu();
+        }
     }
 
     protected override void MakeChoice(int choice)

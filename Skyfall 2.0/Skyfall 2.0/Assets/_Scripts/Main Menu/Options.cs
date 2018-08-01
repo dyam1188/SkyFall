@@ -41,6 +41,7 @@ public class Options : Menu
     protected override void Start()
     {
         base.Start();
+
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -48,6 +49,7 @@ public class Options : Menu
         }
     }
 
+    //changes outline colour to match the player's character colour
     void SetOutlineColor(Color c)
     {
         foreach (Text t in textArray)
@@ -65,16 +67,27 @@ public class Options : Menu
     protected override void Update()
     {
         base.Update();
-        UpdateText();
+
+        UpdateSliderText();
         UpdateMusic();
+
+        /*if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            if (!GetComponent<GameController>().isPaused)
+            {
+                this.enabled = false;
+            }
+        }*/
     }
 
-    void UpdateText()
+    //updates the values of the music/sound sliders
+    void UpdateSliderText()
     {
         musicVolumeValue.text = musicSlider.value.ToString();
         soundVolumeValue.text = soundSlider.value.ToString();
     }
 
+    //updates music volume
     void UpdateMusic()
     {
         backgroundMusic.volume = musicSlider.value / musicSlider.maxValue;
@@ -83,11 +96,6 @@ public class Options : Menu
     protected override void GetKeyInput()
     {
         base.GetKeyInput();
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            BackToMainMenu();
-        }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -114,6 +122,11 @@ public class Options : Menu
                     break;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            GoBack();
+        }
     }
 
     void ChangeVolume(Slider s, int amount)
@@ -125,14 +138,19 @@ public class Options : Menu
     {
         if (choice == textArray.Length - 1)
         {
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                BackToMainMenu();
-            }
-            else
-            {
-                BackToPauseMenu();
-            }
+            GoBack();
+        }
+    }
+
+    void GoBack()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            BackToMainMenu();
+        }
+        else
+        {
+            BackToPauseMenu();
         }
     }
 }
